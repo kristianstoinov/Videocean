@@ -7,8 +7,6 @@ private int subscriptionsDriven;
 private int shares;
 
 
-
-
 public int getDailyViews() {
 	return dailyViews;
 }
