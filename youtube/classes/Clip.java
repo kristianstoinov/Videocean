@@ -24,7 +24,7 @@ private int views;
 private Statistics statisticsForClip;
 
 public Clip(String name,IUser owner,String clipURL,TYPE state){
-	if(name!=null && owner!=null && clipURL!=null)
+	if(name!=null && owner!=null && clipURL!=null){
 	this.name=name;
 	this.owner=owner;
 	this.clipURL=clipURL;
@@ -33,6 +33,9 @@ public Clip(String name,IUser owner,String clipURL,TYPE state){
 	this.likes=0;
 	this.dislikes=0;
 	this.category="None";
+	}else{
+		throw new ClipException("Invalid arguments!");
+	}
 }
 
 public int getLikes() {
