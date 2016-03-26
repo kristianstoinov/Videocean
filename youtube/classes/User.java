@@ -3,16 +3,18 @@ package pojo;
 import java.util.ArrayList;
 import java.util.List;
 
-public class User {
+import org.omg.CORBA.UserException;
+
+public class User implements IUser {
 private String username;
 private String password;
 private String fullName;
 private String picture;
-private String backGroundPicture;
+private String backgroundPicture;
 private String country;
 private String language;
 private List<Clip> history;
-private Playlist myClips;
+private IPlaylist myClips;
 private List<Playlist> playlists;
 private boolean isVerified;
 private List<User> followers;
@@ -21,7 +23,12 @@ private List<User> subscriptions;
 public User(String username,String password,String fullName){
 	setUsername(username);
 	setPassword(password);
-	setFullName(fullName);
+	try {
+		setFullName(fullName);
+	} catch (NameFormatException e) {
+		// TODO Auto-generated catch block
+		e.getMessage();
+	}
 	playlists=new ArrayList<Playlist>();
     history=new ArrayList<Clip>();
     followers=new ArrayList<User>();
@@ -34,7 +41,19 @@ public String getUsername() {
 }
 
 public void setUsername(String username) {
+	if(username!=null){
+		if(username.matches("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*"
+				+ "@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})")){
 	this.username = username;
+		}
+	}
+	else{
+		try {
+			throw new UsernameException("Your username is incorrect.Please try again!");
+		} catch (UsernameException e) {
+			e.getMessage();
+		}
+	}
 }
 
 public String getPassword() {
@@ -42,31 +61,55 @@ public String getPassword() {
 }
 
 public void setPassword(String password) {
+	if(password!=null){
 	this.password = password;
+	}
 }
 
 public String getFullName() {
 	return fullName;
 }
 
-public void setFullName(String fullName) {
+public void setFullName(String fullName) throws NameFormatException {
+	if(fullName!=null){
+		if(fullName.matches("[a-zA-Z]+( +[a-zA-Z]+)*")){
 	this.fullName = fullName;
+	}
+	}
+	else{
+		throw new NameFormatException("Your name is wrong.USE ONLY LETTERS AND SPACE!");
+	}
+	
 }
 
 public String getPicture() {
 	return picture;
 }
 
-public void setPicture(String picture) {
+public void setPicture(String picture) throws PictureFormatException {
+	if(picture!=null){
+		if(picture.endsWith(".jpg")||picture.endsWith(".jpeg")||picture.endsWith(".png")){
 	this.picture = picture;
+		}
+	}
+	else{
+		throw new PictureFormatException();
+	}
 }
 
 public String getBackGroundPicture() {
-	return backGroundPicture;
+	return backgroundPicture;
 }
 
-public void setBackGroundPicture(String backGroundPicture) {
-	this.backGroundPicture = backGroundPicture;
+public void setBackGroundPicture(String backgroundPicture) throws PictureFormatException {
+	if(backgroundPicture!=null){
+		if(backgroundPicture.endsWith(".jpg")||backgroundPicture.endsWith(".jpeg")||backgroundPicture.endsWith(".png")){
+	this.backgroundPicture = backgroundPicture;
+		}
+	}
+	else{
+		throw new PictureFormatException();
+	}
 }
 
 public String getCountry() {
@@ -74,7 +117,9 @@ public String getCountry() {
 }
 
 public void setCountry(String country) {
+	if(country!=null){
 	this.country = country;
+	}
 }
 
 public String getLanguage() {
@@ -82,7 +127,9 @@ public String getLanguage() {
 }
 
 public void setLanguage(String language) {
+	if(language!=null){
 	this.language = language;
+	}
 }
 
 public boolean isVerified() {
@@ -97,15 +144,140 @@ public Playlist getMyClips() {
 	return myClips;
 }
 
-public void setMyClips(Playlist myClips) {
-	this.myClips = myClips;
+/* (non-Javadoc)
+ * @see pojo.IUser#addClipToMyClips(java.lang.String, java.lang.String)
+ */
+@Override
+public void addClipToMyClips(String name,String clipUrl){
+		if(this.myClips==null){
+			this.myClips=new Playlist("myClips",this,Type.PUBLIC);
+			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,Type.PUBLIC));
+		}
+		else{
+			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,Type.PUBLIC));
+		}
+	}
+
+/* (non-Javadoc)
+ * @see pojo.IUser#removeClipFromMyClips(java.lang.String)
+ */
+@Override
+public void removeClipFromMyClips(String url) throws PlaylistException{
+	this.myClips.removeClipFromPlaylist(url);
 }
 
+/* (non-Javadoc)
+ * @see pojo.IUser#addClipIntoPlaylist(pojo.Playlist, pojo.Clip)
+ */
+@Override
+public void addClipIntoPlaylist(Playlist playlist,Clip clip){
+	if(playlist!=null){
+	for(Playlist search:this.playlists){
+		if(search.equals(playlist)){
+			search.addClipToPlaylist(clip);
+		}
+		}
+	}
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#removeClipFromPlaylist(pojo.Playlist, java.lang.String)
+ */
+@Override
+public void removeClipFromPlaylist(Playlist playlist,String url) throws PlaylistException{
+	if(playlist!=null){
+	for(Playlist search:this.playlists){
+		if(search.equals(playlist)){
+			search.removeClipFromPlaylist(url);
+		}
+		}
+	}
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#makePlaylist(java.lang.String)
+ */
+@Override
+public void makePlaylist(String name) throws PlaylistException{
+	this.playlists.add(new Playlist(name, this, Type.PUBLIC));
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#addPlaylist(pojo.Playlist)
+ */
+@Override
+public void addPlaylist(Playlist playlist){
+	if(playlist!=null){
+		this.playlists.add(playlist);
+	}
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#removePlaylist(pojo.Playlist)
+ */
+@Override
+public void removePlaylist(Playlist playlist) throws PlaylistException{
+	if(playlist!=null){
+		if(this.playlists.contains(playlist)){
+		this.playlists.remove(playlist);
+		}
+		else{
+			throw new PlaylistException("Playlist doesn't exist");
+		}
+	}
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#addFollower(pojo.User)
+ */
+@Override
+public void addFollower(User user) throws UserProblemException{
+	if(user!=null){
+	this.followers.add(user);
+		}
+}
 
+/* (non-Javadoc)
+ * @see pojo.IUser#addSubscrition(pojo.User)
+ */
+@Override
+public void addSubscrition(User user) throws UserProblemException{
+	if(user!=null){
+	this.subscriptions.add(user);
+	user.addFollower(this);
+	
+	}
+}
+
+/* (non-Javadoc)
+ * @see pojo.IUser#removeFollower(pojo.IUser)
+ */
+@Override
+public void removeFollower(IUser user) throws UserProblemException{
+	if(user!=null){
+		if(this.followers.contains(user)){
+		this.followers.remove(user);
+		}
+		else{
+			throw new UserProblemException("User doesn't exist");
+		}
+	}
+}
+
+/* (non-Javadoc)
+ * @see pojo.IUser#removeSubscription(pojo.IUser)
+ */
+@Override
+public void removeSubscription(IUser user) throws UserProblemException{
+	if(user!=null){
+		if(this.subscriptions.contains(user)){
+		this.subscriptions.remove(user);
+		user.removeFollower(this);
+	}
+		else{
+			throw new UserProblemException("User doesn't exist");
+		}
+	}
+}
 
 }
