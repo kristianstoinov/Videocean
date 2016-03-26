@@ -3,8 +3,12 @@ package com.youtube.classes;
 public interface IClip {
 
 	void addLike();
+	
+	void removeLike();
 
 	void addDislike();
+	
+	void removeDislike();
 
 	void addViews();
 
