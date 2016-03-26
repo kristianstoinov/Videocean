@@ -1,17 +1,19 @@
-package com.youtube.classes;
+package classes;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import exceptions.PlaylistException;
+
 public class Playlist{
 	private final String name;
 	private final User owner;
-	private Type state;
+	private TYPE state;
 	private int clipsCounter;
 	private int viewsOfPlaylist;
 	private List<Clip> clips = null;
 
-	public Playlist(String name, User owner, Type state) throws PlaylistException {
+	public Playlist(String name, User owner, TYPE state) throws PlaylistException {
 		// Chek for name validity
 		if (name != null && !name.equals("")) {
 			this.name = name;
@@ -59,7 +61,7 @@ public class Playlist{
 		this.clipsCounter--;
 	}
 	
-	public void changeState(Type state) {
+	public void changeState(TYPE state) {
 		this.state = state;
 	}
 
@@ -83,11 +85,11 @@ public class Playlist{
 		return viewsOfPlaylist;
 	}
 
-	public Type getState() {
+	public TYPE getState() {
 		return state;
 	}
 
-	public void setState(Type state) {
+	public void setState(TYPE state) {
 		this.state = state;
 	}
 

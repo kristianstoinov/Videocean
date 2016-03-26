@@ -1,4 +1,4 @@
-package com.youtube.classes;
+package DAO;
 
 public class ClipDAO implements IClipDAO {
 

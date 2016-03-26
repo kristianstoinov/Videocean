@@ -1,4 +1,4 @@
-package pojo;
+package exceptions;
 
 public class UserProblemException extends Exception {
 

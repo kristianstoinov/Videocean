@@ -1,5 +1,4 @@
-package com.youtube.classes;
-
+package exceptions;
 public class CommentException extends Exception {
 
 	public CommentException() {

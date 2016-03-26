@@ -1,5 +1,4 @@
-package pojo;
-
+package exceptions;
 public class NameFormatException extends Exception {
 
 	/**

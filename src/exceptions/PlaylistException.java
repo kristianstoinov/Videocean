@@ -1,4 +1,4 @@
-package com.youtube.classes;
+package exceptions;
 
 public class PlaylistException extends Exception {
 

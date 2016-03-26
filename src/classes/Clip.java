@@ -1,4 +1,4 @@
-package com.youtube.classes;
+package classes;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -6,6 +6,11 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
+import exceptions.ClipException;
+import exceptions.CommentException;
+import interfaces.IClip;
+import interfaces.IUser;
 
 public class Clip implements IClip {
 private final String name;
@@ -23,7 +28,7 @@ private String description;
 private int views;
 private Statistics statisticsForClip;
 
-public Clip(String name,IUser owner,String clipURL,TYPE state){
+public Clip(String name,IUser owner,String clipURL,TYPE state) throws ClipException{
 	if(name!=null && owner!=null && clipURL!=null){
 	this.name=name;
 	this.owner=owner;
@@ -137,7 +142,7 @@ public void addComment(String comment){
 }
 
 @Override
-public void removeComment(String comment){
+public void removeComment(String comment) throws CommentException{
 	if(comment!=null){
 	if(comments.containsKey(comment)){
 		comments.remove(comment);
@@ -149,7 +154,7 @@ public void removeComment(String comment){
 
 
 @Override
-public void addAnwer(String answer,String comment){
+public void addAnwer(String answer,String comment) throws CommentException{
 	if(comment!=null && answer!=null){
 	if(comments.containsKey(comment)){
 	List<String> answerComments=comments.get(comment);
@@ -162,7 +167,7 @@ public void addAnwer(String answer,String comment){
 }
 
 	@Override
-	public void removeAnswer(String answer,String comment){
+	public void removeAnswer(String answer,String comment) throws CommentException{
 		if(comment!=null && answer!=null){
 		if(comments.containsKey(comment)){
 		List<String> answerComments=comments.get(comment);

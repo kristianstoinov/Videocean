@@ -1,9 +1,18 @@
-package pojo;
+package classes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import org.omg.CORBA.UserException;
+
+import exceptions.ClipException;
+import exceptions.NameFormatException;
+import exceptions.PictureFormatException;
+import exceptions.PlaylistException;
+import exceptions.UserProblemException;
+import exceptions.UsernameException;
+import interfaces.IPlaylist;
+import interfaces.IUser;
 
 public class User implements IUser {
 private String username;
@@ -141,20 +150,20 @@ public void setVerified(boolean isVerified) {
 }
 
 public Playlist getMyClips() {
-	return myClips;
+	return (Playlist) myClips;
 }
 
 /* (non-Javadoc)
  * @see pojo.IUser#addClipToMyClips(java.lang.String, java.lang.String)
  */
 @Override
-public void addClipToMyClips(String name,String clipUrl){
+public void addClipToMyClips(String name,String clipUrl) throws PlaylistException, ClipException{
 		if(this.myClips==null){
-			this.myClips=new Playlist("myClips",this,Type.PUBLIC);
-			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,Type.PUBLIC));
+			this.myClips=(IPlaylist) new Playlist("myClips",this,TYPE.PUBLIC);
+			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,TYPE.PUBLIC));
 		}
 		else{
-			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,Type.PUBLIC));
+			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,TYPE.PUBLIC));
 		}
 	}
 
@@ -162,8 +171,8 @@ public void addClipToMyClips(String name,String clipUrl){
  * @see pojo.IUser#removeClipFromMyClips(java.lang.String)
  */
 @Override
-public void removeClipFromMyClips(String url) throws PlaylistException{
-	this.myClips.removeClipFromPlaylist(url);
+public void removeClipFromMyClips(Clip clip) throws PlaylistException{
+	this.myClips.removeClipFromPlaylist(clip);
 }
 
 /* (non-Javadoc)
@@ -184,11 +193,11 @@ public void addClipIntoPlaylist(Playlist playlist,Clip clip){
  * @see pojo.IUser#removeClipFromPlaylist(pojo.Playlist, java.lang.String)
  */
 @Override
-public void removeClipFromPlaylist(Playlist playlist,String url) throws PlaylistException{
+public void removeClipFromPlaylist(Playlist playlist,Clip clip) throws PlaylistException{
 	if(playlist!=null){
 	for(Playlist search:this.playlists){
 		if(search.equals(playlist)){
-			search.removeClipFromPlaylist(url);
+			search.removeClipFromPlaylist(clip);
 		}
 		}
 	}
@@ -199,7 +208,7 @@ public void removeClipFromPlaylist(Playlist playlist,String url) throws Playlist
  */
 @Override
 public void makePlaylist(String name) throws PlaylistException{
-	this.playlists.add(new Playlist(name, this, Type.PUBLIC));
+	this.playlists.add(new Playlist(name, this, TYPE.PUBLIC));
 }
 
 /* (non-Javadoc)
