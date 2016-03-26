@@ -67,16 +67,8 @@ public class Playlist {
 		return name;
 	}
 
-	private void setName(String name) throws PlaylistException {
-
-	}
-
 	public User getOwner() {
 		return owner;
-	}
-
-	public void setOwner(User owner) throws PlaylistException {
-
 	}
 
 	public int getClipsCounter() {
