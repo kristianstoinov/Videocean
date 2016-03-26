@@ -3,13 +3,13 @@ package com.youtube.classes;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Playlist {
+public class Playlist{
 	private final String name;
 	private final User owner;
 	private Type state;
 	private int clipsCounter;
 	private int viewsOfPlaylist;
-	private List<String> clips = null;
+	private List<Clip> clips = null;
 
 	public Playlist(String name, User owner, Type state) throws PlaylistException {
 		// Chek for name validity
@@ -29,11 +29,13 @@ public class Playlist {
 		this.viewsOfPlaylist = 0;
 	}
 
-	public void addClipToPlaylist(String clipUrl) {
+	
+	
+	public void addClipToPlaylist(Clip clip) {
 		if (clips != null) {
-			clips = new ArrayList<String>();
+			clips = new ArrayList<Clip>();
 		}
-		clips.add(clipUrl);
+		clips.add(clip);
 		increaseClipsCounter();
 	}
 
@@ -41,9 +43,11 @@ public class Playlist {
 		this.clipsCounter++;
 	}
 
-	public void removeClipFromPlaylist(String clipUrl) throws PlaylistException {
-		if (clips.contains(clipUrl)) {
-			clips.remove(clipUrl);
+
+
+	public void removeClipFromPlaylist(Clip clip) throws PlaylistException {
+		if (clips.contains(clip)) {
+			clips.remove(clip);
 			reducedClipsCounter();
 		} else {
 			throw new PlaylistException("Clip not found in Playlist.");
@@ -54,7 +58,7 @@ public class Playlist {
 	private void reducedClipsCounter() {
 		this.clipsCounter--;
 	}
-
+	
 	public void changeState(Type state) {
 		this.state = state;
 	}

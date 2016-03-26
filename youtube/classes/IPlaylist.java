@@ -2,9 +2,9 @@ package com.youtube.classes;
 
 public interface IPlaylist {
 
-	void addClipToPlaylist(String clipUrl);
+	void addClipToPlaylist(Clip clip);
 
-	void removeClipFromPlaylist(String clipUrl) throws PlaylistException;
+	void removeClipFromPlaylist(Clip clip) throws PlaylistException;
 
 	void changeState(Type state);
 
