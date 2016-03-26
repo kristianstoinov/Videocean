@@ -1,5 +1,7 @@
 package interfaces;
 
+import java.util.List;
+
 import classes.Clip;
 import classes.Playlist;
 import classes.User;
@@ -9,11 +11,11 @@ import exceptions.UserProblemException;
 
 public interface IUser {
 
-	void addClipToMyClips(String name, String clipUrl) throws PlaylistException, ClipException;
-
+	void addClipToMyClips(String name, String clipUrl) throws ClipException, PlaylistException;
 
 	void addClipIntoPlaylist(Playlist playlist, Clip clip);
 
+	void removeClipFromPlaylist(Playlist playlist, Clip clip) throws PlaylistException;
 
 	void makePlaylist(String name) throws PlaylistException;
 
@@ -31,7 +33,13 @@ public interface IUser {
 
 	void removeClipFromMyClips(Clip clip) throws PlaylistException;
 
-
-	void removeClipFromPlaylist(Playlist playlist, Clip clip) throws PlaylistException;
-
+	public void AddClipToHistory(Clip clip);
+	
+	public List<Clip> getClipsFromHistory();
+	
+	public List<User> getUsersFromSupscription();
+	
+	public List<User> getUsersFromFollowers();
+	
+	public List<Playlist> getPlaylistFromPlaylists();
 }

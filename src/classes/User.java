@@ -1,6 +1,8 @@
 package classes;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 import org.omg.CORBA.UserException;
@@ -157,9 +159,9 @@ public Playlist getMyClips() {
  * @see pojo.IUser#addClipToMyClips(java.lang.String, java.lang.String)
  */
 @Override
-public void addClipToMyClips(String name,String clipUrl) throws PlaylistException, ClipException{
+public void addClipToMyClips(String name,String clipUrl) throws ClipException, PlaylistException{
 		if(this.myClips==null){
-			this.myClips=(IPlaylist) new Playlist("myClips",this,TYPE.PUBLIC);
+			this.myClips= (IPlaylist) new Playlist("myClips",this,TYPE.PUBLIC);
 			this.myClips.addClipToPlaylist(new Clip(name,this,clipUrl,TYPE.PUBLIC));
 		}
 		else{
@@ -167,9 +169,7 @@ public void addClipToMyClips(String name,String clipUrl) throws PlaylistExceptio
 		}
 	}
 
-/* (non-Javadoc)
- * @see pojo.IUser#removeClipFromMyClips(java.lang.String)
- */
+
 @Override
 public void removeClipFromMyClips(Clip clip) throws PlaylistException{
 	this.myClips.removeClipFromPlaylist(clip);
@@ -288,5 +288,32 @@ public void removeSubscription(IUser user) throws UserProblemException{
 		}
 	}
 }
+
+public void AddClipToHistory(Clip clip){
+	if(clip!=null){
+	this.history.add(clip);
+	}
+}
+
+public List<Clip> getClipsFromHistory(){
+	return Collections.unmodifiableList(this.history);
+}
+
+public List<User> getUsersFromSupscription(){
+	return Collections.unmodifiableList(this.subscriptions);
+}
+
+public List<User> getUsersFromFollowers(){
+	return Collections.unmodifiableList(this.followers);
+}
+
+public List<Playlist> getPlaylistFromPlaylists(){
+	return Collections.unmodifiableList(this.playlists);
+}
+
+
+
+
+
 
 }
