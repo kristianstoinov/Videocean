@@ -6,11 +6,15 @@ import java.sql.SQLException;
 
 import exceptions.UserProblemException;
 
-public class LanguageDAO extends AbstractDAO{
+public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
 	private static final String SELECT_LANGUAGE_BY_ID_QUERY = "SELECT * FROM languages WHERE id = ?";
 	private static final String ADD_LANGUAGE_QUERY = "INSERT INTO languages VALUES (null, ?)";
 	private static final String SELECT_LANGUAGE_BY_NAME_QUERY = "SELECT * FROM languages WHERE name like ?";
 
+	/* (non-Javadoc)
+	 * @see DAO.ILanguage#addLanguage(java.lang.String)
+	 */
+	@Override
 	public int addLanguage(String language) throws UserProblemException {
 		if (language != null) {
 			try {
@@ -32,6 +36,10 @@ public class LanguageDAO extends AbstractDAO{
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ILanguage#getLanguageById(int)
+	 */
+	@Override
 	public String getLanguageById(int languageId) throws UserProblemException {
 
 		try {
@@ -48,6 +56,10 @@ public class LanguageDAO extends AbstractDAO{
 		}
 	}
 	
+	/* (non-Javadoc)
+	 * @see DAO.ILanguage#getLanguageByName(java.lang.String)
+	 */
+	@Override
 	public int getLanguageByName(String language) throws UserProblemException {
 
 		try {

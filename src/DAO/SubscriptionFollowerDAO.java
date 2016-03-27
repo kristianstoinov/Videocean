@@ -8,12 +8,16 @@ import java.util.List;
 
 import exceptions.UserProblemException;
 
-public class SubscriptionFollowerDAO extends AbstractDAO {
+public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptionFollowersDAO {
 	private static final String ADD_FOLLOWER_QUERY = "INSERT INTO followers VALUES (?, ?)";
 	private static final String DELETE_FOLLOWER_QUERY = "DELETE FROM followers WHERE user_id= ? and follower_id=?";
 	private static final String SELECT_SUBSCRIPTIONS_QUERY = "SELECT follower_id from followers where user_id=?";
 	private static final String SELECT_FOLLWERS_QUERY = "SELECT user_id from followers where follower_id=?";
 
+	/* (non-Javadoc)
+	 * @see DAO.ISubscriptionFollowersDAO#addSubscriptionFollower(int, int)
+	 */
+	@Override
 	public void addSubscriptionFollower(int subscriptionId, int followerId) {
 		if (subscriptionId > 0 && followerId > 0) {
 			if (subscriptionId != followerId) {
@@ -32,6 +36,10 @@ public class SubscriptionFollowerDAO extends AbstractDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ISubscriptionFollowersDAO#deleteSubscription(int, int)
+	 */
+	@Override
 	public void deleteSubscription(int subscriptionId, int followerId) throws UserProblemException {
 		try {
 			PreparedStatement ps = getCon().prepareStatement(DELETE_FOLLOWER_QUERY);
@@ -46,10 +54,18 @@ public class SubscriptionFollowerDAO extends AbstractDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ISubscriptionFollowersDAO#getSubscriptions(int)
+	 */
+	@Override
 	public List<Integer> getSubscriptions(int userId) {
 		return getFollowersOrSubscriptions(userId, SELECT_SUBSCRIPTIONS_QUERY);
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ISubscriptionFollowersDAO#getFollowers(int)
+	 */
+	@Override
 	public List<Integer> getFollowers(int userId) {
 		return getFollowersOrSubscriptions(userId, SELECT_FOLLWERS_QUERY);
 	}

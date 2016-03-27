@@ -3,14 +3,19 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 
 import exceptions.UserProblemException;
 
-public class CountryDAO extends AbstractDAO {
+public class CountryDAO extends AbstractDAO implements ICountryDAO {
 	private static final String SELECT_COUTRY_BY_ID_QUERY = "SELECT * FROM countries WHERE id = ?";
 	private static final String ADD_COUNTRY_QUERY = "INSERT INTO countries VALUES (null, ?)";
 	private static final String SELECT_COUTRY_BY_NAME_QUERY = "SELECT * FROM countries WHERE country_name like ?";
 
+	/* (non-Javadoc)
+	 * @see DAO.ICountry#addCountry(java.lang.String)
+	 */
+	@Override
 	public int addCountry(String country) throws UserProblemException {
 		if (country != null) {
 			try {
@@ -27,11 +32,14 @@ public class CountryDAO extends AbstractDAO {
 				e.printStackTrace();
 				throw new UserProblemException("Can't add a country", e);
 			}
-
 		}
 		return 0;
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ICountry#getCountryById(int)
+	 */
+	@Override
 	public String getCountryById(int countryId) throws UserProblemException {
 
 		try {
@@ -48,6 +56,10 @@ public class CountryDAO extends AbstractDAO {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see DAO.ICountry#getCountryByName(java.lang.String)
+	 */
+	@Override
 	public int getCountryByName(String countryName) throws UserProblemException {
 
 		try {
