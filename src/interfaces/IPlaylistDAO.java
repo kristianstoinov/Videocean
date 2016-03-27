@@ -23,6 +23,9 @@ public interface IPlaylistDAO {
 	void increaseViewsOfPlaylist(Playlist playlist) throws SQLException;
 
 	// Return list of ID of clips from playlist
-	List<Integer> AllClips(Playlist playlist) throws SQLException;
+	List<Integer> AllClips(int playlistID) throws SQLException, PlaylistException;
+	
+	// Returns a list of IDs of Playlist by User ID
+	public List<Integer> allPlayListForUser(int userID) throws PlaylistException;
 
 }

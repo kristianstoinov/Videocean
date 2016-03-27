@@ -21,11 +21,6 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 	private static final String CREATE_PLAYLIST_QUERY = "INSERT INTO playlists VALUES(null,?,?,?)";
 
 	// Create Playlist
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DAO.IPlaylistDAO#createPlaylist(classes.Playlist)
-	 */
 	@Override
 	public int createPlaylist(Playlist playlist) throws PlaylistException {
 		if (playlist != null) {
@@ -50,19 +45,19 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 	}
 
 	// ADD Clip To Playlist
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DAO.IPlaylistDAO#addClipToPlaylist(classes.Playlist, classes.Clip)
-	 */
 	@Override
-	public void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException, SQLException {
+	public void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException {
 		if (playlist != null) {
 			if (clip != null) {
-				PreparedStatement stmt = getCon().prepareStatement(ADD_CLIP_TO_PLAYLIST_QUERY);
-				stmt.setInt(2, playlist.getPlaylistID());
-				stmt.setInt(3, clip.getClipID());
-				stmt.executeUpdate();
+				PreparedStatement stmt;
+				try {
+					stmt = getCon().prepareStatement(ADD_CLIP_TO_PLAYLIST_QUERY);
+					stmt.setInt(2, playlist.getPlaylistID());
+					stmt.setInt(3, clip.getClipID());
+					stmt.executeUpdate();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			} else {
 				throw new ClipException("Invalid clip");
 			}
@@ -73,11 +68,6 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 	}
 
 	// REMOVE clip from Playlist
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DAO.IPlaylistDAO#removeClipFromPlaylist(int, int)
-	 */
 	@Override
 	public void removeClipFromPlaylist(int playlistId, int clipId)
 			throws PlaylistException, ClipException, SQLException {
@@ -87,36 +77,58 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 	}
 
 	// Increase Views of playlist by playlist ID
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DAO.IPlaylistDAO#increaseViewsOfPlaylist(classes.Playlist)
-	 */
 	@Override
-	public void increaseViewsOfPlaylist(Playlist playlist) throws SQLException {
+	public void increaseViewsOfPlaylist(Playlist playlist) {
 		String insertSQL = INCREASE_VIEWS_OF_PLAYLIST_QUERY;
-		PreparedStatement stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
-		stmt.setInt(1, playlist.getPlaylistID());
-		stmt.executeUpdate();
+		PreparedStatement stmt;
+		try {
+			stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
+			stmt.setInt(1, playlist.getPlaylistID());
+			stmt.executeUpdate();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	// Return list of ID of clips from playlist
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see DAO.IPlaylistDAO#AllClips(classes.Playlist)
-	 */
 	@Override
-	public List<Integer> AllClips(Playlist playlist) throws SQLException {
+	public List<Integer> AllClips(int playlistID) throws PlaylistException {
 		List allClips = new ArrayList<Clip>();
-		PreparedStatement statement = getCon().prepareStatement(ALL_CLIPS_QUERY);
-		statement.setInt(1, playlist.getPlaylistID());
-		ResultSet resultSet = statement.executeQuery();
-
-		while (resultSet.next()) {
-			allClips.add(resultSet.getInt(3));
+		PreparedStatement stmt;
+		try {
+			stmt = getCon().prepareStatement(ALL_CLIPS_QUERY);
+			stmt.setInt(1, playlistID);
+			ResultSet resultSet = stmt.executeQuery();
+			while (resultSet.next()) {
+				allClips.add(resultSet.getInt(3));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PlaylistException("Invalid Playlist ID.");
 		}
 		return allClips;
+	}
+
+	// Returns a list of IDs of Playlist by User ID
+	@Override
+	public List<Integer> allPlayListForUser(int userID) throws PlaylistException {
+		List<Integer> allPlayListForUser = new ArrayList<Integer>();
+		PreparedStatement stmt;
+		try {
+			stmt = getCon().prepareStatement("SELECT * FROM library WHERE user_id=?");
+			ResultSet resultSet = stmt.executeQuery();
+			stmt.setInt(1, userID);
+			while (resultSet.next()) {
+				allPlayListForUser.add(resultSet.getInt(2));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new PlaylistException("Invalid Playlist ID.");
+		}
+		return allPlayListForUser;
+
 	}
 
 }
