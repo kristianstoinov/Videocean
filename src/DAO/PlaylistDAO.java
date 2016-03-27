@@ -1,6 +1,5 @@
 package DAO;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -11,8 +10,9 @@ import classes.Clip;
 import classes.Playlist;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
+import interfaces.IPlaylistDAO;
 
-public class PlaylistDAO extends AbstractDAO {
+public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
 	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
@@ -21,6 +21,12 @@ public class PlaylistDAO extends AbstractDAO {
 	private static final String CREATE_PLAYLIST_QUERY = "INSERT INTO playlists VALUES(null,?,?,?)";
 
 	// Create Playlist
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see DAO.IPlaylistDAO#createPlaylist(classes.Playlist)
+	 */
+	@Override
 	public int createPlaylist(Playlist playlist) throws PlaylistException {
 		if (playlist != null) {
 			String insertSQL = CREATE_PLAYLIST_QUERY;
@@ -44,6 +50,12 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// ADD Clip To Playlist
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see DAO.IPlaylistDAO#addClipToPlaylist(classes.Playlist, classes.Clip)
+	 */
+	@Override
 	public void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException, SQLException {
 		if (playlist != null) {
 			if (clip != null) {
@@ -61,6 +73,12 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// REMOVE clip from Playlist
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see DAO.IPlaylistDAO#removeClipFromPlaylist(int, int)
+	 */
+	@Override
 	public void removeClipFromPlaylist(int playlistId, int clipId)
 			throws PlaylistException, ClipException, SQLException {
 		PreparedStatement stmt = getCon().prepareStatement(REMOVE_CLIP_FROM_PLAYLIST_QUERY);
@@ -69,6 +87,12 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// Increase Views of playlist by playlist ID
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see DAO.IPlaylistDAO#increaseViewsOfPlaylist(classes.Playlist)
+	 */
+	@Override
 	public void increaseViewsOfPlaylist(Playlist playlist) throws SQLException {
 		String insertSQL = INCREASE_VIEWS_OF_PLAYLIST_QUERY;
 		PreparedStatement stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
@@ -77,6 +101,12 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// Return list of ID of clips from playlist
+	/*
+	 * (non-Javadoc)
+	 * 
+	 * @see DAO.IPlaylistDAO#AllClips(classes.Playlist)
+	 */
+	@Override
 	public List<Integer> AllClips(Playlist playlist) throws SQLException {
 		List allClips = new ArrayList<Clip>();
 		PreparedStatement statement = getCon().prepareStatement(ALL_CLIPS_QUERY);
