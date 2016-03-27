@@ -9,8 +9,8 @@ public class Admin extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Admin(int id, String email, String password, String fullName) {
-		super(id,email, password, fullName);
+	public Admin(int id, String email, String fullName) {
+		super(id,email, fullName);
 	}
 
 }

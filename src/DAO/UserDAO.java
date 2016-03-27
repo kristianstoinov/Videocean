@@ -176,7 +176,6 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		ILanguageDAO language = new LanguageDAO();
 		int id = rs.getInt(1);
 		String email = rs.getString(2);
-		String password = rs.getString(3);
 		String fullName = rs.getString(4);
 		String picture = rs.getString(5);
 		int countryId = rs.getInt(6);
@@ -184,13 +183,13 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		String backgroundPicture = rs.getString(8);
 		boolean isAdmin = rs.getBoolean(9);
 		if (isAdmin == false) {
-			wantedUser = new User(id, email, password, fullName);
+			wantedUser = new User(id, email, fullName);
 			wantedUser.setPicture(picture);
 			wantedUser.setCountry(country.getCountryById(countryId));
 			wantedUser.setLanguage(language.getLanguageById(languageId));
 			wantedUser.setBackgroundPicture(backgroundPicture);
 		} else {
-			wantedUser = new Admin(id, email, password, fullName);
+			wantedUser = new Admin(id, email, fullName);
 			wantedUser.setPicture(picture);
 			wantedUser.setCountry(country.getCountryById(countryId));
 			wantedUser.setLanguage(language.getLanguageById(languageId));

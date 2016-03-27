@@ -45,11 +45,26 @@ public class User implements IUser {
 		history = new ArrayList<Clip>();
 		followers = new ArrayList<User>();
 		subscriptions = new ArrayList<User>();
+
 	}
 
-	public User(int id, String username, String password, String fullName) {
-		this(username, password, fullName);
-		this.userID = id;
+	public User(int id, String email, String fullName) {
+		this.userID=id;
+		setUsername(email);
+		try {
+			setFullName(fullName);
+		} catch (NameFormatException e) {
+			// TODO Auto-generated catch block
+			e.getMessage();
+		}
+		playlists = new ArrayList<Playlist>();
+		history = new ArrayList<Clip>();
+		followers = new ArrayList<User>();
+		subscriptions = new ArrayList<User>();
+	}
+
+	public int getUserID() {
+		return userID;
 	}
 
 	public String getUsername() {
@@ -110,11 +125,11 @@ public class User implements IUser {
 		}
 	}
 
-	public String getBackGroundPicture() {
+	public String getBackgroundPicture() {
 		return backgroundPicture;
 	}
 
-	public void setBackGroundPicture(String backgroundPicture) throws PictureFormatException {
+	public void setBackgroundPicture(String backgroundPicture) throws PictureFormatException {
 		if (backgroundPicture != null) {
 			if (backgroundPicture.endsWith(".jpg") || backgroundPicture.endsWith(".jpeg")
 					|| backgroundPicture.endsWith(".png")) {
@@ -328,7 +343,4 @@ public class User implements IUser {
 		return Collections.unmodifiableList(this.playlists);
 	}
 
-	public int getUserID() {
-		return userID;
-	}
 }
