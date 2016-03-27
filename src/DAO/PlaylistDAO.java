@@ -4,31 +4,36 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import classes.Clip;
 import classes.Playlist;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
 
-public class PlaylistDAO {
+public class PlaylistDAO extends AbstractDAO {
+
+	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
+	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
+	private static final String REMOVE_CLIP_FROM_PLAYLIST_QUERY = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=?;";
+	private static final String ADD_CLIP_TO_PLAYLIST_QUERY = "INSERT INTO clips_to_playlists(playlist_id, clip_id) VALUES(null,?,?);";
+	private static final String CREATE_PLAYLIST_QUERY = "INSERT INTO playlists VALUES(null,?,?,?)";
 
 	// Create Playlist
-	public Playlist createPlaylist(Playlist playlist) throws PlaylistException {
+	public int createPlaylist(Playlist playlist) throws PlaylistException {
 		if (playlist != null) {
-			int insertId = -1;
-			Connection con = DBConnection.getInstance().getConnection();
-			String insertSQL = "INSERT INTO playlists VALUES(null,?,?,?)";
-			PreparedStatement stmt;
+			String insertSQL = CREATE_PLAYLIST_QUERY;
 			try {
-				stmt = con.prepareStatement(insertSQL);
+				PreparedStatement stmt = getCon().prepareStatement(insertSQL);
 				stmt.setString(2, playlist.getName());
 				stmt.setInt(3, 0);
 				stmt.setInt(4, playlist.getOwner().getUserID());
 				stmt.executeQuery();
 				ResultSet rs = stmt.getGeneratedKeys();
 				rs.next();
-				insertId = rs.getInt(1);
-				return new Playlist(insertId, playlist.getName(), playlist.getOwner(), playlist.getState());
+
+				return rs.getInt(1);
 			} catch (SQLException e) {
 				e.printStackTrace();
 				throw new PlaylistException("Can`t creat Playlist");
@@ -42,11 +47,9 @@ public class PlaylistDAO {
 	public void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException, SQLException {
 		if (playlist != null) {
 			if (clip != null) {
-				Connection con = DBConnection.getInstance().getConnection();
-				String insertSQL = "INSERT INTO clips_to_playlists(playlist_id, clip_id) VALUES(?,?,?)";
-				PreparedStatement stmt = con.prepareStatement(insertSQL);
+				PreparedStatement stmt = getCon().prepareStatement(ADD_CLIP_TO_PLAYLIST_QUERY);
 				stmt.setInt(2, playlist.getPlaylistID());
-				stmt.setDouble(3, clip.getClipID());
+				stmt.setInt(3, clip.getClipID());
 				stmt.executeUpdate();
 			} else {
 				throw new ClipException("Invalid clip");
@@ -60,25 +63,30 @@ public class PlaylistDAO {
 	// REMOVE clip from Playlist
 	public void removeClipFromPlaylist(int playlistId, int clipId)
 			throws PlaylistException, ClipException, SQLException {
-		Connection con = DBConnection.getInstance().getConnection();
-		String insertSQL = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=?";
-		PreparedStatement stmt = con.prepareStatement(insertSQL);
+		PreparedStatement stmt = getCon().prepareStatement(REMOVE_CLIP_FROM_PLAYLIST_QUERY);
 		stmt.setInt(1, clipId);
 		stmt.setInt(2, playlistId);
 	}
 
 	// Increase Views of playlist by playlist ID
 	public void increaseViewsOfPlaylist(Playlist playlist) throws SQLException {
-		Connection con = DBConnection.getInstance().getConnection();
-		String insertSQL = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = "
-				+ playlist.getPlaylistID();
-		PreparedStatement stmt = con.prepareStatement(insertSQL);
+		String insertSQL = INCREASE_VIEWS_OF_PLAYLIST_QUERY;
+		PreparedStatement stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
+		stmt.setInt(1, playlist.getPlaylistID());
 		stmt.executeUpdate();
 	}
 
-	public void sortByName() {
-		Connection con = DBConnection.getInstance().getConnection();
-		String insertSQL = "SELECT * FROM playlist whre";
+	// Return list of ID of clips from playlist
+	public List<Integer> AllClips(Playlist playlist) throws SQLException {
+		List allClips = new ArrayList<Clip>();
+		PreparedStatement statement = getCon().prepareStatement(ALL_CLIPS_QUERY);
+		statement.setInt(1, playlist.getPlaylistID());
+		ResultSet resultSet = statement.executeQuery();
+
+		while (resultSet.next()) {
+			allClips.add(resultSet.getInt(3));
+		}
+		return allClips;
 	}
 
 }
