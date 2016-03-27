@@ -11,7 +11,7 @@ import exceptions.PlaylistException;
 public interface IPlaylistDAO {
 
 	// Create Playlist
-	int createPlaylist(Playlist playlist) throws PlaylistException;
+	int createPlaylist(IPlaylist playlist) throws PlaylistException;
 
 	// ADD Clip To Playlist
 	void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException, SQLException;

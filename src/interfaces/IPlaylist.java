@@ -14,4 +14,8 @@ public interface IPlaylist {
 
 	void increaseViewsOfPlaylist();
 
+	String getName();
+
+	Object getOwner();
+
 }
