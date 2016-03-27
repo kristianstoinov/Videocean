@@ -32,6 +32,8 @@ public interface IUser {
 	void removeSubscription(IUser user) throws UserProblemException;
 
 	void removeClipFromMyClips(Clip clip) throws PlaylistException;
+	
+	int getUserID();
 
 	public void AddClipToHistory(Clip clip);
 	

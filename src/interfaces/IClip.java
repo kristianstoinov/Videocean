@@ -1,5 +1,6 @@
 package interfaces;
 
+import classes.Comment;
 import exceptions.CommentException;
 
 public interface IClip {
@@ -14,12 +15,12 @@ public interface IClip {
 
 	void addViews();
 
-	void addComment(String comment);
+	void addComment(Comment comment) throws CommentException;
 
-	void removeComment(String comment) throws CommentException;
+	void removeComment(Comment comment) throws CommentException;
 
-	void addAnwer(String answer, String comment) throws CommentException;
+	void removeAnswer(Comment answer, Comment comment) throws CommentException;
 
-	void removeAnswer(String answer, String comment) throws CommentException;
+	void addAnwer(Comment answer, Comment comment) throws CommentException;
 
 }
