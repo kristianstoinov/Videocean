@@ -22,7 +22,7 @@ public class Clip implements IClip {
 	private final String clipURL;
 
 	// private List<Comment> comments;
-	private Map<String, List<String>> comments;
+	private Map<Comment, List<Comment>> comments;
 	private TYPE state;
 	private final LocalDate datePublished;
 	private String description;
@@ -48,6 +48,9 @@ public class Clip implements IClip {
 		this.clipID=id;
 	}
 
+	public Clip(int id, String clipName, int clipOwnerID, String clipPath, int clipState) {
+		// DA SE DOVURSHI
+	}
 	public int getLikes() {
 		return likes;
 	}
@@ -137,15 +140,17 @@ public class Clip implements IClip {
 	}
 
 	@Override
-	public void addComment(String comment) {
+	public void addComment(Comment comment) throws CommentException {
 		if (comment != null) {
-			List<String> answerComments = new LinkedList<String>();
+			List<Comment> answerComments = new LinkedList<Comment>();
 			comments.put(comment, answerComments);
+		}else{
+			throw new CommentException("No such comment! Please rethink!");
 		}
 	}
 
 	@Override
-	public void removeComment(String comment) throws CommentException {
+	public void removeComment(Comment comment) throws CommentException {
 		if (comment != null) {
 			if (comments.containsKey(comment)) {
 				comments.remove(comment);
@@ -156,10 +161,10 @@ public class Clip implements IClip {
 	}
 
 	@Override
-	public void addAnwer(String answer, String comment) throws CommentException {
+	public void addAnwer(Comment answer, Comment comment) throws CommentException {
 		if (comment != null && answer != null) {
 			if (comments.containsKey(comment)) {
-				List<String> answerComments = comments.get(comment);
+				List<Comment> answerComments = comments.get(comment);
 				answerComments.add(answer);
 				comments.put(comment, answerComments);
 			} else {
@@ -169,10 +174,10 @@ public class Clip implements IClip {
 	}
 
 	@Override
-	public void removeAnswer(String answer, String comment) throws CommentException {
+	public void removeAnswer(Comment answer, Comment comment) throws CommentException {
 		if (comment != null && answer != null) {
 			if (comments.containsKey(comment)) {
-				List<String> answerComments = comments.get(comment);
+				List<Comment> answerComments = comments.get(comment);
 				if (answerComments.contains(answer)) {
 					answerComments.remove(answer);
 				}
@@ -186,5 +191,7 @@ public class Clip implements IClip {
 	public int getClipID() {
 		return clipID;
 	}
+	
+
 
 }
