@@ -13,7 +13,7 @@ import exceptions.PlaylistException;
 public class PlaylistDAO {
 
 	// Create Playlist
-	public void creatPlaylist(Playlist playlist) throws PlaylistException {
+	public Playlist createPlaylist(Playlist playlist) throws PlaylistException {
 		if (playlist != null) {
 			int insertId = -1;
 			Connection con = DBConnection.getInstance().getConnection();
@@ -23,19 +23,18 @@ public class PlaylistDAO {
 				stmt = con.prepareStatement(insertSQL);
 				stmt.setString(2, playlist.getName());
 				stmt.setInt(3, 0);
-				stmt.setInt(4, playlist.getOwner().getId());
+				stmt.setInt(4, playlist.getOwner().getUserID());
 				stmt.executeQuery();
-
 				ResultSet rs = stmt.getGeneratedKeys();
-				if (rs.next()) {
-					insertId = rs.getInt(1);
-					// Set id from DB
-					playlist.setId(insertId);
-				}
+				rs.next();
+				insertId = rs.getInt(1);
+				return new Playlist(insertId, playlist.getName(), playlist.getOwner(), playlist.getState());
 			} catch (SQLException e) {
 				e.printStackTrace();
-				throw new PlaylistException("Can`t creat Playlist")
+				throw new PlaylistException("Can`t creat Playlist");
 			}
+		} else {
+			throw new PlaylistException("Can`t creat Playlist");
 		}
 	}
 
@@ -46,8 +45,8 @@ public class PlaylistDAO {
 				Connection con = DBConnection.getInstance().getConnection();
 				String insertSQL = "INSERT INTO clips_to_playlists(playlist_id, clip_id) VALUES(?,?,?)";
 				PreparedStatement stmt = con.prepareStatement(insertSQL);
-				stmt.setInt(2, playlist.getId());
-				stmt.setDouble(3, clip.getId());
+				stmt.setInt(2, playlist.getPlaylistID());
+				stmt.setDouble(3, clip.getClipID());
 				stmt.executeUpdate();
 			} else {
 				throw new ClipException("Invalid clip");
@@ -71,7 +70,8 @@ public class PlaylistDAO {
 	// Increase Views of playlist by playlist ID
 	public void increaseViewsOfPlaylist(Playlist playlist) throws SQLException {
 		Connection con = DBConnection.getInstance().getConnection();
-		String insertSQL = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = " + playlist.getId();
+		String insertSQL = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = "
+				+ playlist.getPlaylistID();
 		PreparedStatement stmt = con.prepareStatement(insertSQL);
 		stmt.executeUpdate();
 	}
