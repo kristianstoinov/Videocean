@@ -10,10 +10,13 @@ import classes.Clip;
 import classes.Playlist;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
+import interfaces.IPlaylist;
 import interfaces.IPlaylistDAO;
+import interfaces.IUser;
 
 public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
+	private static final String SELECT_PLAYLIST_BY_ID = "SELECT * FROM clips_to_playlists WHERE playlist_id=?";
 	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
 	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
 	private static final String REMOVE_CLIP_FROM_PLAYLIST_QUERY = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=?;";
@@ -22,14 +25,14 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	// Create Playlist
 	@Override
-	public int createPlaylist(Playlist playlist) throws PlaylistException {
+	public int createPlaylist(IPlaylist playlist) throws PlaylistException {
 		if (playlist != null) {
 			String insertSQL = CREATE_PLAYLIST_QUERY;
 			try {
 				PreparedStatement stmt = getCon().prepareStatement(insertSQL);
 				stmt.setString(2, playlist.getName());
 				stmt.setInt(3, 0);
-				stmt.setInt(4, playlist.getOwner().getUserID());
+				stmt.setInt(4,  ((IUser) playlist.getOwner()).getUserID());
 				stmt.executeQuery();
 				ResultSet rs = stmt.getGeneratedKeys();
 				rs.next();
@@ -128,7 +131,26 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			throw new PlaylistException("Invalid Playlist ID.");
 		}
 		return allPlayListForUser;
-
+	}
+	
+	public List<Integer> playlistByID(int playlistID){
+			List<Integer> clipsInThisPlaylist = new ArrayList<Integer>();
+		try {
+			PreparedStatement stmt = getCon().prepareStatement(SELECT_PLAYLIST_BY_ID);
+			stmt.setInt(1, playlistID);
+			ResultSet resultSet = stmt.executeQuery();
+			resultSet = stmt.executeQuery();
+			while(resultSet.next()){
+				clipsInThisPlaylist.add(resultSet.getInt(3));
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return clipsInThisPlaylist;
+		
+		
 	}
 
 }
