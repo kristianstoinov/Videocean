@@ -5,7 +5,8 @@ import java.util.List;
 
 import exceptions.PlaylistException;
 
-public class Playlist{
+public class Playlist {
+	private int playlistID;
 	private final String name;
 	private final User owner;
 	private TYPE state;
@@ -30,9 +31,11 @@ public class Playlist{
 		this.clipsCounter = 0;
 		this.viewsOfPlaylist = 0;
 	}
+	public Playlist(int id,String name, User owner, TYPE state) throws PlaylistException{
+		 this(name, owner, state);
+		 this.playlistID=id;
+	}
 
-	
-	
 	public void addClipToPlaylist(Clip clip) {
 		if (clips != null) {
 			clips = new ArrayList<Clip>();
@@ -44,8 +47,6 @@ public class Playlist{
 	private void increaseClipsCounter() {
 		this.clipsCounter++;
 	}
-
-
 
 	public void removeClipFromPlaylist(Clip clip) throws PlaylistException {
 		if (clips.contains(clip)) {
@@ -60,7 +61,7 @@ public class Playlist{
 	private void reducedClipsCounter() {
 		this.clipsCounter--;
 	}
-	
+
 	public void changeState(TYPE state) {
 		this.state = state;
 	}
@@ -92,5 +93,16 @@ public class Playlist{
 	public void setState(TYPE state) {
 		this.state = state;
 	}
+
+	public int getPlaylistID() {
+		return playlistID;
+	}
+
+	public void setPlaylistID(int playlistID) {
+		
+		this.playlistID = playlistID;
+	}
+
+	
 
 }
