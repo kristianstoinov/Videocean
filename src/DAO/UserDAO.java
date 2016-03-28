@@ -6,17 +6,28 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.el.util.ConcurrentCache;
+
+import classes.Playlist;
 import classes.User;
 import exceptions.PictureFormatException;
+import exceptions.PlaylistException;
 import exceptions.UserProblemException;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
+	private static final String SELECT_COUNT_LIKES_OR_DISLIKES = "SELECT count(user_id) from likes where clip_id=? and preference=?;";
+	private static final String DELETE_FROM_LIKES = "DELETE from likes where user_id=?,clip_id=?;";
+	private static final String UPDATE_LIKES = "UPDATE likes SET preference=? where user_id=? and clip_id=?";
+	private static final String ADD_INTO_LIKES = "INSERT INTO likes VALUES(?,?,?);";
+	private static final String SELECT_PLAYLISTS_FROM_LIBRARY = "SELECT playlist_id FROM library where user_id=?;";
+	private static final String DELETE_FROM_LIBRARY = "DELETE from library where user_id=? and playlist_id=?;";
+	private static final String ADD_INTO_LIBRARY = "INSERT INTO library VALUES(?,?);";
 	private static final String SELECT_FROM_USERS_WHERE_FULL_NAME_LIKE = "SELECT * from users where full_name like ?;";
-	private static final String SELECT_USER_BY_PASS_AND_EMAIL = "SELECT * from users where email like ? and password like ?;";
+	private static final String SELECT_USER_BY_PASS_AND_EMAIL = "SELECT * from users where email like ? and password like md5(?);";
 	private static final String SELECT_FROM_USERS_BY_USER_ID = "SELECT * from users where user_id=?;";
 	private static final String DELETE_FROM_USERS_BY_ID = "DELETE FROM users WHERE id = ?;";
-	private static final String ADD_USER_QUERY = "INSERT INTO users (email,password,full_name) VALUES (?,?,?);";
-	private static final String UPDATE_USER_QUERY = "UPDATE users SET email = ?, password = ?, full_name = ? , picture=?,country_id=?,language_id=?,backgroung_picture=? WHERE id = ?;";
+	private static final String ADD_USER_QUERY = "INSERT INTO users (email,md5(password),full_name) VALUES (?,?,?);";
+	private static final String UPDATE_USER_QUERY = "UPDATE users SET email = ?, password = md5(?), full_name = ? , picture=?,country_id=?,language_id=?,backgroung_picture=? WHERE id = ?;";
 
 	/* (non-Javadoc)
 	 * @see DAO.IUser#addUser(classes.User)
@@ -103,7 +114,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 				ResultSet rs = ps.executeQuery();
 				rs.next();
-				return getData(rs);
+				return getWantedUser(rs);
 			} catch (SQLException | PictureFormatException | UserProblemException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -128,7 +139,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 				ResultSet rs = ps.executeQuery();
 				if (rs.next()) {
-					return getData(rs);
+					return getWantedUser(rs);
 				} else {
 					throw new UserProblemException("Wrong email or password");
 				}
@@ -156,7 +167,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()){
-				wantedUsers.add(getData(rs));
+				wantedUsers.add(getWantedUser(rs));
 				}
 				return wantedUsers;
 			} catch (SQLException | PictureFormatException | UserProblemException e) {
@@ -169,7 +180,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 	}
 
-	private User getData(ResultSet rs) throws SQLException, PictureFormatException, UserProblemException {
+	private User getWantedUser(ResultSet rs) throws SQLException, PictureFormatException, UserProblemException {
 		User wantedUser;
 
 		ICountryDAO country = new CountryDAO();
@@ -197,4 +208,115 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 		return wantedUser;
 	}
+	
+	public void addPlaylistIntoLibrary(int playlistId,int userId) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(ADD_INTO_LIBRARY);
+			ps.setInt(1, userId);
+			ps.setInt(2,playlistId);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Can't add playlist.Please try again", e);
+		}
+		}
+	
+	public void deletePlaylistFromLibrary(int playlistId,int userId) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(DELETE_FROM_LIBRARY);
+			ps.setInt(1,userId);
+			ps.setInt(2,playlistId);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Can't remove users playlist",e);
+		}
+	}
+	
+	public List<Playlist> getAllPlaylistsForUser(int userId) throws UserProblemException{
+		List<Playlist> playlists=new ArrayList<Playlist>();
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(SELECT_PLAYLISTS_FROM_LIBRARY);
+			ps.setInt(1,userId);
+			
+			ResultSet rs=ps.executeQuery();
+			PlaylistDAO playlist=new PlaylistDAO();
+			while(rs.next()){
+				playlists.add(playlist.getPlaylistById(rs.getInt(1)));
+			}
+			return playlists;
+		} catch (SQLException | PlaylistException e) {
+			e.printStackTrace();
+			throw new UserProblemException("There is a problem.We can't get you back your playlists for now",e);
+		}
+	}
+	
+	public void addLike(int userId,int clipId,int preference) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(ADD_INTO_LIKES);
+			ps.setInt(1,userId);
+			ps.setInt(2,clipId);
+			ps.setInt(3,preference);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Like doesn't insert", e);
+		}
+	}
+	
+	public void updateLike(int userId,int clipId,int preference) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(UPDATE_LIKES);
+			ps.setInt(1,preference);
+			ps.setInt(2,userId);
+			ps.setInt(3,clipId);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Like doesn't update", e);
+		}
+	}
+	
+	public void deleteLike(int userId,int clipId) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(DELETE_FROM_LIKES);
+			ps.setInt(1,userId);
+			ps.setInt(2,clipId);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Like doesn't delete", e);
+		}
+	}
+	
+	public int getCountFromLikes(int clipId,int preference) throws UserProblemException{
+		PreparedStatement ps;
+		int count=0;
+		try {
+			ps=getCon().prepareStatement(SELECT_COUNT_LIKES_OR_DISLIKES);
+			ps.setInt(1,clipId);
+			ps.setInt(2,preference);
+			
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			count=rs.getInt(1);
+			return count;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Can't count likes/dislikes",e);
+		}
+	}
+	
+	
 }

@@ -8,14 +8,18 @@ import java.util.List;
 
 import classes.Clip;
 import classes.Playlist;
+import classes.TYPE;
+import classes.User;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
+import exceptions.UserProblemException;
 import interfaces.IPlaylist;
 import interfaces.IPlaylistDAO;
 import interfaces.IUser;
 
 public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
+	private static final String SELECT_FROM_PLAYLISTS = "SELECT * FROM playlists where playlist_id=?";
 	private static final String SELECT_PLAYLIST_BY_ID = "SELECT * FROM clips_to_playlists WHERE playlist_id=?";
 	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
 	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
@@ -150,7 +154,28 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 		}
 		return clipsInThisPlaylist;
 		
-		
+		}
+	
+	public Playlist getPlaylistById(int playlistId) throws PlaylistException{//metoda vrashta playlist po ID ot tablicata s playlists
+		PreparedStatement ps;
+		Playlist playlist;
+		try {
+			ps=getCon().prepareStatement(SELECT_FROM_PLAYLISTS);
+			ps.setInt(1,playlistId);
+			
+			ResultSet rs=ps.executeQuery();
+			UserDAO user=new UserDAO();
+			rs.next();
+			String name=rs.getString(2);
+			int views=rs.getInt(3);
+			User owner=user.getUserById(rs.getInt(4));
+			playlist=new Playlist(name,owner ,TYPE.PUBLIC);// tuk tryabva da se selectva state a ne da go podavam;
+			return playlist;
+		} catch (SQLException | UserProblemException | PlaylistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new PlaylistException("Something got wrong.Please try again later",e);
+		}
 	}
 
 }
