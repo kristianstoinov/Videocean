@@ -6,7 +6,7 @@ import exceptions.UserProblemException;
 
 public interface ISubscriptionFollowersDAO {
 
-	void addSubscriptionFollower(int subscriptionId, int followerId);
+	void addSubscriptionFollower(int subscriptionId, int followerId) throws UserProblemException;
 
 	void deleteSubscription(int subscriptionId, int followerId) throws UserProblemException;
 

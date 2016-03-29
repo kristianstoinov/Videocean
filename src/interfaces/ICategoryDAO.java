@@ -2,8 +2,8 @@ package interfaces;
 
 import java.util.List;
 
-import DAO.CategoryException;
 import classes.Category;
+import exceptions.CategoryException;
 
 public interface ICategoryDAO {
 

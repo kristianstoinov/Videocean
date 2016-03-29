@@ -8,13 +8,38 @@ import java.util.ArrayList;
 import java.util.List;
 
 import classes.Category;
+import exceptions.CategoryException;
+import exceptions.UserProblemException;
 import interfaces.ICategoryDAO;
 
 public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 	
 	
+	private static final String ADD_CATEGORY = "INSERT INTO category VALUES(null,?);";
+	private static final String SELECT_ALL_CATEGORIES = "SELECT * FROM category;";
 	private static final String SELECT_CATEGORY_BY_ID = "SELECT * FROM category WHERE category_id= ? ;";
 
+	public int addCategory(Category category) throws UserProblemException{
+		if (category != null) {
+			try {
+				PreparedStatement ps = getCon().prepareStatement(ADD_CATEGORY,
+						PreparedStatement.RETURN_GENERATED_KEYS);
+				ps.setString(1,category.getName());
+				ps.executeUpdate();
+				ResultSet id = ps.getGeneratedKeys();
+				id.next();
+				
+				return id.getInt(1);
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new UserProblemException("Can't add category", e);
+			}
+		}
+		throw new UserProblemException("Can't add category");
+	}
+	
+	
+	
 	@Override
 	public Category getCategoryByID(int categoryID) throws CategoryException{		
 		try {
@@ -39,7 +64,7 @@ public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 		List<Category> categoriesList = new ArrayList<Category>();
 		try{
 		Statement statement=getCon().createStatement();
-		ResultSet rs=statement.executeQuery("SELECT * FROM category;");
+		ResultSet rs=statement.executeQuery(SELECT_ALL_CATEGORIES);
 		
 		while(rs.next()){
 			Category category=new Category(rs.getInt(1), rs.getString(2));

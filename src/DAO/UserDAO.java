@@ -8,8 +8,10 @@ import java.util.List;
 
 
 import classes.Admin;
+import classes.Clip;
 import classes.Playlist;
 import classes.User;
+import exceptions.ClipException;
 import exceptions.PictureFormatException;
 import exceptions.PlaylistException;
 import exceptions.UserProblemException;
@@ -18,6 +20,10 @@ import interfaces.ILanguageDAO;
 import interfaces.IUserDAO;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
+	private static final String GET_HISTORY = "SELECT clip_id FROM history WHERE user_id =? ;";
+	private static final String DELETE_ALL_CLIPS_OF_USER = "DELETE FROM history WHERE user_id=?;";
+	private static final String DELETE_CLIP_FROM_HISTORY = "DELETE FROM history WHERE user_id= ? and clip_id=? ;";
+	private static final String ADD_TO_HISTORY = "INSERT INTO history VALUES(null,?,?);";
 	private static final String SELECT_COUNT_LIKES_OR_DISLIKES = "SELECT count(user_id) from likes where clip_id=? and preference=?;";
 	private static final String DELETE_FROM_LIKES = "DELETE from likes where user_id=?,clip_id=?;";
 	private static final String UPDATE_LIKES = "UPDATE likes SET preference=? where user_id=? and clip_id=?";
@@ -166,7 +172,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		if (name!=null) {
 			try {
 				ps = getCon().prepareStatement(SELECT_FROM_USERS_WHERE_FULL_NAME_LIKE);
-				ps.setString(1, name);
+				ps.setString(1, "%"+name+"%");
 
 				ResultSet rs = ps.executeQuery();
 				while(rs.next()){
@@ -198,17 +204,13 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		boolean isAdmin = rs.getBoolean(9);
 		if (isAdmin == false) {
 			wantedUser = new User(id, email, fullName);
-			wantedUser.setPicture(picture);
-			wantedUser.setCountry(country.getCountryById(countryId));
-			wantedUser.setLanguage(language.getLanguageById(languageId));
-			wantedUser.setBackgroundPicture(backgroundPicture);
 		} else {
 			wantedUser = new Admin(id, email, fullName);
-			wantedUser.setPicture(picture);
-			wantedUser.setCountry(country.getCountryById(countryId));
-			wantedUser.setLanguage(language.getLanguageById(languageId));
-			wantedUser.setBackgroundPicture(backgroundPicture);
 		}
+		wantedUser.setPicture(picture);
+		wantedUser.setCountry(country.getCountryById(countryId));
+		wantedUser.setLanguage(language.getLanguageById(languageId));
+		wantedUser.setBackgroundPicture(backgroundPicture);
 		return wantedUser;
 	}
 	
@@ -321,5 +323,65 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 		}
 	}
 	
+	public void addClipToHistory(int clipID,int userID) throws UserProblemException
+	{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(ADD_TO_HISTORY);
+			ps.setInt(1, userID);
+			ps.setInt(2,clipID);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Can't insert into history", e);
+		}
+	}
+	
+	public void deleteClipFromHistory(int clipID,int userID) throws UserProblemException{
+		PreparedStatement ps;
+		try {
+			ps=getCon().prepareStatement(DELETE_CLIP_FROM_HISTORY);
+			ps.setInt(1,userID);
+			ps.setInt(2,clipID);
+			
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new UserProblemException("Can't remove clip",e);
+		}
+	}
+	
+	public void deleteAllClipsFromHistory(int userID) throws UserProblemException
+	{
+		PreparedStatement ps;
+	try {
+		ps=getCon().prepareStatement(DELETE_ALL_CLIPS_OF_USER);
+		ps.setInt(1,userID);
+		ps.executeUpdate();
+	} catch (SQLException e) {
+		e.printStackTrace();
+		throw new UserProblemException("Can't remove clips",e);
+	}
+	}
+	
+	public List<Clip> getHistory(int userID) throws UserProblemException{
+	List<Clip> history=new ArrayList<Clip>();
+	PreparedStatement ps;
+	try {
+		ps=getCon().prepareStatement(GET_HISTORY);
+		ps.setInt(1,userID);
+		
+		ResultSet rs=ps.executeQuery();
+		ClipDAO clipDAO=new ClipDAO();
+		while(rs.next()){
+			history.add(clipDAO.getClipByID(rs.getInt(1)));
+		}
+		return history;
+	} catch (SQLException | ClipException e) {
+		e.printStackTrace();
+		throw new UserProblemException("There is a problem.We can't get your history",e);
+	}
+	}
 	
 }

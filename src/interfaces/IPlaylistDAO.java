@@ -18,6 +18,7 @@ public interface IPlaylistDAO {
 
 	void increaseViewsOfPlaylist(Playlist playlist);
 
+<<<<<<< HEAD
 	// Return new Playlist by ID
 	IPlaylist getAllClipsForPlaylist(int playlistID) throws PlaylistException;
 
@@ -30,4 +31,12 @@ public interface IPlaylistDAO {
 	// Serach Playlists by name
 	List<IPlaylist> serachPlaylistByName(String name) throws PlaylistException;
 
+=======
+	// Return list of ID of clips from playlist
+	List<Integer> AllClips(int playlistID) throws SQLException, PlaylistException;
+	
+	// Returns a list of IDs of Playlist by User ID
+	public List<Integer> allPlayListForUser(int userID) throws PlaylistException;
+
+>>>>>>> origin/master
 }

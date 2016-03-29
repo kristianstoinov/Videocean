@@ -19,7 +19,7 @@ public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptio
 	 * @see DAO.ISubscriptionFollowersDAO#addSubscriptionFollower(int, int)
 	 */
 	@Override
-	public void addSubscriptionFollower(int subscriptionId, int followerId) {
+	public void addSubscriptionFollower(int subscriptionId, int followerId) throws UserProblemException {
 		if (subscriptionId > 0 && followerId > 0) {
 			if (subscriptionId != followerId) {
 				try {
@@ -29,17 +29,15 @@ public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptio
 
 					ps.executeUpdate();
 				} catch (SQLException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
+					throw new UserProblemException("There is no compozition with this subscription and this follower", e);
 				}
 
 			}
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see DAO.ISubscriptionFollowersDAO#deleteSubscription(int, int)
-	 */
+	
 	@Override
 	public void deleteSubscription(int subscriptionId, int followerId) throws UserProblemException {
 		try {
@@ -49,23 +47,16 @@ public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptio
 
 			ps.executeUpdate();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new UserProblemException("There is no compozition with this subscription and this follower", e);
 		}
 	}
 
-	/* (non-Javadoc)
-	 * @see DAO.ISubscriptionFollowersDAO#getSubscriptions(int)
-	 */
 	@Override
 	public List<Integer> getSubscriptions(int userId) {
 		return getFollowersOrSubscriptions(userId, SELECT_SUBSCRIPTIONS_QUERY);
 	}
 
-	/* (non-Javadoc)
-	 * @see DAO.ISubscriptionFollowersDAO#getFollowers(int)
-	 */
 	@Override
 	public List<Integer> getFollowers(int userId) {
 		return getFollowersOrSubscriptions(userId, SELECT_FOLLWERS_QUERY);
@@ -83,7 +74,6 @@ public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptio
 				subscriptionsId.add(rs.getInt(1));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return subscriptionsId;
