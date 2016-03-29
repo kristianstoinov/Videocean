@@ -21,6 +21,8 @@ public interface IClip {
 
 	void removeAnswer(Comment answer, Comment comment) throws CommentException;
 
-	void addAnwer(Comment answer, Comment comment) throws CommentException;
+
+
+	void addAnswer(Comment answer, Comment comment) throws CommentException;
 
 }

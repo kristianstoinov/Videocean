@@ -28,12 +28,11 @@ public class CountryDAO extends AbstractDAO implements ICountryDAO {
 				id.next();
 				return id.getInt(1);
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 				throw new UserProblemException("Can't add a country", e);
 			}
 		}
-		return 0;
+		throw new UserProblemException("Can't add category");
 	}
 
 	/* (non-Javadoc)

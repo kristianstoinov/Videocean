@@ -39,6 +39,29 @@ public class Comment {
 		}
 	}
 
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((commentDescription == null) ? 0 : commentDescription.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Comment other = (Comment) obj;
+		if (commentDescription == null) {
+			if (other.commentDescription != null)
+				return false;
+		} else if (!commentDescription.equals(other.commentDescription))
+			return false;
+		return true;
+	}
 	public int getCommentID() {
 		return commentID;
 	}

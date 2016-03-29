@@ -1,6 +1,7 @@
 package classes;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +17,12 @@ public class Clip implements IClip {
 	private final IUser owner;
 	private int likes;
 	private int dislikes;
-	private String category;
+	private Category category;
 	private final String clipURL;
 
-	// private List<Comment> comments;
-	private Map<Comment, List<Comment>> comments;
+	private List<Comment> comments;
 	private TYPE state;
-	private final LocalDate datePublished;
+	private LocalDate datePublished;
 	private String description;
 	private int views;
 	private Statistics statisticsForClip;
@@ -36,19 +36,32 @@ public class Clip implements IClip {
 			this.datePublished = LocalDate.now();
 			this.likes = 0;
 			this.dislikes = 0;
-			this.category = "None";
+			comments=new ArrayList<Comment>();
 		} else {
 			throw new ClipException("Invalid arguments!");
 		}
 	}
-	public Clip(int id,String name, IUser owner, String clipURL, TYPE state) throws ClipException{
-		this(name, owner, clipURL, state);
-		this.clipID=id;
+
+	public Clip(int id, String name, IUser owner, String clipURL, TYPE state) throws ClipException {
+		this.clipID = id;
+		this.name = name;
+		this.owner = owner;
+		this.clipURL = clipURL;
+		this.state = state;
+		comments=new ArrayList<Comment>();
 	}
 
-//	public Clip(int id, String clipName, int clipOwnerID, String clipPath, int clipState) {
-		// DA SE DOVURSHI
-//	}
+	public void setViews(int views) {
+		if (views >= 0) {
+			this.views = views;
+		}
+		this.views = 0;
+	}
+
+	public void setDatePublished(LocalDate datePublished) {
+		this.datePublished = datePublished;
+	}
+
 	public int getLikes() {
 		return likes;
 	}
@@ -76,10 +89,10 @@ public class Clip implements IClip {
 	}
 
 	public String getCategory() {
-		return category;
+		return category.getName();
 	}
 
-	public void setCategory(String category) {
+	public void setCategory(Category category) {
 		if (category != null)
 			this.category = category;
 	}
@@ -140,9 +153,8 @@ public class Clip implements IClip {
 	@Override
 	public void addComment(Comment comment) throws CommentException {
 		if (comment != null) {
-			List<Comment> answerComments = new LinkedList<Comment>();
-			comments.put(comment, answerComments);
-		}else{
+			comments.add(comment);
+		} else {
 			throw new CommentException("No such comment! Please rethink!");
 		}
 	}
@@ -150,21 +162,21 @@ public class Clip implements IClip {
 	@Override
 	public void removeComment(Comment comment) throws CommentException {
 		if (comment != null) {
-			if (comments.containsKey(comment)) {
-				comments.remove(comment);
-			} else {
-				throw new CommentException("No such comment! Please rethink!");
-			}
+			comments.remove(comment);
 		}
+		throw new CommentException("No such comment! Please rethink!");
 	}
 
 	@Override
-	public void addAnwer(Comment answer, Comment comment) throws CommentException {
+	public void addAnswer(Comment answer, Comment comment) throws CommentException {
 		if (comment != null && answer != null) {
-			if (comments.containsKey(comment)) {
-				List<Comment> answerComments = comments.get(comment);
-				answerComments.add(answer);
-				comments.put(comment, answerComments);
+			if (comments.contains(comment)) {
+				for ( Comment commentMain : comments) {
+					if(commentMain.equals(comment)){
+						commentMain.addAnswerComment(answer);
+						break;
+					}
+				}
 			} else {
 				throw new CommentException("No such comment! Please rethink!");
 			}
@@ -174,13 +186,13 @@ public class Clip implements IClip {
 	@Override
 	public void removeAnswer(Comment answer, Comment comment) throws CommentException {
 		if (comment != null && answer != null) {
-			if (comments.containsKey(comment)) {
-				List<Comment> answerComments = comments.get(comment);
-				if (answerComments.contains(answer)) {
-					answerComments.remove(answer);
+			if (comments.contains(comment)) {
+				for ( Comment commentMain : comments) {
+					if(commentMain.equals(comment)){
+						commentMain.removeAnswerComment(answer);
+						break;
 				}
-				comments.put(comment, answerComments);
-			} else {
+			}} else {
 				throw new CommentException("No such comment! Please rethink!");
 			}
 		}
@@ -189,7 +201,5 @@ public class Clip implements IClip {
 	public int getClipID() {
 		return clipID;
 	}
-	
-
 
 }
