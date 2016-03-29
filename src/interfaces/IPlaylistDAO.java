@@ -1,13 +1,10 @@
 package interfaces;
 
-import java.sql.SQLException;
 import java.util.List;
 
-import classes.Clip;
 import classes.Playlist;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
-import exceptions.UserProblemException;
 
 public interface IPlaylistDAO {
 
@@ -15,25 +12,22 @@ public interface IPlaylistDAO {
 	int createPlaylist(IPlaylist playlist) throws PlaylistException;
 
 	// ADD Clip To Playlist
-	void addClipToPlaylist(Playlist playlist, Clip clip) throws PlaylistException, ClipException, SQLException;
+	void addClipToPlaylist(int playlistID, int clipID) throws PlaylistException, ClipException;
 
-	// REMOVE clip from Playlist
-	void removeClipFromPlaylist(int playlistId, int clipId) throws PlaylistException, ClipException, SQLException;
+	void removeClipFromPlaylist(int playlistId, int clipId) throws PlaylistException;
 
-	// Increase Views of playlist by playlist ID
-	void increaseViewsOfPlaylist(Playlist playlist) throws SQLException;
+	void increaseViewsOfPlaylist(Playlist playlist);
 
-	// Returns list of ID of clips from playlist
-	public IPlaylist getAllClipsForPlaylist(int playlistID)
-			throws SQLException, PlaylistException, ClipException, UserProblemException;
+	// Return new Playlist by ID
+	IPlaylist getAllClipsForPlaylist(int playlistID) throws PlaylistException;
 
-	// Returns a list of IDs of Playlist by User ID
-	public List<Integer> allPlayListForUser(int userID) throws PlaylistException;
+	// Reutnrs list of Clip by playlist IDs
+	Playlist getPlaylistById(int playlistId) throws PlaylistException;
 
-	// Returns a new List of IDs of Playlist by User ID
-	public List<IPlaylist> getAllPlayListForUser(int userID) throws PlaylistException;
+	// Remove Playlist by ID
+	void removePlaylistByID(int playlistID) throws PlaylistException;
 
-	// Reutnrs list of Clip by playlist IDs 
-	public Playlist getPlaylistById(int playlistId) throws PlaylistException;
+	// Serach Playlists by name
+	List<IPlaylist> serachPlaylistByName(String name) throws PlaylistException;
 
 }
