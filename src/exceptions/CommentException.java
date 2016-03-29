@@ -1,6 +1,11 @@
 package exceptions;
 public class CommentException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 5746584851809159461L;
+
 	public CommentException() {
 		// TODO Auto-generated constructor stub
 	}

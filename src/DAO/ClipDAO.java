@@ -12,6 +12,7 @@ import java.util.List;
 import classes.Clip;
 import classes.User;
 import exceptions.ClipException;
+import interfaces.IClipDAO;
 
 public class ClipDAO extends AbstractDAO implements IClipDAO {
 
@@ -71,12 +72,15 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 			
 			Date datePublished=rs.getDate(6);
 			//tuka mu podavam greshni parametri ama ne znam kak da go opravq
-			Clip clip=new Clip(id, clipName, clipOwnerID, clipPath, clipState);
-			return clip;
+//			Clip clip=new Clip(id, clipName, clipOwnerID, clipPath, clipState);
+//			return clip;
 		}catch(SQLException e) {
 			e.printStackTrace();
 			throw new ClipException("Such clip doesn't exist");
 		}
+		//da se popravi 
+		
+		return null;
 		
 	}
 	
@@ -88,8 +92,8 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 			ResultSet rs=statement.executeQuery("SELECT * FROM clips");
 			
 			while(rs.next()){
-				Clip clip=new Clip(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5));
-				allClips.add(clip);
+//				Clip clip=new Clip(rs.getInt(1),rs.getString(2), rs.getInt(3), rs.getString(4), rs.getInt(5));
+//				allClips.add(clip);
 			}
 			return allClips;
 		}catch(SQLException e) {

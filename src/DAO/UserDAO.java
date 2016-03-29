@@ -6,13 +6,16 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.el.util.ConcurrentCache;
 
+import classes.Admin;
 import classes.Playlist;
 import classes.User;
 import exceptions.PictureFormatException;
 import exceptions.PlaylistException;
 import exceptions.UserProblemException;
+import interfaces.ICountryDAO;
+import interfaces.ILanguageDAO;
+import interfaces.IUserDAO;
 
 public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String SELECT_COUNT_LIKES_OR_DISLIKES = "SELECT count(user_id) from likes where clip_id=? and preference=?;";
@@ -65,7 +68,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			try {
 				PreparedStatement ps = getCon().prepareStatement(UPDATE_USER_QUERY);
 
-				ICountryDAO country = new CountryDAO();
+				ICountryDAO country = (ICountryDAO) new CountryDAO();
 				ILanguageDAO language = new LanguageDAO();
 
 				ps.setString(1, user.getUsername());
@@ -183,8 +186,8 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private User getWantedUser(ResultSet rs) throws SQLException, PictureFormatException, UserProblemException {
 		User wantedUser;
 
-		ICountryDAO country = new CountryDAO();
-		ILanguageDAO language = new LanguageDAO();
+		ICountryDAO country = (ICountryDAO) new CountryDAO();
+		ILanguageDAO language = (ILanguageDAO) new LanguageDAO();
 		int id = rs.getInt(1);
 		String email = rs.getString(2);
 		String fullName = rs.getString(4);

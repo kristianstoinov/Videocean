@@ -9,6 +9,7 @@ import java.util.List;
 
 import classes.State;
 import exceptions.ClipException;
+import interfaces.IStateDAO;
 
 public class StateDAO extends AbstractDAO implements IStateDAO {
 

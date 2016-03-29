@@ -28,6 +28,8 @@ public class CommentDAO extends AbstractDAO{
 		}catch(SQLException e){
 			
 		}
+		//da se popravi! 
+		return  null;
 	}
 
 }

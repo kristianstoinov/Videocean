@@ -3,9 +3,9 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDate;
 
 import exceptions.UserProblemException;
+import interfaces.ICountryDAO;
 
 public class CountryDAO extends AbstractDAO implements ICountryDAO {
 	private static final String SELECT_COUTRY_BY_ID_QUERY = "SELECT * FROM countries WHERE id = ?";

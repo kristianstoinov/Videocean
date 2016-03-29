@@ -2,6 +2,11 @@ package exceptions;
 
 public class ClipException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1095938639944428212L;
+
 	public ClipException() {
 		// TODO Auto-generated constructor stub
 	}

@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import exceptions.UserProblemException;
+import interfaces.ISubscriptionFollowersDAO;
 
 public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptionFollowersDAO {
 	private static final String ADD_FOLLOWER_QUERY = "INSERT INTO followers VALUES (?, ?)";

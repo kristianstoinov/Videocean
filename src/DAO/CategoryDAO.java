@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import classes.Category;
+import interfaces.ICategoryDAO;
 
 public class CategoryDAO extends AbstractDAO implements ICategoryDAO {
 	

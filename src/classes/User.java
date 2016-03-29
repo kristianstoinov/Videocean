@@ -1,11 +1,10 @@
 package classes;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import org.omg.CORBA.UserException;
+
 
 import exceptions.ClipException;
 import exceptions.NameFormatException;

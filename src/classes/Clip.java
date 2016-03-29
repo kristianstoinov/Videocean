@@ -1,8 +1,6 @@
 package classes;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -48,9 +46,9 @@ public class Clip implements IClip {
 		this.clipID=id;
 	}
 
-	public Clip(int id, String clipName, int clipOwnerID, String clipPath, int clipState) {
+//	public Clip(int id, String clipName, int clipOwnerID, String clipPath, int clipState) {
 		// DA SE DOVURSHI
-	}
+//	}
 	public int getLikes() {
 		return likes;
 	}

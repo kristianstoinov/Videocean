@@ -5,6 +5,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import exceptions.UserProblemException;
+import interfaces.ILanguageDAO;
 
 public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
 	private static final String SELECT_LANGUAGE_BY_ID_QUERY = "SELECT * FROM languages WHERE id = ?";

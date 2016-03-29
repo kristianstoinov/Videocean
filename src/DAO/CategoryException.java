@@ -2,6 +2,11 @@ package DAO;
 
 public class CategoryException extends Exception {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -876056724202313783L;
+
 	public CategoryException() {
 		// TODO Auto-generated constructor stub
 	}
