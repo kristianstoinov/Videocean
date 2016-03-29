@@ -17,7 +17,7 @@ import interfaces.IPlaylist;
 import interfaces.IPlaylistDAO;
 import interfaces.IUser;
 
-public class PlaylistDAO extends AbstractDAO {
+public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	private static final String DELETE_PLAYLIST_BY_ID_QUERY = "DELETE FROM playlists WHERE playlist_id = ?";
 	private static final String SELECT_FROM_PLAYLISTS = "SELECT * FROM playlists where playlist_id=?";
@@ -51,7 +51,7 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// ADD Clip To Playlist
-	
+	@Override
 	public void addClipToPlaylist(int playlistID, int clipID) throws PlaylistException, ClipException {
 		PreparedStatement stmt;
 		try {
@@ -92,7 +92,6 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// Return new Playlist by ID
-
 	@Override
 	public IPlaylist getAllClipsForPlaylist(int playlistID) throws PlaylistException {
 		// IPlaylist playlist = null;
@@ -141,7 +140,6 @@ public class PlaylistDAO extends AbstractDAO {
 	}
 
 	// Remove Playlist by ID
-
 	@Override
 	public void removePlaylistByID(int playlistID) throws PlaylistException {
 		try {
