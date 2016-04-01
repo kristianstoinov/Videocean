@@ -22,25 +22,30 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 	private static final String DELETE_PLAYLIST_BY_ID_QUERY = "DELETE FROM playlists WHERE playlist_id = ?";
 	private static final String SELECT_FROM_PLAYLISTS = "SELECT * FROM playlists where playlist_id=?";
 	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
-	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
+	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE playlist_id = ? ;";
 	private static final String REMOVE_CLIP_FROM_PLAYLIST_QUERY = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=?;";
-	private static final String ADD_CLIP_TO_PLAYLIST_QUERY = "INSERT INTO clips_to_playlists(playlist_id, clip_id) VALUES(null,?,?);";
+	private static final String ADD_CLIP_TO_PLAYLIST_QUERY = "INSERT INTO clips_to_playlists VALUES(null,?,?)";
 	private static final String CREATE_PLAYLIST_QUERY = "INSERT INTO playlists VALUES(null,?,?,?)";
 
+	// (playlist_id,playlist_name,playlist_views, owner_id)
 	// Create Playlist
 	@Override
-	public int createPlaylist(IPlaylist playlist) throws PlaylistException {
+	public int createPlaylist(Playlist playlist) throws PlaylistException {
 		if (playlist != null) {
 			try {
-				PreparedStatement stmt = getCon().prepareStatement(CREATE_PLAYLIST_QUERY);
-				stmt.setString(2, playlist.getName());
-				stmt.setInt(3, 0);
-				stmt.setInt(4, ((IUser) playlist.getOwner()).getUserID());
+				PreparedStatement stmt = getCon().prepareStatement(CREATE_PLAYLIST_QUERY,
+						PreparedStatement.RETURN_GENERATED_KEYS);
+				stmt.setString(1, playlist.getName());
+				stmt.setInt(2, 0);
+				stmt.setInt(3, ((IUser) playlist.getOwner()).getUserID());
+
 				stmt.executeUpdate();
+
 				ResultSet rs = stmt.getGeneratedKeys();
 				rs.next();
 
 				return rs.getInt(1);
+
 			} catch (SQLException e) {
 				e.printStackTrace();
 				throw new PlaylistException("Can`t creat Playlist");
@@ -56,8 +61,8 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 		PreparedStatement stmt;
 		try {
 			stmt = getCon().prepareStatement(ADD_CLIP_TO_PLAYLIST_QUERY);
-			stmt.setInt(2, playlistID);
-			stmt.setInt(3, clipID);
+			stmt.setInt(1, playlistID);
+			stmt.setInt(2, clipID);
 			stmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -131,8 +136,7 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			int views = rs.getInt(3);
 			User owner = user.getUserById(rs.getInt(4));
 			// tuk tryabva da se selectva state a ne da go podavam;
-			playlist = new Playlist(playlistId,name, owner, TYPE.PUBLIC);
-			playlist.setViewsOfPlaylist(views);
+			playlist = new Playlist(name, owner, TYPE.PUBLIC);
 			return playlist;
 		} catch (SQLException | UserProblemException | PlaylistException e) {
 			e.printStackTrace();
@@ -176,7 +180,4 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 		}
 	}
 
-	
-
-	
 }
