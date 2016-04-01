@@ -26,7 +26,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String DELETE_CLIP_FROM_HISTORY = "DELETE FROM history WHERE user_id= ? and clip_id=? ;";
 	private static final String ADD_TO_HISTORY = "INSERT INTO history VALUES(null,?,?);";
 	private static final String SELECT_COUNT_LIKES_OR_DISLIKES = "SELECT count(user_id) from likes where clip_id=? and preference=?;";
-	private static final String DELETE_FROM_LIKES = "DELETE from likes where user_id=?,clip_id=?;";
+	private static final String DELETE_FROM_LIKES = "DELETE from likes where user_id=? and clip_id=?;";
 	private static final String UPDATE_LIKES = "UPDATE likes SET preference=? where user_id=? and clip_id=?";
 	private static final String ADD_INTO_LIKES = "INSERT INTO likes VALUES(?,?,?);";
 	private static final String SELECT_PLAYLISTS_FROM_LIBRARY = "SELECT playlist_id FROM library where user_id=?;";
@@ -293,7 +293,8 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			ResultSet rs = ps.executeQuery();
 			PlaylistDAO playlist = new PlaylistDAO();
 			while (rs.next()) {
-				playlists.add(playlist.getPlaylistById(rs.getInt(1)));
+				Playlist wantedPlaylist=playlist.getPlaylistById(rs.getInt(1));
+				playlists.add(wantedPlaylist);
 			}
 			return playlists;
 		} catch (SQLException | PlaylistException e) {

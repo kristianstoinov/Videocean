@@ -13,6 +13,8 @@ import com.mysql.jdbc.Connection;
 import DAO.AbstractDAO;
 import DAO.DBConnection;
 import DAO.UserDAO;
+import classes.Clip;
+import classes.Playlist;
 import classes.User;
 import exceptions.PictureFormatException;
 import exceptions.UserProblemException;
@@ -75,9 +77,54 @@ UserDAO user=new UserDAO();
 	@Test
 	public void testAddPlaylist() throws UserProblemException
 	{
-		user.addPlaylistIntoLibrary(1, 1);
-		user.deletePlaylistFromLibrary(1, 1);
+		user.addPlaylistIntoLibrary(1, 2);
+		user.deletePlaylistFromLibrary(1, 2);
 	}
+	
+	@Test
+	public void testGetAllPlaylists() throws UserProblemException, SQLException {
+		List<Playlist> playlists=user.getAllPlaylistsForUser(1);
+		for(Playlist play:playlists){
+			assertNotNull(play);
+		}
+		}
+	
+	@Test
+	public void testAddLike() throws UserProblemException
+	{
+		user.addLike(1, 1, 1);
+		user.updateLike(1, 1, 2);
+		user.deleteLike(1, 1);
+	}
+	
+	@Test
+	public void testCountLikes() throws UserProblemException{
+		int count=user.getCountFromLikes(1, 1);
+	    System.out.println(count);
+		}
+	
+	@Test
+	public void testAddHistory() throws UserProblemException
+	{
+		user.addClipToHistory(1, 1);
+		user.deleteClipFromHistory(1, 1);
+	}
+	
+	@Test
+	public void testDeleteAllHistory() throws UserProblemException
+	{
+		user.deleteAllClipsFromHistory(1);
+	}
+	
+	@Test
+	public void testGetHistory() throws UserProblemException{
+		List<Clip> clips=user.getHistory(2);
+		for(Clip cl:clips){
+			System.out.println(cl.getName());
+			assertNotNull(cl);
+		}
+		}
+	
 	
 	
 	
