@@ -8,7 +8,7 @@ import exceptions.UserProblemException;
 import interfaces.ICountryDAO;
 
 public class CountryDAO extends AbstractDAO implements ICountryDAO {
-	private static final String SELECT_COUTRY_BY_ID_QUERY = "SELECT * FROM countries WHERE id = ?";
+	private static final String SELECT_COUTRY_BY_ID_QUERY = "SELECT * FROM countries WHERE country_id = ?";
 	private static final String ADD_COUNTRY_QUERY = "INSERT INTO countries VALUES (null, ?)";
 	private static final String SELECT_COUTRY_BY_NAME_QUERY = "SELECT * FROM countries WHERE country_name like ?";
 

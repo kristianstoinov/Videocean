@@ -33,11 +33,11 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 	private static final String DELETE_FROM_LIBRARY = "DELETE from library where user_id=? and playlist_id=?;";
 	private static final String ADD_INTO_LIBRARY = "INSERT INTO library VALUES(?,?);";
 	private static final String SELECT_FROM_USERS_WHERE_FULL_NAME_LIKE = "SELECT * from users where full_name like ?;";
-	private static final String SELECT_USER_BY_PASS_AND_EMAIL = "SELECT * from users where email like ? and password like md5(?);";
+	private static final String SELECT_USER_BY_PASS_AND_EMAIL = "SELECT * from users where email like ? and password like ?;";
 	private static final String SELECT_FROM_USERS_BY_USER_ID = "SELECT * from users where user_id=?;";
 	private static final String DELETE_FROM_USERS_BY_ID = "DELETE FROM users WHERE user_id = ?;";
-	private static final String ADD_USER_QUERY = "INSERT INTO users (email,md5(password),full_name) VALUES (?,?,?);";
-	private static final String UPDATE_USER_QUERY = "UPDATE users SET email = ?, password = md5(?), full_name = ? , picture=?,country_id=?,language_id=?,backgroung_picture=? WHERE id = ?;";
+	private static final String ADD_USER_QUERY = "INSERT INTO users (email,password,full_name) VALUES (?,?,?);";
+	private static final String UPDATE_USER_QUERY = "UPDATE users SET email = ?, password =?, full_name = ? , picture=?,country_id=?,language_id=?,background_picture=? WHERE user_id = ?;";
 
 	/*
 	 * (non-Javadoc)
@@ -86,7 +86,12 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 				ps.setString(2, user.getPassword());
 				ps.setString(3, user.getFullName());
 				ps.setString(4, user.getPicture());
+				if(user.getCountry()!=null){
 				ps.setInt(5, country.getCountryByName(user.getCountry()));
+				}
+				else{
+					ps.setNull(5,java.sql.Types.INTEGER);
+				}
 				ps.setInt(6, language.getLanguageByName(user.getLanguage()));
 				ps.setString(7, user.getBackgroundPicture());
 				ps.setInt(8, user.getUserID());
@@ -113,7 +118,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			ps.setInt(1, userID);
 			ps.executeUpdate();
 		} catch (Exception e) {
-			throw new UserProblemException("The driver cannot be deleted right now. Thank you.", e);
+			throw new UserProblemException("The user cannot be deleted right now. Thank you.", e);
 		}
 	}
 
@@ -158,7 +163,9 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 				ps.setString(2, password);
 
 				ResultSet rs = ps.executeQuery();
-				if (rs.next()) {
+				boolean exist=rs.next();
+				if (exist) {
+					
 					return getWantedUser(rs);
 				} else {
 					throw new UserProblemException("Wrong email or password");
@@ -240,7 +247,9 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			wantedUser = new Admin(id, email, fullName);
 		}
 		wantedUser.setPicture(picture);
+		if(countryId!=0){
 		wantedUser.setCountry(country.getCountryById(countryId));
+		}
 		wantedUser.setLanguage(language.getLanguageById(languageId));
 		wantedUser.setBackgroundPicture(backgroundPicture);
 		return wantedUser;

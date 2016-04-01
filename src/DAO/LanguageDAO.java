@@ -8,9 +8,9 @@ import exceptions.UserProblemException;
 import interfaces.ILanguageDAO;
 
 public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
-	private static final String SELECT_LANGUAGE_BY_ID_QUERY = "SELECT * FROM languages WHERE id = ?";
+	private static final String SELECT_LANGUAGE_BY_ID_QUERY = "SELECT * FROM languages WHERE language_id = ?";
 	private static final String ADD_LANGUAGE_QUERY = "INSERT INTO languages VALUES (null, ?)";
-	private static final String SELECT_LANGUAGE_BY_NAME_QUERY = "SELECT * FROM languages WHERE name like ?";
+	private static final String SELECT_LANGUAGE_BY_NAME_QUERY = "SELECT * FROM languages WHERE language like ?";
 
 	/* (non-Javadoc)
 	 * @see DAO.ILanguage#addLanguage(java.lang.String)

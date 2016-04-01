@@ -119,9 +119,10 @@ public class User implements IUser {
 			if (picture.endsWith(".jpg") || picture.endsWith(".jpeg") || picture.endsWith(".png")) {
 				this.picture = picture;
 			}
-		} else {
+		     else {
 			throw new PictureFormatException();
-		}
+		    }
+	}
 	}
 
 	public String getBackgroundPicture() {
@@ -134,8 +135,9 @@ public class User implements IUser {
 					|| backgroundPicture.endsWith(".png")) {
 				this.backgroundPicture = backgroundPicture;
 			}
-		} else {
+		 else {
 			throw new PictureFormatException();
+		}
 		}
 	}
 
