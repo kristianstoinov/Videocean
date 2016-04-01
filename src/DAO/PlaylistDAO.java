@@ -131,7 +131,8 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			int views = rs.getInt(3);
 			User owner = user.getUserById(rs.getInt(4));
 			// tuk tryabva da se selectva state a ne da go podavam;
-			playlist = new Playlist(name, owner, TYPE.PUBLIC);
+			playlist = new Playlist(playlistId,name, owner, TYPE.PUBLIC);
+			playlist.setViewsOfPlaylist(views);
 			return playlist;
 		} catch (SQLException | UserProblemException | PlaylistException e) {
 			e.printStackTrace();
