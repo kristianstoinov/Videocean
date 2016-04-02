@@ -88,8 +88,8 @@ public class Clip implements IClip {
 		this.dislikes -= 1;
 	}
 
-	public String getCategory() {
-		return category.getName();
+	public Category getCategory() {
+		return category;
 	}
 
 	public void setCategory(Category category) {

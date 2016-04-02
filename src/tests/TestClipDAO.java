@@ -8,6 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import DAO.ClipDAO;
+import DAO.UserDAO;
 import classes.Category;
 import classes.Clip;
 import classes.TYPE;
@@ -35,9 +36,10 @@ public class TestClipDAO {
 	}
 //DA dobavq i UPDATE
 	@Test
-	public void testAddRemoveClip() throws ClipException {
+	public void testAddRemoveClip() throws ClipException, UserProblemException {
 		int deleteThis;
-		deleteThis = clipDAO.addClip(new Clip("DA", new User(8, "gosheca@abv.bg", "Gosho"), "URL", TYPE.PUBLIC));
+		UserDAO user=new UserDAO();
+		deleteThis = clipDAO.addClip(new Clip("DA",user.getUserById(1), "URL", TYPE.PUBLIC));
 		clipDAO.removeClip(deleteThis);
 	}
 

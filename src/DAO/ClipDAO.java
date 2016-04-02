@@ -21,7 +21,7 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 
 	private static final String SELECT_CLIP_BY_ID = "SELECT * FROM clips WHERE clip_id = ? ;";
 	private static final String DELETE_CLIP = "DELETE FROM clips WHERE clip_id=? ;";
-	private static final String ADD_CLIP = "INSERT INTO clips(clip_id,clip_name,owner_id,state_id,date_published,category_id) VALUES(null,?,?,1,LocalDate.now(),?);";
+	private static final String ADD_CLIP = "INSERT INTO clips(clip_id,clip_name,owner_id,clip_path,state_id,date_published,category_id) VALUES(null,?,?,?,1,CURDATE(),?);";
 
 	@Override
 	public int addClip(Clip clip) throws ClipException {
@@ -30,7 +30,13 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 				PreparedStatement ps = getCon().prepareStatement(ADD_CLIP, PreparedStatement.RETURN_GENERATED_KEYS);
 				ps.setString(1, clip.getName());
 				ps.setInt(2, clip.getOwner().getUserID());
-				ps.setString(3, clip.getCategory());
+				ps.setString(3, clip.getClipURL());
+				if(clip.getCategory()!=null){
+				ps.setInt(4, clip.getCategory().getCategoryID());
+				}
+				else{
+					ps.setInt(4,1);
+				}
 
 				ps.executeUpdate();
 
