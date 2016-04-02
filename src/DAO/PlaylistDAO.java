@@ -18,8 +18,8 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	private static final String SELECT_FROM_PLAYLISTS = "SELECT * FROM playlists where playlist_id=?";
 	private static final String ALL_CLIPS_QUERY = "SELECT * FROM clips_to_playlists WHERE playlist_id= ? ;";
-	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE id = ? ;";
-	private static final String REMOVE_CLIP_FROM_PLAYLIST_QUERY = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=?;";
+	private static final String INCREASE_VIEWS_OF_PLAYLIST_QUERY = "UPDATE  playlists SET  playlist_views = playlist_views + 1  WHERE playlist_id = ? ;";
+	private static final String REMOVE_CLIP_FROM_PLAYLIST_QUERY = "DELETE FROM clips_to_playlists WHERE clip_id=? AND playlist_id=? LIMIT 1";
 	private static final String ADD_CLIP_TO_PLAYLIST_QUERY = "INSERT INTO clips_to_playlists VALUES(null,?,?);";
 	private static final String CREATE_PLAYLIST_QUERY = "INSERT INTO playlists VALUES(null,?,?,?)";
 	private static final String REMOVE_PLAYLIST_BY_ID_QUERY = "DELETE FROM playlists WHERE playlist_id= ?;";
@@ -78,10 +78,8 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	@Override
 	public void increaseViewsOfPlaylist(Playlist playlist) {
-		String insertSQL = INCREASE_VIEWS_OF_PLAYLIST_QUERY;
-		PreparedStatement stmt;
 		try {
-			stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
+			PreparedStatement stmt = getCon().prepareStatement(INCREASE_VIEWS_OF_PLAYLIST_QUERY);
 			stmt.setInt(1, playlist.getPlaylistID());
 			stmt.executeUpdate();
 		} catch (SQLException e) {

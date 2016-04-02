@@ -28,23 +28,28 @@ public class TestPlaylistDAO {
 		IPlaylistDAO playlistDAO = new PlaylistDAO();
 		Playlist playlist = new Playlist("MoqPlaylist", user, TYPE.PUBLIC);
 		int id = playlistDAO.createPlaylist(playlist);
-//		playlistDAO.removePlaylistByID(id);
+		playlistDAO.removePlaylistByID(id);
 	}
 
 	@Test
 	public void addOrRemoveClipToPlayList() throws ClipException, PlaylistException, SQLException {
 		ClipDAO clipDAO = new ClipDAO();
 		Clip clip = clipDAO.getClipByID(1);
-		interfaces.IPlaylistDAO playlistDAO = new PlaylistDAO();
+		IPlaylistDAO playlistDAO = new PlaylistDAO();
 		playlistDAO.addClipToPlaylist(1, clip.getClipID());
 		playlistDAO.removeClipFromPlaylist(1, 1);
 	}
 
-	// @Test
-	// public void increaseViewsOfPlaylist() throws PlaylistException {
-	// IPlaylistDAO playlistDAO = new PlaylistDAO();
-	// Playlist playlist = playlistDAO.getPlaylistById(10);
-	// playlistDAO.increaseViewsOfPlaylist(playlist);
-	// }
+	@Test
+	public void increaseViewsOfPlaylist() throws PlaylistException {
+		IPlaylistDAO playlistDAO = new PlaylistDAO();
+		Playlist playlist = playlistDAO.getPlaylistById(1);
+		playlistDAO.increaseViewsOfPlaylist(playlist);
+	}
 
+	@Test
+	public void getPlaylistById() throws PlaylistException {
+		PlaylistDAO playlistDAO = new PlaylistDAO();
+		Playlist newPlaylist = playlistDAO.getPlaylistById(1);
+	}
 }
