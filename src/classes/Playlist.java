@@ -102,6 +102,12 @@ public class Playlist {
 		
 		this.playlistID = playlistID;
 	}
+	public int getViewsOfPlaylist() {
+		return viewsOfPlaylist;
+	}
+	public void setViewsOfPlaylist(int viewsOfPlaylist) {
+		this.viewsOfPlaylist = viewsOfPlaylist;
+	}
 
 	
 
