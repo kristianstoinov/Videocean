@@ -3,14 +3,8 @@ package tests;
 import static org.junit.Assert.assertNotNull;
 
 import java.sql.SQLException;
-import java.util.List;
-
 import org.junit.Test;
-
-import DAO.CategoryDAO;
 import DAO.CountryDAO;
-import classes.Category;
-import exceptions.CategoryException;
 import exceptions.UserProblemException;
 
 public class TestCountryDAO {

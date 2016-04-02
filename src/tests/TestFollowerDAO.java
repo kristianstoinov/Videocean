@@ -7,7 +7,6 @@ import java.util.List;
 
 import org.junit.Test;
 import DAO.SubscriptionFollowerDAO;
-import classes.Clip;
 import classes.User;
 import exceptions.UserProblemException;
 

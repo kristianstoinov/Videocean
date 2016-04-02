@@ -1,11 +1,9 @@
 package tests;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
 
 import java.sql.SQLException;
-
 import org.junit.Test;
-
 import DAO.ClipDAO;
 import DAO.PlaylistDAO;
 import DAO.UserDAO;
@@ -16,7 +14,6 @@ import classes.User;
 import exceptions.ClipException;
 import exceptions.PlaylistException;
 import exceptions.UserProblemException;
-import interfaces.IPlaylist;
 import interfaces.IPlaylistDAO;
 
 public class TestPlaylistDAO {
@@ -51,5 +48,6 @@ public class TestPlaylistDAO {
 	public void getPlaylistById() throws PlaylistException {
 		PlaylistDAO playlistDAO = new PlaylistDAO();
 		Playlist newPlaylist = playlistDAO.getPlaylistById(1);
+		assertNotNull(newPlaylist);
 	}
 }

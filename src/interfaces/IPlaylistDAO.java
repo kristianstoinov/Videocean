@@ -1,6 +1,4 @@
 package interfaces;
-
-import classes.Clip;
 import classes.Playlist;
 import exceptions.ClipException;
 import exceptions.PlaylistException;

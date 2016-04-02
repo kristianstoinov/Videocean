@@ -3,8 +3,6 @@ package DAO;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
-import classes.Clip;
 import classes.Playlist;
 import classes.TYPE;
 import classes.User;

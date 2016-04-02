@@ -1,15 +1,9 @@
-import static org.junit.Assert.*;
+package tests;
 
-import java.sql.ResultSet;
+import static org.junit.Assert.*;
 import java.sql.SQLException;
 import java.util.List;
-
 import org.junit.Test;
-
-
-
-import com.mysql.jdbc.Connection;
-
 import DAO.AbstractDAO;
 import DAO.DBConnection;
 import DAO.UserDAO;
