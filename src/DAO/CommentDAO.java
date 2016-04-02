@@ -41,7 +41,7 @@ public class CommentDAO extends AbstractDAO{
 		}
 	}
 	
-	//ADD and REMOVE!!!!!!!!!!!!!!!!!!!!!!!
+	
 	
 	
 	public List<Comment> getListAnswerComments(int clipID,int commentID) throws CommentException{
@@ -110,13 +110,12 @@ public class CommentDAO extends AbstractDAO{
 			id.next();
 			return id.getInt(1);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new CommentException("Can't add answer comment", e);
 		}
 	}
 	
-	//ADD and REMOVE!!!!!!!!!!!!!!!!!!!!!!!
+	
 	
 	
 

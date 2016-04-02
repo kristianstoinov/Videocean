@@ -4,14 +4,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 import classes.Category;
 import classes.Clip;
-import classes.User;
 import exceptions.CategoryException;
 import exceptions.ClipException;
 import exceptions.UserProblemException;
@@ -19,10 +17,36 @@ import interfaces.IClipDAO;
 
 public class ClipDAO extends AbstractDAO implements IClipDAO {
 
+	private static final String UPDATE_CLIP= "UPDATE clips SET state_id=? AND description=? AND views=? AND category_id=?  WHERE clip_id=?";
 	private static final String SELECT_CLIP_BY_ID = "SELECT * FROM clips WHERE clip_id = ? ;";
 	private static final String DELETE_CLIP = "DELETE FROM clips WHERE clip_id=? ;";
 	private static final String ADD_CLIP = "INSERT INTO clips(clip_id,clip_name,owner_id,clip_path,state_id,date_published,category_id) VALUES(null,?,?,?,1,CURDATE(),?);";
+	
 
+	
+	
+	
+	@Override
+	public void updateClip(Clip clip) throws UserProblemException {
+		if (clip != null) {
+			try {
+				PreparedStatement ps = getCon().prepareStatement(UPDATE_CLIP);
+
+				ps.setInt(1, clip.getClipID());
+				ps.setString(2, clip.getDescription());
+                ps.setInt(3, clip.getViews());
+                ps.setInt(4, clip.getCategory().getCategoryID());
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new UserProblemException("Update failed");
+			}
+		}
+	}
+	
+	
+	
+	
 	@Override
 	public int addClip(Clip clip) throws ClipException {
 		if (clip != null) {
@@ -37,7 +61,6 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 				else{
 					ps.setInt(4,1);
 				}
-
 				ps.executeUpdate();
 
 				ResultSet id = ps.getGeneratedKeys();

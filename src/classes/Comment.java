@@ -18,13 +18,14 @@ public class Comment {
 		this.commentDescription = commentDescription;
 		this.answerComments = new ArrayList<Comment>();
 	}
-//PRoverkI?!
-	public Comment(int commentID, int clipID, String commentDescription) {
-		this.commentID = commentID;
-		
-		
-		
+	
+
+	public Comment(int id, int clipsID, String description) {
+	this.commentID=id;
+	this.thisClip.setClipID(clipsID);
+	this.commentDescription=description;
 	}
+
 
 	public void addAnswerComment(Comment comment) {
 		if (comment != null)

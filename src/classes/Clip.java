@@ -2,9 +2,8 @@ package classes;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
+
 
 import exceptions.ClipException;
 import exceptions.CommentException;
@@ -12,6 +11,8 @@ import interfaces.IClip;
 import interfaces.IUser;
 
 public class Clip implements IClip {
+
+
 	private int clipID;
 	private final String name;
 	private final IUser owner;
@@ -201,5 +202,7 @@ public class Clip implements IClip {
 	public int getClipID() {
 		return clipID;
 	}
-
+	public void setClipID(int clipID) {
+		this.clipID = clipID;
+	}
 }
