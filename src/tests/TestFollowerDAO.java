@@ -1,8 +1,14 @@
 package tests;
 
+import static org.junit.Assert.assertNotNull;
+
 import java.sql.SQLException;
+import java.util.List;
+
 import org.junit.Test;
 import DAO.SubscriptionFollowerDAO;
+import classes.Clip;
+import classes.User;
 import exceptions.UserProblemException;
 
 public class TestFollowerDAO {
@@ -15,14 +21,23 @@ public class TestFollowerDAO {
 		subDAO.deleteSubscription(1, 2);
 	}
 
-	// TRQBVA DA OPRAVIM METODITE V DAO-TO
+	
 	@Test
-	public void testGetAllSubs() throws SQLException {
-
-		// List<Category> categories = categoryDAO.getAllCategories();
-		// for (Category c : categories) {
-		// assertNotNull(c);
-		// }
+	public void testGetAllSubs() throws SQLException, UserProblemException {
+		List<User> sub=subDAO.getSubscriptions(2);
+		for(User us:sub){
+			System.out.println(us.getFullName());
+			assertNotNull(us);
+		}
+	}
+	
+	@Test
+	public void testGetAllFollower() throws SQLException, UserProblemException {
+		List<User> sub=subDAO.getFollowers(1);
+		for(User us:sub){
+			System.out.println(us.getFullName());
+			assertNotNull(us);
+		}
 	}
 
 }

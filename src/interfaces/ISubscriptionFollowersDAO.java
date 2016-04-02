@@ -2,6 +2,7 @@ package interfaces;
 
 import java.util.List;
 
+import classes.User;
 import exceptions.UserProblemException;
 
 public interface ISubscriptionFollowersDAO {
@@ -10,8 +11,8 @@ public interface ISubscriptionFollowersDAO {
 
 	void deleteSubscription(int subscriptionId, int followerId) throws UserProblemException;
 
-	List<Integer> getSubscriptions(int userId);
+	List<User> getSubscriptions(int userId) throws UserProblemException;
 
-	List<Integer> getFollowers(int userId);
+	List<User> getFollowers(int userId) throws UserProblemException;
 
 }

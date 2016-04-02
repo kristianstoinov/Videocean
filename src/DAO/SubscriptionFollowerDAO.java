@@ -6,6 +6,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import classes.User;
 import exceptions.UserProblemException;
 import interfaces.ISubscriptionFollowersDAO;
 
@@ -53,30 +54,31 @@ public class SubscriptionFollowerDAO extends AbstractDAO implements ISubscriptio
 	}
 
 	@Override
-	public List<Integer> getSubscriptions(int userId) {
+	public List<User> getSubscriptions(int userId) throws UserProblemException {
 		return getFollowersOrSubscriptions(userId, SELECT_SUBSCRIPTIONS_QUERY);
 	}
 
 	@Override
-	public List<Integer> getFollowers(int userId) {
+	public List<User> getFollowers(int userId) throws UserProblemException {
 		return getFollowersOrSubscriptions(userId, SELECT_FOLLWERS_QUERY);
 	}
 
-	private List<Integer> getFollowersOrSubscriptions(int userId, String query) {
+	private List<User> getFollowersOrSubscriptions(int userId, String query) throws UserProblemException {
 		PreparedStatement ps;
-		List<Integer> subscriptionsId = new ArrayList<Integer>();
+		List<User> subscriptions = new ArrayList<User>();
 		try {
 			ps = getCon().prepareStatement(query);
 			ps.setInt(1, userId);
-
+            UserDAO user=new UserDAO();
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
-				subscriptionsId.add(rs.getInt(1));
+				subscriptions.add(user.getUserById(rs.getInt(1)));
 			}
-		} catch (SQLException e) {
+		} catch (SQLException | UserProblemException e) {
 			e.printStackTrace();
+			throw new UserProblemException("Can't give you the subscriptions or followers that you want", e);
 		}
-		return subscriptionsId;
+		return subscriptions;
 	}
 
 }
