@@ -32,4 +32,19 @@ public class StateDAO extends AbstractDAO implements IStateDAO {
 		
 	}
 	
+	public int getStateByName(TYPE type) throws ClipException{
+		try {
+			PreparedStatement ps=getCon().prepareStatement("SELECT * FROM state WHERE name like ? ;");
+			ps.setString(1, type.toString());
+			ResultSet rs=ps.executeQuery();
+			rs.next();
+			int id=rs.getInt(1);		
+			return id;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw new ClipException("Can't find a state with this name!");
+		}
+		
+	}
+	
 }

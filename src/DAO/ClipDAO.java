@@ -17,7 +17,7 @@ import interfaces.IClipDAO;
 
 public class ClipDAO extends AbstractDAO implements IClipDAO {
 
-	private static final String UPDATE_CLIP= "UPDATE clips SET state_id=? AND description=? AND views=? AND category_id=?  WHERE clip_id=?";
+	private static final String UPDATE_CLIP= "UPDATE clips SET state_id=?, description=? , views=? , category_id=?  WHERE clip_id=?";
 	private static final String SELECT_CLIP_BY_ID = "SELECT * FROM clips WHERE clip_id = ? ;";
 	private static final String DELETE_CLIP = "DELETE FROM clips WHERE clip_id=? ;";
 	private static final String ADD_CLIP = "INSERT INTO clips(clip_id,clip_name,owner_id,clip_path,state_id,date_published,category_id) VALUES(null,?,?,?,1,CURDATE(),?);";
@@ -27,15 +27,16 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 	
 	
 	@Override
-	public void updateClip(Clip clip) throws UserProblemException {
+	public void updateClip(Clip clip) throws UserProblemException, ClipException {
 		if (clip != null) {
 			try {
 				PreparedStatement ps = getCon().prepareStatement(UPDATE_CLIP);
-
-				ps.setInt(1, clip.getClipID());
+                
+				ps.setInt(1,new StateDAO().getStateByName(clip.getState()));
 				ps.setString(2, clip.getDescription());
                 ps.setInt(3, clip.getViews());
                 ps.setInt(4, clip.getCategory().getCategoryID());
+                ps.setInt(5, clip.getClipID());
 				ps.executeUpdate();
 			} catch (SQLException e) {
 				e.printStackTrace();

@@ -55,8 +55,10 @@ public class Clip implements IClip {
 	public void setViews(int views) {
 		if (views >= 0) {
 			this.views = views;
+		}else{
+			this.views=0;
 		}
-		this.views = 0;
+		
 	}
 
 	public void setDatePublished(LocalDate datePublished) {

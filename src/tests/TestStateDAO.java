@@ -16,6 +16,13 @@ StateDAO stateDao=new StateDAO();
 		TYPE state = stateDao.getStateByID(1);
 		assertNotNull(state);
 	}
+	
+	@Test
+	public void testGetName() throws SQLException, ClipException {
+		TYPE type= TYPE.PUBLIC;
+		int id=stateDao.getStateByName(type);
+		assertNotNull(id);
+	}
 
 
 

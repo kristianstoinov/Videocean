@@ -91,7 +91,6 @@ public class CommentDAO extends AbstractDAO{
 			id.next();
 			return id.getInt(1);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			throw new CommentException("Can't add main comment", e);
 		}
