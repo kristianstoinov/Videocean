@@ -11,6 +11,7 @@ import DAO.CategoryDAO;
 import DAO.StateDAO;
 import classes.Category;
 import classes.State;
+import classes.TYPE;
 import exceptions.CategoryException;
 import exceptions.ClipException;
 
@@ -19,16 +20,10 @@ StateDAO stateDao=new StateDAO();
 
 	@Test
 	public void testGetID() throws SQLException, ClipException {
-		State state = stateDao.getStateByID(1);
+		TYPE state = stateDao.getStateByID(1);
 		assertNotNull(state);
 	}
 
-	@Test
-	public void testGetAll() throws SQLException, ClipException {
-		List<State> states = stateDao.getAllStates();
-		for (State s : states) {
-			assertNotNull(s);
-		}
-	}
+
 
 }
