@@ -1,18 +1,12 @@
 package com.example.model;
 
 public class Client {
-
 	private String name;
 	private int salary;
 	
-	public Client(){
-		
+	public Client(String string, int i) {
+		// TODO Auto-generated constructor stub
 	}
-	public Client(String name,int salary){
-		this.name=name;
-		this.salary=salary;
-	}
-	
 	public String getName() {
 		return name;
 	}
@@ -25,6 +19,4 @@ public class Client {
 	public void setSalary(int salary) {
 		this.salary = salary;
 	}
-	
-	
 }

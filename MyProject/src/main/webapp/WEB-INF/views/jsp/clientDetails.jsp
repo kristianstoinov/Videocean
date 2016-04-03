@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Details</title>
 </head>
 <body>
-<p>${client.name}</p>
-<p>${client.salary}</p>
+	<p> ${client.name} </p>
+	<p> ${client.salary} </p>
 </body>
 </html>
