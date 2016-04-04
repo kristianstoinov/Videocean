@@ -3,7 +3,8 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,12 +30,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </head>
   <body>
 <!-- proverki -->
-     <%@ include file="/static/header.html" %>
+    <c:if test="${sessionScope.user != null}">
+   <!-- There is a user **attribute** in the session -->  
+    <%@ include file="/static/loggedHeader.html" %>
+      <%@ include file="/static/loggedSidebar.html" %>
+</c:if>
+
+  <c:if test="${sessionScope.user == null}">
+   <!-- There is no user **attribute** in the session -->  
+    <%@ include file="/static/header.html" %>
      <%@ include file="/static/sidebar.html" %>
-      
-      <!--< include file="/static/loggedHeader.html" %>-->
-      <!--< include file="/static/loggedSidebar.html" %>-->
-     
+</c:if>
       <!--// proverki -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main-grids">
@@ -44,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					</div>
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="single.html"><img src="images/t1.jpg" alt="" /></a>
+							<a href="single"><img src="images/t1.jpg" alt="" /></a>
 							<div class="time">
 								<p>3:04</p>
 							</div>

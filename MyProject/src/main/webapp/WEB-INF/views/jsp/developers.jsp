@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
+	<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
 
@@ -27,8 +29,15 @@
 </head>
   <body>
 
+    <c:if test="${sessionScope.user != null}">
+   <!-- There is a user **attribute** in the session -->  
+    <%@ include file="/static/loggedHeader.html" %>
+</c:if>
+
+ <c:if test="${sessionScope.user == null}">
+   <!-- There is a user **attribute** in the session -->  
     <%@ include file="/static/header.html" %>
-    <!--< include file="/static/loggedHeader.html" %>-->
+</c:if>
     
 		<div class="developers">
 			<div class="developers-banner">

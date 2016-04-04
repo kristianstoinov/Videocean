@@ -844,10 +844,14 @@ select.form-control.bfh-countries:hover {
     color: #525254;
 }
 .share ul{
-	margin: 2em 0 0 0;
+	
     padding: 0;
     list-style: none;
+margin: 2em 0 0 0;
+   
 }
+ /**/
+
 .share li{
     display: block;
     margin: 1em 0;
@@ -1927,7 +1931,7 @@ background: url(../images/social.png) no-repeat 0px 0px;
 	}
 	.song-grid-right {
 		width: 18%;
-		margin-left: 1em;
+		/*margin-left: 1em;*/
 	}
 	.share li {
 		font-size: 13px;

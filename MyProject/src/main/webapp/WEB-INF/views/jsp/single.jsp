@@ -2,7 +2,8 @@
 	pageEncoding="ISO-8859-1"%>
 	<%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,19 +28,24 @@
 </head>
   <body>
   <!-- proverki -->
-     <%@ include file="/static/header.html" %>
+     <c:if test="${sessionScope.user != null}">
+   <!-- There is a user **attribute** in the session -->  
+    <%@ include file="/static/loggedHeader.html" %>
+      <%@ include file="/static/loggedSidebar.html" %>
+</c:if>
+
+  <c:if test="${sessionScope.user == null}">
+   <!-- There is no user **attribute** in the session -->  
+    <%@ include file="/static/header.html" %>
      <%@ include file="/static/sidebar.html" %>
-      
-      <!--< include file="/static/loggedHeader.html" %>-->
-      <!--< include file="/static/loggedSidebar.html" %>-->
-     
+</c:if>
       <!--// proverki -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="show-top-grids">
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
-							<h3>Etiam molestie nisl eget consequat pharetra</h3>	
+							<h3>Clip</h3>	
 					</div>
 						<div class="video-grid">
 							<iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowfullscreen></iframe>
@@ -47,15 +53,11 @@
 					</div>
 					<div class="song-grid-right">
 						<div class="share">
-							<h5>Share this</h5>
+							<h5>Share</h5>
 							<ul>
 								<li><a href="#" class="icon fb-icon">Facebook</a></li>
-								<li><a href="#" class="icon dribbble-icon">Dribbble</a></li>
 								<li><a href="#" class="icon twitter-icon">Twitter</a></li>
-								<li><a href="#" class="icon pinterest-icon">Pinterest</a></li>
-								<li><a href="#" class="icon whatsapp-icon">Whatsapp</a></li>
 								<li><a href="#" class="icon like">Like</a></li>
-								<li><a href="#" class="icon comment-icon">Comments</a></li>
 								<li class="view">200 Views</li>
 							</ul>
 						</div>
@@ -84,19 +86,6 @@
 										<h4>Published on 15 June 2015</h4>
 										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
 									</li>
-									<li>
-										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
-										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
-										<div class="load-grids">
-											<div class="load-grid">
-												<p>Category</p>
-											</div>
-											<div class="load-grid">
-												<a href="movies.html">Entertainment</a>
-											</div>
-											<div class="clearfix"> </div>
-										</div>
-									</li>
 								</ul>
 							</div>
 					</div>
@@ -105,10 +94,7 @@
 							<a href="#">All Comments (8,657)</a>
 							<div class="box">
 								<form>
-									<input type="text" placeholder="Name" required=" ">			           					   
-									<input type="text" placeholder="Email" required=" ">
-									<input type="text" placeholder="Phone" required=" ">
-									<textarea placeholder="Message" required=" "></textarea>
+									<input type="text" placeholder="Comment" required=" ">
 									<input type="submit" value="SEND">
 									<div class="clearfix"> </div>
 								</form>
@@ -116,8 +102,7 @@
 							<div class="all-comments-buttons">
 								<ul>
 									<li><a href="#" class="top">Top Comments</a></li>
-									<li><a href="#" class="top newest">Newest First</a></li>
-									<li><a href="#" class="top my-comment">My Comments</a></li>
+
 								</ul>
 							</div>
 						</div>
