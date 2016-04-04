@@ -28,9 +28,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //fonts -->
 </head>
   <body>
-  <%@ include file="/static/header.html" %>
-
-        <%@ include file="/static/sidebar.html" %>
+<!-- proverki -->
+     <%@ include file="/static/header.html" %>
+     <%@ include file="/static/sidebar.html" %>
+      
+      <!--< include file="/static/loggedHeader.html" %>-->
+      <!--< include file="/static/loggedSidebar.html" %>-->
+     
+      <!--// proverki -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main-grids">
 				<div class="top-grids">
@@ -148,7 +153,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										</div>
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
-												<a href="single.html"><img src="images/c1.jpg" alt="" /></a>
+												<a href="single"><img src="images/c1.jpg" alt="" /></a>
 												<div class="time small-time slider-time">
 													<p>6:23</p>
 												</div>
