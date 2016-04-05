@@ -11,7 +11,7 @@ import com.example.exceptions.UserProblemException;
 
 public interface IUser {
 
-	void addClipToMyClips(String name, String clipUrl) throws ClipException, PlaylistException;
+
 
 	void addClipIntoPlaylist(Playlist playlist, Clip clip);
 
@@ -44,4 +44,6 @@ public interface IUser {
 	public List<User> getUsersFromFollowers();
 	
 	public List<Playlist> getPlaylistFromPlaylists();
+
+	void addClipToMyClips(Clip S) throws ClipException, PlaylistException;
 }

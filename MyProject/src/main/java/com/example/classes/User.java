@@ -181,12 +181,12 @@ public class User implements IUser {
 	 * @see pojo.IUser#addClipToMyClips(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public void addClipToMyClips(String name, String clipUrl) throws ClipException, PlaylistException {
+	public void addClipToMyClips(Clip clip) throws ClipException, PlaylistException {
 		if (this.myClips == null) {
 			this.myClips = (IPlaylist) new Playlist("myClips", this, TYPE.PUBLIC);
-			this.myClips.addClipToPlaylist(new Clip(name, this, clipUrl, TYPE.PUBLIC));
+			this.myClips.addClipToPlaylist(clip);
 		} else {
-			this.myClips.addClipToPlaylist(new Clip(name, this, clipUrl, TYPE.PUBLIC));
+			this.myClips.addClipToPlaylist(clip);
 		}
 	}
 

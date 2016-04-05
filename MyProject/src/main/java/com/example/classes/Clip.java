@@ -15,12 +15,12 @@ public class Clip implements IClip {
 
 
 	private int clipID;
-	private final String name;
-	private final IUser owner;
+	private  String name;
+	private  IUser owner;
 	private int likes;
 	private int dislikes;
 	private Category category;
-	private String clipURL;
+	private  String clipURL;
 
 	private List<Comment> comments;
 	private TYPE state;
@@ -28,6 +28,7 @@ public class Clip implements IClip {
 	private String description;
 	private int views;
 	private Statistics statisticsForClip;
+
 
 	public Clip(String name, IUser owner, String clipURL, TYPE state) throws ClipException {
 		if (name != null && owner != null && clipURL != null) {
@@ -53,6 +54,9 @@ public class Clip implements IClip {
 		comments=new ArrayList<Comment>();
 	}
 
+	public Clip() {
+		// TODO Auto-generated constructor stub
+	}
 
 	public void setViews(int views) {
 		if (views >= 0) {
@@ -61,6 +65,20 @@ public class Clip implements IClip {
 			this.views=0;
 		}
 		
+	}
+
+	
+	
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public void setOwner(IUser owner) {
+		this.owner = owner;
+	}
+
+	public void setClipURL(String clipURL) {
+		this.clipURL = clipURL;
 	}
 
 	public void setDatePublished(LocalDate datePublished) {
