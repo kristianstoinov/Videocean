@@ -1,7 +1,7 @@
 package com.example;
 
+import java.io.IOException;
 import java.util.Locale;
-
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -16,11 +16,22 @@ import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
-
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.support.StandardServletMultipartResolver;
 @Configuration
 @EnableWebMvc
 @ComponentScan("com.example")
 public class SpringWebConfig extends WebMvcConfigurerAdapter {
+	
+	 @Bean(name = "multipartResolver")
+	    public StandardServletMultipartResolver resolver() {
+	        return new StandardServletMultipartResolver();
+	    }
+	 
+	 @Bean
+	 public MultipartResolver multipartResolver() throws IOException {
+	 return new StandardServletMultipartResolver();
+	 }
 	
     @Override
     public void addResourceHandlers(ResourceHandlerRegistry registry) {
@@ -62,5 +73,10 @@ public class SpringWebConfig extends WebMvcConfigurerAdapter {
 		changeInterceptor.setParamName("language");
 		registry.addInterceptor(changeInterceptor);
 	}
+	
+	
+	
+	
+	
 	
 }

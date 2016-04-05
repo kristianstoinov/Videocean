@@ -4,6 +4,8 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import com.example.exceptions.ClipException;
 import com.example.exceptions.CommentException;
 import com.example.interfaces.IClip;
@@ -18,7 +20,7 @@ public class Clip implements IClip {
 	private int likes;
 	private int dislikes;
 	private Category category;
-	private final String clipURL;
+	private String clipURL;
 
 	private List<Comment> comments;
 	private TYPE state;
@@ -50,6 +52,7 @@ public class Clip implements IClip {
 		this.state = state;
 		comments=new ArrayList<Comment>();
 	}
+
 
 	public void setViews(int views) {
 		if (views >= 0) {
