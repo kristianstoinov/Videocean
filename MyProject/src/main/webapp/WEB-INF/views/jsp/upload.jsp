@@ -48,7 +48,7 @@
                 </div>
             </div>
      
-            <div class="row" style="position:absolute; left:380px;">
+            <div class="row" style="position:absolute; left:800px; ">
                 <div class="form-actions floatRight" >
                     <input type="submit" value="Upload"  class="btn btn-primary btn-sm"   >
                 </div>

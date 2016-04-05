@@ -13,6 +13,10 @@ public class Playlist {
 	private int clipsCounter;
 	private int viewsOfPlaylist;
 	private List<Clip> clips = null;
+	
+	public Clip getFirstClip(Clip clip){
+		return clips.get(1);
+	}
 
 	public Playlist(String name, User owner, TYPE state) throws PlaylistException {
 		// Chek for name validity

@@ -45,7 +45,7 @@
 				<div class="col-sm-8 single-left">
 					<div class="song">
 						<div class="song-info">
-							<h3>Clip</h3>	
+							<h3>${clip.name}</h3>	
 					</div>
 						<div class="video-grid">
 							<iframe src="https://www.youtube.com/embed/oYiT-vLjhC4" allowfullscreen></iframe>
@@ -54,11 +54,9 @@
 					<div class="song-grid-right">
 						<div class="share">
 							<h5>Share</h5>
-							<ul>
-								<li><a href="#" class="icon fb-icon">Facebook</a></li>
-								<li><a href="#" class="icon twitter-icon">Twitter</a></li>
-								<li><a href="#" class="icon like">Like</a></li>
-								<li class="view">200 Views</li>
+							<ul>							
+								<li><a href="#" class="icon fb-icon">Facebook</a><a href="#" class="icon twitter-icon">Twitter</a><a href="#" class="icon like">Like</a></li>
+								<li class="view">${clip.views }</li>								
 							</ul>
 						</div>
 					</div>
@@ -83,8 +81,8 @@
 							<div class="load_more">	
 								<ul id="myList">
 									<li>
-										<h4>Published on 15 June 2015</h4>
-										<p>Nullam fringilla sagittis tortor ut rhoncus. Nam vel ultricies erat, vel sodales leo. Maecenas pellentesque, est suscipit laoreet tincidunt, ipsum tortor vestibulum leo, ac dignissim diam velit id tellus. Morbi luctus velit quis semper egestas. Nam condimentum sem eget ex iaculis bibendum. Nam tortor felis, commodo faucibus sollicitudin ac, luctus a turpis. Donec congue pretium nisl, sed fringilla tellus tempus in.</p>
+										<h4>${clip.datePublished}</h4>
+										<p>${clip.description}</p>
 									</li>
 								</ul>
 							</div>
