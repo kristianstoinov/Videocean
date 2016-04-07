@@ -50,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	               	<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="single.html"><img src="${clip.clipURL}" alt="" /></a>
+							<a href="single-${clip.clipID}">   <video width="354" height="200" ><source src="${clip.clipURL}" ></source></video></a>
 							<div class="time">
 								<p>3:04</p>
 							</div>
@@ -105,7 +105,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						      <c:forEach var="clip" items="${clips}" step="1" begin="0" end="19">
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
-												<a href="single.html"><img src="${clip.clipURL}" alt="" /></a>
+												<a href="single-${clip.clipID}"> <video width="260" height="180" ><source src="${clip.clipURL}" ></source></video></a>
 												<div class="time small-time slider-time">
 													<p>4:34</p>
 												</div>

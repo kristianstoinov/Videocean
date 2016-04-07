@@ -15,7 +15,7 @@ public class LogoutController {
 	@RequestMapping(method = RequestMethod.GET, value = "/logout")
 	public String showClientDetails(HttpServletRequest request) {
 		request.getSession().invalidate();
-		return "index";
+		return "redirect:index";
 	}
 
 }

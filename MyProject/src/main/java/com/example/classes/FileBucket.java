@@ -5,8 +5,18 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileBucket {
  
     MultipartFile file;
+    String name;
      
-    public MultipartFile getFile() {
+    
+    public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public MultipartFile getFile() {
         return file;
     }
  

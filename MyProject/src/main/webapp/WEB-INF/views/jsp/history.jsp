@@ -1,8 +1,10 @@
+
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
-
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -27,83 +29,117 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //fonts -->
 </head>
   <body>
-<%@ include file="/static/loggedHeader.html" %>
-     <%@ include file="/static/loggedSidebar.html" %>
+  <c:if test="${sessionScope.user != null}">
+   <!-- There is a user **attribute** in the session -->  
+    <%@ include file="/static/loggedHeader.html" %>
+      <%@ include file="/static/loggedSidebar.html" %>
+</c:if>
+
+  <c:if test="${sessionScope.user == null}">
+   <!-- There is no user **attribute** in the session -->  
+    <%@ include file="/static/header.html" %>
+     <%@ include file="/static/sidebar.html" %>
+</c:if>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-			<div class="show-top-grids">
-				<div class="main-grids news-main-grids">
+			<div class="main-grids">
+				<div class="top-grids">
 					<div class="recommended-info">
-						<h3>History Of My Play</h3>
-						<p class="history-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus efficitur, eros 
-							sed suscipit porttitor.
-							</span>
-						</p>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2001</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Praesent a dui sit amet turpis tempus gravida eu quis mi</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
+						<h3></h3>
+					</div>
+					
+					<div class="clearfix"> </div>
+				</div>
+				<div class="recommended">
+					<div class="recommended-grids">
+						<div class="recommended-info">
+							<h3>HISTORY</h3>
 						</div>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2003</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Duis iaculis justo nec tellus bibendum rhoncus pretium leo</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
+						<script src="js/responsiveslides.min.js"></script>
+						 <script>
+							// You can also use "$(window).load(function() {"
+							$(function () {
+							  // Slideshow 4
+							  $("#slider3").responsiveSlides({
+								auto: true,
+								pager: false,
+								nav: true,
+								speed: 500,
+								namespace: "callbacks",
+								before: function () {
+								  $('.events').append("<li>before event fired.</li>");
+								},
+								after: function () {
+								  $('.events').append("<li>after event fired.</li>");
+								}
+							  });
+						
+							});
+						  </script>
+						<div  id="top" class="callbacks_container">
+							<ul class="rslides" id="slider3">
+							<c:forEach var="clip" items="${clips}" >
+								<li>
+									<div class="animated-grids">
+									
+										
+						     
+										<div class="col-md-3 resent-grid recommended-grid slider-first">
+											<div class="resent-grid-img recommended-grid-img">
+												<a href="single-${clip.clipID}"><video width="260" height="180" ><source src="${clip.clipURL}" ></source></video></a>
+												<div class="time small-time slider-time">
+													<p>4:34</p>
+												</div>
+												<div class="clck small-clck">
+													<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+												</div>
+											</div>
+											<div class="resent-grid-info recommended-grid-info">
+												<h5><a href="single.html" class="title">${clip.name}</a></h5>
+												<div class="slid-bottom-grids">
+													<div class="slid-bottom-grid">
+														<p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p>
+													</div>
+													<div class="slid-bottom-grid slid-bottom-right">
+														<p class="views views-info">${clip.views} views</p>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+											</div>
+										</div>
+										<div class="clearfix"> </div>
+									</div>
+								</li>
+								</c:forEach>
+							</ul>
 						</div>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2005</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Class aptent taciti sociosqu ad litora torquent per conubia</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
+					</div>
+				</div>
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				
+				<div class="recommended">
+					<div class="recommended-grids">
+						<div class="recommended-info">
 						</div>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2007</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Integer sem sem, ornare id velit a, semper fringilla magna</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2009</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Praesent a dui sit amet turpis tempus gravida eu quis mi</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
-						<div class="history-grids">
-							<div class="col-md-1 history-left">
-								<p>2011</p>
-							</div>
-							<div class="col-md-11 history-right">
-								<h5>Integer sem sem, ornare id velit a, semper fringilla magna</h5>
-								<p>Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.
-								Morbi eget malesuada nunc. Nullam ac congue ipsum, non tristique orci. Sed placerat porta justo, at sollicitudin velit. Curabitur sed hendrerit justo, eu vehicula lorem.</p>
-							</div>
-							<div class="clearfix"> </div>
-						</div>
+						
+						
+					
+						
+						<div class="clearfix"> </div>
+					</div>
+					<div class="recommended-grids">
+						
+						
+					
+						
+						<div class="clearfix"> </div>
 					</div>
 				</div>
 			</div>
@@ -112,6 +148,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>
+	<div class="drop-menu">
+		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
+		  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
+		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
+		</ul>
+	</div>
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

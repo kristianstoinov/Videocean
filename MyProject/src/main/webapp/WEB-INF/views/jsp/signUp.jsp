@@ -17,14 +17,30 @@
 <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
 
         <link rel="stylesheet" href="css/style.css">
-
+<link rel="stylesheet" href="css/styleLogin.css">
     
     
     
   </head>
 
   <body>
-
+<%String number1="<source src='videos/video1.mp4' type='video/mp4'>"; %>
+<%String number2="<source src='videos/video8.mp4' type='video/mp4'>"; %>
+<%String number3="<source src='videos/video6.mp4' type='video/mp4'>"; %>
+     <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
+     <% 
+     double p = Math.random();
+     if(p<0.3){
+     out.println(number1); 
+     }
+     if(p<0.6 && p>=0.3){
+         out.println(number2); 
+         }
+     if( p>=0.6){
+         out.println(number3); 
+         }
+     %>
+  </video>
     
 <!-- Form Mixin-->
 <!-- Input Mixin-->

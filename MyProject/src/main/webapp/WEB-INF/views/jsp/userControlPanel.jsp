@@ -2,28 +2,46 @@
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
-
+<%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <title>Videocean</title>
- <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- Tell the browser to be responsive to screen width -->
-    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-    <!-- Bootstrap 3.3.5 -->
-    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <!-- Ionicons -->
-    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- jvectormap -->
-    <link rel="stylesheet" href="plugins/jvectormap/jquery-jvectormap-1.2.2.css">
-    <!-- Theme style -->
-    <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
-    <!-- AdminLTE Skins. Choose a skin from the css/skins
-         folder instead of downloading all of them to reduce the load. -->
-    <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+<!-- added -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+ <!-- Bootstrap Core CSS -->
+<link href="css/bootstrap1.min.css" rel='stylesheet' type='text/css' />
+<!-- Custom CSS -->
+<link href="css/fieldsStyle.css" rel='stylesheet' type='text/css' />
+<!-- Graph CSS -->
+<link href="css/font-awesome.css" rel="stylesheet"> 
+<!-- jQuery -->
+<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
+<!-- lined-icons -->
+<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
+<!-- //lined-icons -->
+<script src="jss/jquery-1.10.2.min.js"></script>
+<script src="jss/amcharts.js"></script>	
+<script src="jss/serial.js"></script>	
+<script src="jss/light.js"></script>	
+<script src="jss/radar.js"></script>	
+<link href="css/barChart.css" rel='stylesheet' type='text/css' />
+<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
+<!--clock init-->
+<script src="jss/css3clock.js"></script>
+<!--Easy Pie Chart-->
+<!--skycons-icons-->
+<script src="jss/skycons.js"></script>
+
+<script src="jss/jquery.easydropdown.js"></script>
+<!-- added -->
+
+
+
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -49,48 +67,54 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
      <br/>
       <br/>
        <br/>
-     <div class="row">
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">CPU Traffic</span>
-                  <span class="info-box-number">90<small>%</small></span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Likes</span>
-                  <span class="info-box-number">41,410</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-
-            <!-- fix for small devices only -->
-            <div class="clearfix visible-sm-block"></div>
-
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">Sales</span>
-                  <span class="info-box-number">760</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-            <div class="col-md-3 col-sm-6 col-xs-12">
-              <div class="info-box">
-                <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
-                <div class="info-box-content">
-                  <span class="info-box-text">New Members</span>
-                  <span class="info-box-number">2,000</span>
-                </div><!-- /.info-box-content -->
-              </div><!-- /.info-box -->
-            </div><!-- /.col -->
-          </div><!-- /.row -->
+       <!-- added -->
+       <div class="custom-widgets">
+												   <div class="row-one">
+														<div class="col-md-3 widget">
+															<div class="stats-left ">
+																<h5>Today</h5>
+																<h4> Users</h4>
+															</div>
+															<div class="stats-right">
+																<label>90</label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-mdl">
+															<div class="stats-left">
+																<h5>Today</h5>
+																<h4>Visitors</h4>
+															</div>
+															<div class="stats-right">
+																<label> 85</label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-thrd">
+															<div class="stats-left">
+																<h5>Today</h5>
+																<h4>Tasks</h4>
+															</div>
+															<div class="stats-right">
+																<label>51</label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="col-md-3 widget states-last">
+															<div class="stats-left">
+																<h5>Today</h5>
+																<h4>Alerts</h4>
+															</div>
+															<div class="stats-right">
+																<label>30</label>
+															</div>
+															<div class="clearfix"> </div>	
+														</div>
+														<div class="clearfix"> </div>	
+													</div>
+												</div>
+       
+     <!-- added -->
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="show-top-grids">
 				<div class="col-sm-10 show-grid-left main-grids">

@@ -5,6 +5,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -43,24 +44,37 @@
 								
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+							
+							
+							
+							
+							
+							
+							 <c:forEach var="clip" items="${playlist}" step="1" begin="0" end="19">
+										<div class="col-md-3 resent-grid recommended-grid slider-first">
+											<div class="resent-grid-img recommended-grid-img">
+												<a href="single-${playlist.playlistID}"><img src="${playlist.getFirstClip.clipURL}" alt="" /></a>
+												<div class="time small-time slider-time">
+													<p>4:34</p>
+												</div>
+												<div class="clck small-clck">
+													<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
+												</div>
+											</div>
+											<div class="resent-grid-info recommended-grid-info">
+												<h5><a href="single" class="title">${playlist.name}</a></h5>
+												<div class="slid-bottom-grids">
+													<div class="slid-bottom-grid">
+														<p class="author author-info"><a href="#" class="author">${playlist.owner.fullName}</a></p>
+													</div>
+													<div class="slid-bottom-grid slid-bottom-right">
+														<p class="views views-info">${playlist.views} views</p>
+													</div>
+													<div class="clearfix"> </div>
+												</div>
+											</div>
+										</div>
+										</c:forEach>
 							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
 								<div class="resent-grid-img recommended-grid-img">
 									<a href="single"><img src="images/mv2.jpg" alt="" /></a>

@@ -23,7 +23,7 @@ public class User implements IUser {
 	private String country;
 	private String language;
 	private List<Clip> history;
-	private IPlaylist myClips;
+	private Playlist myClips;
 	private List<Playlist> playlists;
 	private boolean isVerified;
 	private List<User> followers;
@@ -183,7 +183,7 @@ public class User implements IUser {
 	@Override
 	public void addClipToMyClips(Clip clip) throws ClipException, PlaylistException {
 		if (this.myClips == null) {
-			this.myClips = (IPlaylist) new Playlist("myClips", this, TYPE.PUBLIC);
+			this.myClips =  new Playlist("myClips", this, TYPE.PUBLIC);
 			this.myClips.addClipToPlaylist(clip);
 		} else {
 			this.myClips.addClipToPlaylist(clip);

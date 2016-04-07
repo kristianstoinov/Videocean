@@ -144,7 +144,7 @@ public class Clip implements IClip {
 
 	@Override
 	public void addViews() {
-		if (views > 0)
+		if (views >= 0)
 			this.views++;
 	}
 
