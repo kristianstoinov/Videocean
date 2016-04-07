@@ -8,36 +8,11 @@
 <head>
 <title>Videocean</title>
 <!-- added -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Augment Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
  <!-- Bootstrap Core CSS -->
-<link href="css/bootstrap1.min.css" rel='stylesheet' type='text/css' />
+<link href="css/bootstrap.min.css" rel='stylesheet' type='text/css' />
 <!-- Custom CSS -->
-<link href="css/fieldsStyle.css" rel='stylesheet' type='text/css' />
+<link href="css/style.css" rel='stylesheet' type='text/css' />
 <!-- Graph CSS -->
-<link href="css/font-awesome.css" rel="stylesheet"> 
-<!-- jQuery -->
-<link href='//fonts.googleapis.com/css?family=Roboto:700,500,300,100italic,100,400' rel='stylesheet' type='text/css'>
-<!-- lined-icons -->
-<link rel="stylesheet" href="css/icon-font.min.css" type='text/css' />
-<!-- //lined-icons -->
-<script src="jss/jquery-1.10.2.min.js"></script>
-<script src="jss/amcharts.js"></script>	
-<script src="jss/serial.js"></script>	
-<script src="jss/light.js"></script>	
-<script src="jss/radar.js"></script>	
-<link href="css/barChart.css" rel='stylesheet' type='text/css' />
-<link href="css/fabochart.css" rel='stylesheet' type='text/css' />
-<!--clock init-->
-<script src="jss/css3clock.js"></script>
-<!--Easy Pie Chart-->
-<!--skycons-icons-->
-<script src="jss/skycons.js"></script>
-
-<script src="jss/jquery.easydropdown.js"></script>
 <!-- added -->
 
 
@@ -68,32 +43,24 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <br/>
        <br/>
        <!-- added -->
+       <div class="outter-wp">
        <div class="custom-widgets">
 												   <div class="row-one">
-														<div class="col-md-3 widget">
-															<div class="stats-left ">
-																<h5>Today</h5>
-																<h4> Users</h4>
-															</div>
-															<div class="stats-right">
-																<label>90</label>
-															</div>
-															<div class="clearfix"> </div>	
-														</div>
+														
 														<div class="col-md-3 widget states-mdl">
 															<div class="stats-left">
-																<h5>Today</h5>
-																<h4>Visitors</h4>
+																<h5>Alltime</h5>
+																<h4>Views</h4>
 															</div>
 															<div class="stats-right">
-																<label> 85</label>
+																<label> ${views}</label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
 														<div class="col-md-3 widget states-thrd">
 															<div class="stats-left">
-																<h5>Today</h5>
-																<h4>Tasks</h4>
+																<h5>All your</h5>
+																<h4>Followers</h4>
 															</div>
 															<div class="stats-right">
 																<label>51</label>
@@ -102,8 +69,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</div>
 														<div class="col-md-3 widget states-last">
 															<div class="stats-left">
-																<h5>Today</h5>
-																<h4>Alerts</h4>
+																 <h5>Alltime</h5>
+																<h4>Likes</h4>
 															</div>
 															<div class="stats-right">
 																<label>30</label>
@@ -112,7 +79,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 														</div>
 														<div class="clearfix"> </div>	
 													</div>
-												</div>
+												</div>	
+												</div>				
        
      <!-- added -->
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
