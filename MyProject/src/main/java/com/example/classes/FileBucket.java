@@ -6,9 +6,18 @@ public class FileBucket {
  
     MultipartFile file;
     String name;
+    String description;
      
     
-    public String getName() {
+    public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getName() {
 		return name;
 	}
 

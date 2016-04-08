@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * Singleton DB connection for all DAO db objects.
  * 
- * @author Niki
+ * @author VOTeam
  *
  */
 public class DBConnection {

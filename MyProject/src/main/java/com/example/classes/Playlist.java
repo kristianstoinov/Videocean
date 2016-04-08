@@ -37,7 +37,7 @@ public class Playlist {
 	}
 
 	public void addClipToPlaylist(Clip clip) {
-		if (clips != null) {
+		if (clips == null) {
 			clips = new ArrayList<Clip>();
 		}
 		clips.add(clip);
@@ -107,6 +107,9 @@ public class Playlist {
 	}
 	public void setViewsOfPlaylist(int viewsOfPlaylist) {
 		this.viewsOfPlaylist = viewsOfPlaylist;
+	}
+	public List<Clip> getClips() {
+		return clips;
 	}
 
 	

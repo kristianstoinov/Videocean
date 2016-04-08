@@ -36,7 +36,7 @@ public class singleClipController {
 		    new ClipDAO().updateClip(clip);
 			
 		
-		} catch (ClipException | UserProblemException e) {
+		} catch (ClipException | UserProblemException  e) {
 			e.printStackTrace();
 			System.out.println("nyama takav clip");
 			return "redirect:index:";

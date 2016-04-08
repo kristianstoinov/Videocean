@@ -27,7 +27,6 @@ public class Categories {
 			viewModel.addAttribute("category", thisCategory);
 			viewModel.addAttribute("clips", clips);
 			
-			
 		} catch (ClipException | CategoryException e) {
 			e.printStackTrace();
 			return "redirect:index:";

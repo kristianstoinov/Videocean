@@ -37,6 +37,7 @@ public class User implements IUser {
 		} catch (NameFormatException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
+			e.printStackTrace();
 		}
 		playlists = new ArrayList<Playlist>();
 		history = new ArrayList<Clip>();
@@ -53,6 +54,7 @@ public class User implements IUser {
 		} catch (NameFormatException e) {
 			// TODO Auto-generated catch block
 			e.getMessage();
+			e.printStackTrace();
 		}
 		playlists = new ArrayList<Playlist>();
 		history = new ArrayList<Clip>();

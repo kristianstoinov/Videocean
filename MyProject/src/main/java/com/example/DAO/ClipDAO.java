@@ -129,7 +129,7 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 		List<Clip> allClips = new ArrayList<Clip>();
 		try {
 			Statement statement = getCon().createStatement();
-			ResultSet rs = statement.executeQuery("SELECT * FROM clips  WHERE state_id=1 LIMIT 20");
+			ResultSet rs = statement.executeQuery("SELECT * FROM clips  WHERE state_id=1 LIMIT 12");
 			UserDAO userDao = new UserDAO();
 			StateDAO stateDao = new StateDAO();
 			while (rs.next()) {

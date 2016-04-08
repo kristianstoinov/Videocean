@@ -93,16 +93,17 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			PreparedStatement stmt = getCon().prepareStatement(ALL_CLIPS_QUERY);
 			stmt.setInt(1, playlistID);
 			ResultSet resultSet = stmt.executeQuery();
-			UserDAO user = new UserDAO();
-			User owner = user.getUserById(resultSet.getInt(4));
+//			UserDAO user = new UserDAO();
+//			User owner = user.getUserById(resultSet.getInt(4));
 			// tuk tryabva da se selectva state a ne da go podavam;
-			Playlist playlist = new Playlist(resultSet.getString(2), owner, TYPE.PUBLIC);
+//			Playlist playlist = new Playlist(resultSet.getString(2), owner, TYPE.PUBLIC);
+			Playlist playlist=new PlaylistDAO().getPlaylistById(playlistID);
 			ClipDAO clip = new ClipDAO();
 			while (resultSet.next()) {
 				playlist.addClipToPlaylist(clip.getClipByID(resultSet.getInt(3)));
 			}
 			return playlist;
-		} catch (SQLException | ClipException | UserProblemException e) {
+		} catch (SQLException | ClipException e) {
 			e.printStackTrace();
 			throw new PlaylistException("Invalid Playlist ID.");
 		}
@@ -141,6 +142,31 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new PlaylistException("Invalid id for Playlist");
+		}
+	}
+	
+	public Playlist getPlaylistByOwner(int userId) throws PlaylistException{
+		PreparedStatement ps;
+		Playlist playlist = null;
+		try {
+			ps = getCon().prepareStatement("SELECT * FROM playlists where owner_id=?");
+			ps.setInt(1, userId);
+			ResultSet rs = ps.executeQuery();
+			UserDAO user = new UserDAO();
+			if(rs.next()){
+			int playlistId=rs.getInt(1);
+			String name = rs.getString(2);
+			int views = rs.getInt(3);
+			User owner = user.getUserById(rs.getInt(4));
+			// tuk tryabva da se selectva state a ne da go podavam;
+			playlist = new Playlist(playlistId, name, owner, TYPE.PUBLIC);
+			playlist.setViewsOfPlaylist(views);
+			}
+			return playlist;
+		} catch (SQLException | UserProblemException | PlaylistException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			throw new PlaylistException("Something got wrong.Please try again later", e);
 		}
 	}
 

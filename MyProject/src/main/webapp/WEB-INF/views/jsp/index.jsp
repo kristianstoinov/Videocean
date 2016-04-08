@@ -5,6 +5,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -114,7 +115,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</div>
 											</div>
 											<div class="resent-grid-info recommended-grid-info">
-												<h5><a href="single.html" class="title">${clip.name}</a></h5>
+												<h5><a href="single-${cl.clipID}" class="title">${clip.name}</a></h5>
 												<div class="slid-bottom-grids">
 													<div class="slid-bottom-grid">
 														<p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p>
@@ -145,7 +146,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				
 				
 				
-				<div class="recommended">
+		 	<div class="recommended">
 					<div class="recommended-grids">
 						<div class="recommended-info">
 						</div>

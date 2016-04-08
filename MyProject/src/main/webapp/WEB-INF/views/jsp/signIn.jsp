@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 	<%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html >
   <head>
@@ -74,7 +75,7 @@
     <springForm:form action="signUp" method="post" commandName="user" >
       <springForm:input type="email" placeholder="Email adress" path="username" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"/>
       <springForm:input type="password" placeholder="Password" path="password" pattern=".{6,}"/>
-      <springForm:input type="text" placeholder="Full Name" path="fullName" />
+      <springForm:input type="" placeholder="Full Name" path="fullName" pattern=".{1,}"/>
       <button>Register</button>
     </springForm:form>
        <c:if test="${not empty error}">

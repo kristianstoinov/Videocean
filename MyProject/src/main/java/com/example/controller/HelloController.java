@@ -20,14 +20,13 @@ public class HelloController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model viewModel,HttpServletRequest request) {
-//		try {
-//			List<Clip> clips=new ClipDAO().getAllClips();
-//			viewModel.addAttribute("clips", clips);
-//		} catch (ClipException e) {
-//			
-//			e.printStackTrace();
-//			System.out.println("Nyama Klipove");
-//		}
+		try {
+			List<Clip> clips=new ClipDAO().getAllClips();
+			viewModel.addAttribute("clips", clips);
+		} catch (ClipException e) {
+			e.printStackTrace();
+			System.out.println("Nyama Klipove");
+		}
 		
 		User user=(User) request.getSession().getAttribute("user");
 		viewModel.addAttribute("user", user);

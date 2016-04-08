@@ -4,6 +4,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -147,7 +148,7 @@ Your browser does not support the video tag.
 								<a href="single-${cl.clipID}"> <video width="120" height="80" ><source src="${cl.clipURL}" ></source></video></a>
 							</div>
 							<div class="col-md-8 single-right-grid-right">
-								<a href="single.html" class="title"> ${cl.name}</a>
+								<a href="single-${cl.clipID}" class="title"> ${cl.name}</a>
 								<p class="author"><a href="#" class="author">${cl.owner.fullName}</a></p>
 								<p class="views">${cl.views} views</p>
 							</div>

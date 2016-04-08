@@ -16,9 +16,9 @@ public class UserControlPanel {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model viewModel,HttpServletRequest request) { 		
-//		if(request.getSession().getAttribute("user") == null) {
-//			return "error";
-//			}
+		if(request.getSession().getAttribute("user") == null) {
+			return "error";
+			}
 		User user=(User) request.getSession().getAttribute("user");
 		viewModel.addAttribute("user", user);
 

@@ -5,6 +5,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -48,70 +49,19 @@
 						<div class="recommended-grids english-grid">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>English</h3>
+									<h3>${category.name}</h3>
 								</div>
 								<div class="heading-right">
 									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
 								</div>
 								<div class="clearfix"> </div>
 							</div>
+						
+					<c:forEach var="clip" varStatus="status" items="${clips}" step="1" begin="0" end="19">
+				
 							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
 								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>9:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:04</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv4.jpg" alt="" /></a>
+									<a href="single-${clip.clipID}"> <video width="210" height="140" ><source src="${clip.clipURL}" ></a>
 									<div class="time small-time show-time movie-time">
 										<p>2:06</p>
 									</div>
@@ -120,13 +70,20 @@
 									</div>
 								</div>
 								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
+									<h5><a href="single-${clip.clipID}" class="title">${clip.name}</a></h5>
 									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
+										<li><p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p></li>
+										<li class="right-list"><p class="views views-info">${clip.views} views</p></li>
 									</ul>
 								</div>
 							</div>
+								 <c:if test="${status.count%4==0}" > 
+					 <br>
+					 <br>
+					 <br>
+					 <br>
+					 </c:if>
+							</c:forEach>
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -134,85 +91,15 @@
 						<div class="recommended-grids">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>Chinese</h3>
+									<h3></h3>
 								</div>
 								<div class="heading-right">
-									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
+									<!-- <a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>-->
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:45</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>6:30</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+							
+						
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -220,85 +107,17 @@
 						<div class="recommended-grids">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>Hindi</h3>
+									<h3></h3>
 								</div>
 								<div class="heading-right">
-									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
+									<!-- <a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>-->
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:45</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>6:30</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+						
+						
+							
+						
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -306,131 +125,63 @@
 						<div class="recommended-grids">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>Telugu</h3>
+									<h3></h3>
 								</div>
 								<div class="heading-right">
-									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
+									<!-- ><a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>-->
 								</div>
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>5:32</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid movie-video-grid-left">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>8:26</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid movie-video-grid-right">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:44</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+						
+						
+						
+						
 							<div class="clearfix"> </div>
 						</div>
 					</div>
 				</div>
 				<div class="col-md-2 show-grid-right">
-					<h3>Upcoming Channels</h3>
+					<h3>Categories</h3>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">English Movies</a></li>
+							<li class="tv-img"><a href="categories-1"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-1">Trending</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Chinese Movies</a></li>
+							<li class="tv-img"><a href="categories-2"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-2">Sports</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Hindi Movies</a></li>
+							<li class="tv-img"><a href="categories-3"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-3">Science</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Telugu Movies</a></li>
+							<li class="tv-img"><a href="categories-4"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-4">Music</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Tamil Movies</a></li>
+							<li class="tv-img"><a href="categories-5"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-5">Games</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Kannada Movies</a></li>
+							<li class="tv-img"><a href="categories-6"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-6">Movies</a></li>
 						</ul>
 					</div>
 					<div class="show-right-grids">
 						<ul>
-							<li class="tv-img"><a href="#"><img src="images/mv.png" alt="" /></a></li>
-							<li><a href="#">Marathi movies</a></li>
+							<li class="tv-img"><a href="categories-7"><img src="images/mv.png" alt="" /></a></li>
+							<li><a href="categories-7">Other</a></li>
 						</ul>
 					</div>
 				</div>

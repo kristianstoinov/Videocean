@@ -22,9 +22,9 @@ public class HistoryController {
 	public String showClientDetails(Model viewModel,HttpServletRequest request) {
 		
 		
-//		if(request.getSession().getAttribute("user") == null) {
-//			return "error";
-//			}
+		if(request.getSession().getAttribute("user") == null) {
+			return "error";
+			}
 		
 		User user=(User) request.getSession().getAttribute("user");
 		try {

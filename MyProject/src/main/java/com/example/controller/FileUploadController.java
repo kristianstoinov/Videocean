@@ -62,7 +62,10 @@ public class FileUploadController {
     @RequestMapping(value = "/singleUpload", method = RequestMethod.POST)
     public String singleFileUpload(@Valid FileBucket fileBucket,
             BindingResult result, ModelMap model,HttpServletRequest request ) throws IOException {
- 
+        
+    	String check=fileBucket.getFile().getOriginalFilename().substring(fileBucket.getFile().getOriginalFilename().length()-3, fileBucket.getFile().getOriginalFilename().length());
+    	System.out.println(check);
+    	if(check.equals("mp4")||check.equals("ogg")){
         if (result.hasErrors()) {
             System.out.println("validation errors");
             return "upload";
@@ -92,11 +95,18 @@ public class FileUploadController {
             	 else{
             		 clip=new Clip(fileBucket.getName(), user,"videos/"+fileBucket.getFile().getOriginalFilename(), TYPE.PUBLIC);
             	 }
+            	 clip.setDescription(fileBucket.getDescription());
             	 clipId=new ClipDAO().addClip(clip);
             	 clip.setClipID(clipId);
+            	 if(plDAO.getPlaylistByOwner(user.getUserID())==null){
             	 playlist=new Playlist("My Clips", user, TYPE.PUBLIC);
 				 playlistId=plDAO.createPlaylist(playlist);
 				 usDAO.addPlaylistIntoLibrary(playlistId, user.getUserID());
+            	 }
+            	 else{
+            		 playlist=plDAO.getPlaylistByOwner(user.getUserID());
+            		 playlistId=playlist.getPlaylistID();
+            	 }
 				 plDAO.addClipToPlaylist(playlistId, clipId);
 //				 user.addClipToMyClips(clip);
 //				 user.getMyClips().setPlaylistID(playlistId);
@@ -104,7 +114,7 @@ public class FileUploadController {
 			} catch (PlaylistException | UserProblemException | ClipException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
-}
+            }
             // Now do something with file...
              System.out.println("do tuk e dobre");
             if(path!=null){
@@ -117,6 +127,12 @@ public class FileUploadController {
             model.addAttribute("fileName", fileName);
             return "redirect:index";
         }
+        }
+    	else{
+    		String error="Wrong video format";
+    		model.addAttribute("error",error);
+    		return "upload";
+    	}
     }
  
 }

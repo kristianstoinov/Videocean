@@ -21,9 +21,9 @@ public class Library {
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model model,Model viewModel,HttpServletRequest request,HttpServletResponse response) {
 		
-//	if(request.getSession().getAttribute("user") == null) {
-//		return "error";
-//		}
+	if(request.getSession().getAttribute("user") == null) {
+		return "error";
+		}
 		
 		User user=(User)request.getSession().getAttribute("user");
 		 try {
