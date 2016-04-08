@@ -7,46 +7,61 @@ import java.sql.SQLException;
 import com.example.exceptions.UserProblemException;
 import com.example.interfaces.ILanguageDAO;
 
-public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
+public class LanguageDAO extends AbstractDAO implements ILanguageDAO {
 	private static final String SELECT_LANGUAGE_BY_ID_QUERY = "SELECT * FROM languages WHERE language_id = ?";
 	private static final String ADD_LANGUAGE_QUERY = "INSERT INTO languages VALUES (null, ?)";
 	private static final String SELECT_LANGUAGE_BY_NAME_QUERY = "SELECT * FROM languages WHERE language like ?";
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see DAO.ILanguage#addLanguage(java.lang.String)
 	 */
 	@Override
 	public int addLanguage(String language) throws UserProblemException {
+		PreparedStatement ps = null;
+		ResultSet id = null;
 		if (language != null) {
 			try {
-				PreparedStatement ps = getCon().prepareStatement(ADD_LANGUAGE_QUERY,
-						PreparedStatement.RETURN_GENERATED_KEYS);
+				ps = getCon().prepareStatement(ADD_LANGUAGE_QUERY, PreparedStatement.RETURN_GENERATED_KEYS);
 				ps.setString(1, language);
 				ps.executeUpdate();
 
-				ResultSet id = ps.getGeneratedKeys();
+				id = ps.getGeneratedKeys();
 				id.next();
 				return id.getInt(1);
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 				throw new UserProblemException("Can't add a language", e);
+			} finally {
+				try {
+					if (ps != null)
+						ps.close();
+					if (id != null)
+						id.close();
+				} catch (SQLException e) {
+					e.printStackTrace();
+				}
 			}
-
+		} else {
+			throw new UserProblemException("Can't add a language");
 		}
-		return 0;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see DAO.ILanguage#getLanguageById(int)
 	 */
 	@Override
 	public String getLanguageById(int languageId) throws UserProblemException {
-
+		PreparedStatement ps = null;
+		ResultSet result = null;
 		try {
-			PreparedStatement ps = getCon().prepareStatement(SELECT_LANGUAGE_BY_ID_QUERY);
+			ps = getCon().prepareStatement(SELECT_LANGUAGE_BY_ID_QUERY);
 			ps.setInt(1, languageId);
-			ResultSet result = ps.executeQuery();
+			result = ps.executeQuery();
 			result.next();
 			String languageName = result.getString(2);
 
@@ -54,19 +69,31 @@ public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserProblemException("Can't find an language with ID : " + languageId, e);
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (result != null)
+					result.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
-	
-	/* (non-Javadoc)
+
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see DAO.ILanguage#getLanguageByName(java.lang.String)
 	 */
 	@Override
 	public int getLanguageByName(String language) throws UserProblemException {
-
+		PreparedStatement ps = null;
+		ResultSet result = null;
 		try {
-			PreparedStatement ps = getCon().prepareStatement(SELECT_LANGUAGE_BY_NAME_QUERY);
+			ps = getCon().prepareStatement(SELECT_LANGUAGE_BY_NAME_QUERY);
 			ps.setString(1, language);
-			ResultSet result = ps.executeQuery();
+			result = ps.executeQuery();
 			result.next();
 			int languageId = result.getInt(1);
 
@@ -74,6 +101,15 @@ public class LanguageDAO extends AbstractDAO implements ILanguageDAO{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new UserProblemException("Can't find an language with this name : " + language, e);
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (result != null)
+					result.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 }
