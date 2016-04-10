@@ -5,6 +5,7 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
+           
            <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -32,14 +33,14 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
   <body>
   <c:if test="${sessionScope.user != null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/loggedHeader.html" %>
-      <%@ include file="/static/loggedSidebar.html" %>
+    <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
 </c:if>
 
   <c:if test="${sessionScope.user == null}">
    <!-- There is no user **attribute** in the session -->  
-    <%@ include file="/static/header.html" %>
-     <%@ include file="/static/sidebar.html" %>
+    <jsp:include page="header.jsp" />
+      <jsp:include page="sidebar.jsp" />
 </c:if>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main-grids">
@@ -51,7 +52,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	               	<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="single-${clip.clipID}">   <video width="354" height="200" ><source src="${clip.clipURL}" ></source></video></a>
+							<a href="single-${clip.clipID}">   <video width="360" height="200" ><source src="load-${clip.clipID}" ></source></video></a>
 							<div class="time">
 								<p>3:04</p>
 							</div>
@@ -60,9 +61,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							</div>
 						</div>
 						<div class="resent-grid-info recommended-grid-info">
-							<h3><a href="single.html" class="title title-info">${clip.name}</a></h3>
+							<h3><a href="single-${clip.clipID}" class="title title-info">${clip.name}</a></h3>
 							<ul>
-								<li><p class="author author-info"><a href="#" class="author"> ${clip.owner.fullName}</a></p></li>
+								<li><p class="author author-info"><a href="user-${clip.owner.userID}" class="author"> ${clip.owner.fullName}</a></p></li>
 								<li class="right-list"><p class="views views-info"> ${clip.views} views</p></li>
 							</ul>
 						</div>
@@ -77,7 +78,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h3>Animated Cartoon</h3>
 						</div>
 						<script src="js/responsiveslides.min.js"></script>
-						 <script>
+						 <!--  <script>
 							// You can also use "$(window).load(function() {"
 							$(function () {
 							  // Slideshow 4
@@ -96,17 +97,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							  });
 						
 							});
-						  </script>
+						  </script>-->
 						<div  id="top" class="callbacks_container">
 							<ul class="rslides" id="slider3">
 								<li>
 									<div class="animated-grids">
 									
 										
-						      <c:forEach var="clip" items="${clips}" step="1" begin="0" end="19">
+						      <c:forEach var="cl" items="${clips}" step="1" begin="0" end="19">
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
-												<a href="single-${clip.clipID}"> <video width="260" height="180" ><source src="${clip.clipURL}" ></source></video></a>
+												<a href="single-${cl.clipID}"> <video width="260" height="180"><source src="load-${cl.clipID}" ></source></video></a>
 												<div class="time small-time slider-time">
 													<p>4:34</p>
 												</div>
@@ -115,13 +116,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												</div>
 											</div>
 											<div class="resent-grid-info recommended-grid-info">
-												<h5><a href="single-${cl.clipID}" class="title">${clip.name}</a></h5>
+												<h5><a href="single-${cl.clipID}" class="title">${cl.name}</a></h5>
 												<div class="slid-bottom-grids">
 													<div class="slid-bottom-grid">
-														<p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p>
+														<p class="author author-info"><a href="user-${cl.owner.userID}" class="author">${cl.owner.fullName}</a></p>
 													</div>
 													<div class="slid-bottom-grid slid-bottom-right">
-														<p class="views views-info">${clip.views} views</p>
+														<p class="views views-info">${cl.views} views</p>
 													</div>
 													<div class="clearfix"> </div>
 												</div>
@@ -131,7 +132,8 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="clearfix"> </div>
 									</div>
 								</li>
-							
+								<a href="loadprevious" >Previous Page</a>
+							<a href="loadmore" >Next Page</a>
 							</ul>
 						</div>
 					</div>
@@ -166,7 +168,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>

@@ -30,16 +30,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //fonts -->
 </head>
   <body>
-  <c:if test="${sessionScope.user != null}">
+ <c:if test="${sessionScope.user != null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/loggedHeader.html" %>
-      <%@ include file="/static/loggedSidebar.html" %>
+    <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
 </c:if>
 
   <c:if test="${sessionScope.user == null}">
    <!-- There is no user **attribute** in the session -->  
-    <%@ include file="/static/header.html" %>
-     <%@ include file="/static/sidebar.html" %>
+    <jsp:include page="header.jsp" />
+      <jsp:include page="sidebar.jsp" />
 </c:if>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main-grids">
@@ -56,7 +56,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<h3>HISTORY</h3>
 						</div>
 						<script src="js/responsiveslides.min.js"></script>
-						 <script>
+						 <!--  ]<script>
 							// You can also use "$(window).load(function() {"
 							$(function () {
 							  // Slideshow 4
@@ -76,9 +76,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						
 							});
 						  </script>
+						  -->
 						<div  id="top" class="callbacks_container">
 							<ul class="rslides" id="slider3">
-							<c:forEach var="clip" items="${clips}" >
+							<c:forEach var="clip" items="${clips}" step="1" begin="0" end="7" >
 								<li>
 									<div class="animated-grids">
 									
@@ -86,7 +87,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						     
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
-												<a href="single-${clip.clipID}"><video width="260" height="180" ><source src="${clip.clipURL}" ></source></video></a>
+												<a href="single-${clip.clipID}"><video width="260" height="180" ><source src="load-${clip.clipID}" ></source></video></a>
 												<div class="time small-time slider-time">
 													<p>4:34</p>
 												</div>
@@ -98,7 +99,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 												<h5><a href="single.html" class="title">${clip.name}</a></h5>
 												<div class="slid-bottom-grids">
 													<div class="slid-bottom-grid">
-														<p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p>
+														<p class="author author-info"><a href="user-${clip.owner.userID}" class="author">${clip.owner.fullName}</a></p>
 													</div>
 													<div class="slid-bottom-grid slid-bottom-right">
 														<p class="views views-info">${clip.views} views</p>
@@ -145,17 +146,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>
-	<div class="drop-menu">
-		<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu4">
-		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Regular link</a></li>
-		  <li role="presentation" class="disabled"><a role="menuitem" tabindex="-1" href="#">Disabled link</a></li>
-		  <li role="presentation"><a role="menuitem" tabindex="-1" href="#">Another link</a></li>
-		</ul>
-	</div>
+	
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->

@@ -11,6 +11,7 @@ public class Error {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model model) {
+		
 		return "error";
 	}	
 

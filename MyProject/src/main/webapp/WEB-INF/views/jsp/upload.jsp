@@ -1,3 +1,4 @@
+<%@page import="com.example.classes.TYPE"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -14,8 +15,10 @@
 	
 	
 	
-		 addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
 	
+ addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } 
+
+
 
 
 
@@ -44,15 +47,17 @@
 <script src="js/fileinput.min.js" type="text/javascript"></script>
 <!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js" type="text/javascript"></script>-->
 
-
-
-<link rel="stylesheet" href="css/styleLogin.css">
 </head>
 <body>
-	<%@ include file="/static/header.html"%>
-
+	 <jsp:include page="loggedHeader.jsp" />
+	 
 	<div class="module upload-form-module">
 		<!-- upload -->
+		
+		
+		
+		
+		
 		<div class="form" style="display: block;">
 			<form:form method="POST" modelAttribute="fileBucket"
 				enctype="multipart/form-data" class="form-horizontal">
@@ -81,10 +86,21 @@
 						cols="30" class="form-control input-sm"
 						placeholder="Video Description" />
 				</div>
+				<select name="category">
+					<c:forEach var="category" items="${categories}">
+						<option value="${category.getCategoryID()}">${category.getName()}</option>
+					</c:forEach>
+
+				</select>
+				<br>
+				<br>
+				<br>
+				<br>
 				<div class="form-actions floatRight">
 					<input type="submit" value="Upload" class="btn btn-primary">
 					<button type="reset" class="btn btn-default btn-reset">Reset</button>
 				</div>
+
 
 			</form:form>
 			<c:if test="${not empty error}">
@@ -94,12 +110,11 @@
 				<a href="<c:url value='/index' />">Home</a>
 			</div>
 
+
+
 		</div>
 
 	</div>
-
-
-
 
 
 </body>

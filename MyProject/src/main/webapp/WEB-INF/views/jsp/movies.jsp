@@ -29,17 +29,16 @@
 <!-- //fonts -->
 </head>
   <body>
-    <!-- proverki -->
-    <c:if test="${sessionScope.user != null}">
+  <c:if test="${sessionScope.user != null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/loggedHeader.html" %>
-      <%@ include file="/static/loggedSidebar.html" %>
+    <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
 </c:if>
 
   <c:if test="${sessionScope.user == null}">
    <!-- There is no user **attribute** in the session -->  
-    <%@ include file="/static/header.html" %>
-     <%@ include file="/static/sidebar.html" %>
+    <jsp:include page="header.jsp" />
+      <jsp:include page="sidebar.jsp" />
 </c:if>
       <!--// proverki -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
@@ -57,11 +56,11 @@
 								<div class="clearfix"> </div>
 							</div>
 						
-					<c:forEach var="clip" varStatus="status" items="${clips}" step="1" begin="0" end="19">
+					<c:forEach var="clip" varStatus="status" items="${clips}" step="1" begin="0" end="7">
 				
 							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
 								<div class="resent-grid-img recommended-grid-img">
-									<a href="single-${clip.clipID}"> <video width="210" height="140" ><source src="${clip.clipURL}" ></a>
+									<a href="single-${clip.clipID}"> <video width="210" height="140" ><source src="load-${clip.clipID}" ></a>
 									<div class="time small-time show-time movie-time">
 										<p>2:06</p>
 									</div>
@@ -72,7 +71,7 @@
 								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
 									<h5><a href="single-${clip.clipID}" class="title">${clip.name}</a></h5>
 									<ul>
-										<li><p class="author author-info"><a href="#" class="author">${clip.owner.fullName}</a></p></li>
+										<li><p class="author author-info"><a href="user-${clip.owner.userID}" class="author">${clip.owner.fullName}</a></p></li>
 										<li class="right-list"><p class="views views-info">${clip.views} views</p></li>
 									</ul>
 								</div>
@@ -188,7 +187,7 @@
 				<div class="clearfix"> </div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>

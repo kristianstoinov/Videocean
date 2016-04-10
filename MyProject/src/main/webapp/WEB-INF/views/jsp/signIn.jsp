@@ -4,12 +4,11 @@
 	uri="http://www.springframework.org/tags/form"%>
 	<%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
-           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html>
 <html >
   <head>
     <meta charset="UTF-8">
-    <title>Flat Login Form 3.0</title>
+    <title>Videocean Login</title>
     
     
     <link rel="stylesheet" href="css/reset.css">
@@ -26,9 +25,9 @@
   </head>
 
   <body>
-  <%String number1="<source src='videos/video1.mp4' type='video/mp4'>"; %>
-<%String number2="<source src='videos/video8.mp4' type='video/mp4'>"; %>
-<%String number3="<source src='videos/video6.mp4' type='video/mp4'>"; %>
+  <%String number1="<source src='load-95' type='video/mp4'>"; %>
+<%String number2="<source src='load-95' type='video/mp4'>"; %>
+<%String number3="<source src='load-96' type='video/mp4'>"; %>
      <video id="Video1" class="bgvid back" autoplay="false" muted="muted" preload="auto" loop>
      <% 
      double p = Math.random();
@@ -50,12 +49,12 @@
 <!-- Button Mixin-->
 <!-- Pen Title-->
 <div class="pen-title">
-  <h1> Login Form</h1><span> </span>
+  <h1> </h1><span> </span>
 </div>
 <!-- Form Module-->
 <div class="module form-module">
   <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-    <div class="tooltip">Click Me</div>
+    <div class="tooltip">Login/Register</div>
   </div>
     <div class="form">
     <h2>Login to your account</h2>
@@ -75,7 +74,7 @@
     <springForm:form action="signUp" method="post" commandName="user" >
       <springForm:input type="email" placeholder="Email adress" path="username" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"/>
       <springForm:input type="password" placeholder="Password" path="password" pattern=".{6,}"/>
-      <springForm:input type="" placeholder="Full Name" path="fullName" pattern=".{1,}"/>
+      <springForm:input type="text" placeholder="Full Name" path="fullName" />
       <button>Register</button>
     </springForm:form>
        <c:if test="${not empty error}">
@@ -86,7 +85,7 @@
   </div>
 
 
-  <div class="cta"><a href="http://andytran.me">Forgot your password?</a></div>
+  <div class="cta"><a href="index">Back to home page</a></div>
 </div>
     <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 

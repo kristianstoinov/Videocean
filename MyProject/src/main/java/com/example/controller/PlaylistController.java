@@ -33,6 +33,7 @@ public class PlaylistController {
 		try {
 			if(new PlaylistDAO().getPlaylistByOwner(user.getUserID())!=null){
 				Playlist playlist=new PlaylistDAO().getPlaylistByOwner(user.getUserID());
+				System.out.println(playlist.getPlaylistID());
 				playlist=new PlaylistDAO().getAllClipsForPlaylist(playlist.getPlaylistID());
 				List<Clip> clips=playlist.getClips();
 				Clip clip=clips.get(0);
@@ -46,7 +47,7 @@ public class PlaylistController {
 		} catch (PlaylistException e) {
 			e.printStackTrace();
 			System.out.println("greshka");
-			return "redirect:index";
+			return "redirect:history";
 		}
 		return "playlist";
 	}

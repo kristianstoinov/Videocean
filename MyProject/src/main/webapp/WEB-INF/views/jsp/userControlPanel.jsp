@@ -3,6 +3,8 @@
 <%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
 <%@ page errorPage="error.jsp" %>
+<%@ taglib prefix="c" 
+           uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -37,8 +39,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //fonts -->
 </head>
   <body>
-<%@ include file="/static/loggedHeader.html" %>
-     <%@ include file="/static/loggedSidebar.html" %>
+   <!-- There is a user **attribute** in the session -->  
+    <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
+
+
+ 
      <br/>
       <br/>
        <br/>
@@ -90,15 +96,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="recommended-grids english-grid">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>My Clips</h3>
+									<h3>My Last Clips</h3>
 								</div>
 								
 								<div class="clearfix"> </div>
 							</div>
-							<c:forEach var="clip" items="${clip}">
+							<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="playlist{id}"><img src="${clip.clipURL}" alt="" /></a>
+							<a href="single-${clip.clipID}"><video width="292" height="250" ><source src="load-${clip.clipID}" ></source></video></a>
 							<div class="time">
 								<p>3:04</p>
 							</div>
@@ -115,60 +121,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					</c:forEach>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>9:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:04</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/mv4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:06</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+							
+							
+							
 							
 							<div class="clearfix"> </div>
 						</div>
@@ -179,78 +134,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:45</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/ch4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>6:30</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+							
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -258,85 +142,15 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<div class="recommended-grids">
 							<div class="recommended-info">
 								<div class="heading">
-									<h3>My Playlists</h3>
+									<h3></h3>
 								</div>
 							
 								<div class="clearfix"> </div>
 							</div>
-							<c:forEach var="clip" items="${playlist}">
-					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
-						<div class="resent-grid-img recommended-grid-img">
-							<a href="playlist{id}"><img src="${playlist.getFirstClip.clipURL}" alt="" /></a>
-							<div class="time">
-								<p>3:04</p>
-							</div>
-							<div class="clck">
-								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-							</div>
-						</div>
-						<div class="resent-grid-info recommended-grid-info">
-							<h3><a href="single.html" class="title title-info">${playlist.name}</a></h3>
-							<ul>
-								<li><p class="author author-info"><a href="#" class="author"> ${playlist.owner.fullName}</a></p></li>
-								<li class="right-list"><p class="views views-info"> ${playlist.viewsOfPlaylist} views</p></li>
-							</ul>
-						</div>
-					</div>
-					</c:forEach>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:45</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>7:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/h4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>6:30</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+						
+						
+					
+						
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -345,78 +159,10 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 							<div class="recommended-info">
 								<div class="clearfix"> </div>
 							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm1.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>5:32</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm2.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>2:34</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid movie-video-grid-left">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm3.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>8:26</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
-							<div class="col-md-3 resent-grid recommended-grid movie-video-grid movie-video-grid-right">
-								<div class="resent-grid-img recommended-grid-img">
-									<a href="single"><img src="images/tm4.jpg" alt="" /></a>
-									<div class="time small-time show-time movie-time">
-										<p>3:44</p>
-									</div>
-									<div class="clck movie-clock">
-										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
-								</div>
-								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
-									<h5><a href="single" class="title">Varius sit sed viverra Nullam interdum metus</a></h5>
-									<ul>
-										<li><p class="author author-info"><a href="#" class="author">John Maniya</a></p></li>
-										<li class="right-list"><p class="views views-info">2,114,200 views</p></li>
-									</ul>
-								</div>
-							</div>
+						
+						
+							
+						
 							<div class="clearfix"> </div>
 						</div>
 					</div>
@@ -424,7 +170,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="clearfix"> </div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>

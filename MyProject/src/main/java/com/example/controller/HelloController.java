@@ -1,5 +1,6 @@
 package com.example.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,9 +21,19 @@ public class HelloController {
 
 	@RequestMapping(method = RequestMethod.GET)
 	public String sayHello(Model viewModel,HttpServletRequest request) {
+		int count=0;
+		request.getSession().setAttribute("count", 8);
 		try {
+			List<Clip> forFirstPage = new ArrayList<Clip>();
 			List<Clip> clips=new ClipDAO().getAllClips();
-			viewModel.addAttribute("clips", clips);
+			for(Clip clip:clips){
+				forFirstPage.add(clip);
+				if(count==7){
+					break;
+				}
+				count++;
+			}
+			viewModel.addAttribute("clips", forFirstPage);
 		} catch (ClipException e) {
 			e.printStackTrace();
 			System.out.println("Nyama Klipove");

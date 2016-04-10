@@ -5,7 +5,6 @@
 	uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="c" 
            uri="http://java.sun.com/jsp/jstl/core" %>
-           <%@ page errorPage="error.jsp" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -30,16 +29,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //fonts -->
 </head>
   <body>
-  <c:if test="${sessionScope.user != null}">
+   <c:if test="${sessionScope.user != null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/loggedHeader.html" %>
-      <%@ include file="/static/loggedSidebar.html" %>
+    <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
 </c:if>
 
   <c:if test="${sessionScope.user == null}">
    <!-- There is no user **attribute** in the session -->  
-    <%@ include file="/static/header.html" %>
-     <%@ include file="/static/sidebar.html" %>
+    <jsp:include page="header.jsp" />
+      <jsp:include page="sidebar.jsp" />
 </c:if>
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="main-grids">
@@ -51,7 +50,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	               	<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
-							<a href="single-${clip.clipID}">   <video width="354" height="200" ><source src="${clip.clipURL}" ></source></video></a>
+							<a href="single-${clip.clipID}"> <video width="354" height="200" preload="none"><source src="load-${clip.clipID}" ></source></video></a>
 							<div class="time">
 								<p>3:04</p>
 							</div>
@@ -141,7 +140,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				</div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>

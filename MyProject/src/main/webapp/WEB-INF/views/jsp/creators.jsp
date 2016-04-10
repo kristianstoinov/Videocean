@@ -4,7 +4,7 @@
            uri="http://java.sun.com/jsp/jstl/core" %>
 	<%@ taglib prefix="springForm"
 	uri="http://www.springframework.org/tags/form"%>
-<%@ page errorPage="error.jsp" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -29,14 +29,15 @@
 </head>
   <body>
   
+     
     <c:if test="${sessionScope.user != null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/loggedHeader.html" %>
+     <jsp:include page="loggedHeader.jsp" />
 </c:if>
 
  <c:if test="${sessionScope.user == null}">
    <!-- There is a user **attribute** in the session -->  
-    <%@ include file="/static/header.html" %>
+    <jsp:include page="header.jsp" />
 </c:if>
  
    
@@ -112,7 +113,7 @@
 			</div>
 		</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		<div class="clearfix"> </div>
 	<div class="drop-menu">
