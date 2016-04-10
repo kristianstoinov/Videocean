@@ -121,24 +121,36 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 
 	@Override
 	public Playlist getAllClipsForPlaylist(int playlistID) throws PlaylistException {
+<<<<<<< HEAD
 		PreparedStatement ps ;
 		ResultSet resultSet;
+=======
+		PreparedStatement ps = null;
+		ResultSet resultSet = null;
+>>>>>>> origin/master
 		try {
 			ps = getCon().prepareStatement(ALL_CLIPS_QUERY);
 			ps.setInt(1, playlistID);
 			resultSet = ps.executeQuery();
+<<<<<<< HEAD
 			
 			UserDAO user = new UserDAO();
 //			User owner = user.getUserById(resultSet.getInt(4));
 			Playlist playlist=new PlaylistDAO().getPlaylistById(playlistID);
+=======
+			UserDAO user = new UserDAO();
+			User owner = user.getUserById(resultSet.getInt(4));
+			Playlist playlist = new Playlist(resultSet.getString(2), owner, TYPE.PUBLIC);
+>>>>>>> origin/master
 			ClipDAO clip = new ClipDAO();
 			while (resultSet.next()) {
 				playlist.addClipToPlaylist(clip.getClipByID(resultSet.getInt(3)));
 			}
 			return playlist;
-		} catch (SQLException | ClipException e) {
+		} catch (SQLException | ClipException | UserProblemException e) {
 			e.printStackTrace();
 			throw new PlaylistException("Invalid Playlist ID.");
+<<<<<<< HEAD
 	} 
 		//finally {
 //			try {
@@ -150,6 +162,18 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 //				e.printStackTrace();
 //			}
 //		}
+=======
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+				if (resultSet != null)
+					resultSet.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+>>>>>>> origin/master
 	}
 
 	@Override
@@ -183,6 +207,7 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			}
 		}
 	}
+<<<<<<< HEAD
 	public Playlist getPlaylistByOwner(int userId) throws PlaylistException{
 		PreparedStatement ps;
 		Playlist playlist = null;
@@ -199,12 +224,26 @@ public class PlaylistDAO extends AbstractDAO implements IPlaylistDAO {
 			// tuk tryabva da se selectva state a ne da go podavam;
 			playlist = new Playlist(playlistId, name, owner, TYPE.PUBLIC);
 			playlist.setViewsOfPlaylist(views);
-			}
-			return playlist;
-		} catch (SQLException | UserProblemException | PlaylistException e) {
-			// TODO Auto-generated catch block
+=======
+
+	@Override
+	public void removePlaylistByID(int playlistID) throws PlaylistException {
+		PreparedStatement ps = null;
+		try {
+			ps = getCon().prepareStatement(REMOVE_PLAYLIST_BY_ID_QUERY);
+			ps.setInt(1, playlistID);
+			ps.executeUpdate();
+		} catch (SQLException e) {
 			e.printStackTrace();
-			throw new PlaylistException("Something got wrong.Please try again later", e);
+			throw new PlaylistException("Invalid id for Playlist");
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+>>>>>>> origin/master
+			}
 		}
 	}
 	@Override

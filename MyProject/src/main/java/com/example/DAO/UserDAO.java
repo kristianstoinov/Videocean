@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.neo4j.cypher.internal.compiler.v2_2.planner.logical.plans.rewriter.predicateRemovalThroughJoins;
+
 import com.example.classes.Admin;
 import com.example.classes.Clip;
 import com.example.classes.Playlist;
@@ -530,6 +532,7 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+<<<<<<< HEAD
 		}
 	}
 	
@@ -559,6 +562,8 @@ public class UserDAO extends AbstractDAO implements IUserDAO {
 			} catch (SQLException e) {
 				e.printStackTrace();
 			}
+=======
+>>>>>>> origin/master
 		}
 	}
 

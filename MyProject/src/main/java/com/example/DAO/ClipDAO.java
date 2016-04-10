@@ -22,11 +22,15 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 	private static final String DELETE_CLIP = "DELETE FROM clips WHERE clip_id=? ;";
 	private static final String ADD_CLIP = "INSERT INTO clips(clip_id,clip_name,owner_id,clip_path,state_id,date_published,category_id,description) VALUES(null,?,?,?,1,CURDATE(),?,?);";
 	private static final String SELECT_FROM_CLIPS_BY_CONTAINED_STRING_IN_NAME = "SELECT * FROM clips WHERE state_id=1 AND clip_name LIKE ?";
+<<<<<<< HEAD
 	private static final String CHECK_IF_USER_HAS_LIKED_DISLIKED_CLIP = "SELECT COUNT(1) FROM likes WHERE user_id = ? AND clip_id = ?";
 	private static final String SAVE_LIKE = "INSERT INTO likes (user_id, clip_id, preference) VALUES (?, ?, 1)";
 	private static final String GET_CLIP_LIKES = "SELECT COUNT(1) FROM likes WHERE clip_id = ? AND preference = 1";
 	private static final String SAVE_DISLIKE = "INSERT INTO likes (user_id, clip_id, preference) VALUES (?, ?, 2)";
 	
+=======
+
+>>>>>>> origin/master
 	@Override
 	public void updateClip(Clip clip) throws UserProblemException, ClipException {
 		PreparedStatement ps = null;
@@ -188,6 +192,7 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 					rs.close();
 			} catch (SQLException e) {
 				e.printStackTrace();
+<<<<<<< HEAD
 			}
 		}
 
@@ -326,15 +331,43 @@ public class ClipDAO extends AbstractDAO implements IClipDAO {
 						userDao.getUserById(rs.getInt(3)), rs.getString(4), stateDao.getStateByID(rs.getInt(5)));
 				clip.setViews(rs.getInt(8));
 				 allClips.add(clip);
+=======
+			}
+		}
+
+	}
+
+	public List<Clip> getClipsByStrinInName(String serachString) throws ClipException {
+		List<Clip> allClips = new ArrayList<Clip>();
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		try {
+			ps = getCon().prepareStatement(SELECT_FROM_CLIPS_BY_CONTAINED_STRING_IN_NAME);
+			ps.setString(1, "%" + serachString + "%");
+			rs = ps.executeQuery();
+			UserDAO userDao = new UserDAO();
+			StateDAO stateDao = new StateDAO();
+			while (rs.next()) {
+				Clip clip = new Clip(rs.getInt(1), rs.getString(2), userDao.getUserById(rs.getInt(3)), rs.getString(4),
+						stateDao.getStateByID(rs.getInt(5)));
+				allClips.add(clip);
+>>>>>>> origin/master
 			}
 			return allClips;
 		} catch (SQLException | UserProblemException e) {
 			e.printStackTrace();
 			throw new ClipException("No clips found!");
+<<<<<<< HEAD
 		}finally {
 			try {
 				if (statement != null)
 					statement.close();
+=======
+		} finally {
+			try {
+				if (ps != null)
+					ps.close();
+>>>>>>> origin/master
 				if (rs != null)
 					rs.close();
 			} catch (SQLException e) {
