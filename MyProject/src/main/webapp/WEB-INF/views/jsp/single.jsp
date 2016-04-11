@@ -79,9 +79,9 @@ Your browser does not support the video tag.
 						<div class="share">
 							<h5>Share</h5>
 							<ul>							
-								<li><a target="_blank"
+								<li><!--  <a target="_blank"
 								href="https://www.facebook.com/sharer/sharer.php?u=single-${currentID}"
-								class="icon fb-icon">Facebook</a>
+								class="icon fb-icon">Facebook</a>-->
 								<a href="#"
 								class="icon like" onclick="return saveLike();">Like <span id="like-count">${likes}</span></a>
 								<script>
@@ -149,7 +149,7 @@ Your browser does not support the video tag.
 							</div>
 					</div>
 					<div class="all-comments">
-						<div class="all-comments-info">
+						<!-- <div class="all-comments-info">
 							<a href="#">All Comments (8,657)</a>
 							<div class="box">
 								<form>
@@ -164,33 +164,31 @@ Your browser does not support the video tag.
 
 								</ul>
 							</div>
-						</div>
+						</div>-->
 						<div class="media-grids">
 						
-							<div class="media">
-								<h5>Mark Johnson</h5>
+							<!-- <div class="media">
+								
 								<div class="media-left">
 									<a href="#">
 										
 									</a>
 								</div>
 								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
+								
 								</div>
 							</div>
 							<div class="media">
-								<h5>Steven Smith</h5>
 								<div class="media-left">
 									<a href="#">
 										
 									</a>
 								</div>
 								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
+									
 								</div>
-							</div>
+							</div>-->
+							
 						</div>
 					</div>
 				</div>

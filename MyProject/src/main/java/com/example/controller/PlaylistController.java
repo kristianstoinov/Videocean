@@ -11,36 +11,36 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.example.DAO.ClipDAO;
-import com.example.DAO.PlaylistDAO;
-import com.example.DAO.UserDAO;
-import com.example.classes.Clip;
-import com.example.classes.Playlist;
-import com.example.classes.User;
-import com.example.exceptions.ClipException;
-import com.example.exceptions.PlaylistException;
-import com.example.exceptions.UserProblemException;
+import com.example.model.Clip;
+import com.example.model.ClipDAO;
+import com.example.model.ClipException;
+import com.example.model.Playlist;
+import com.example.model.PlaylistDAO;
+import com.example.model.PlaylistException;
+import com.example.model.User;
+import com.example.model.UserDAO;
+import com.example.model.UserProblemException;
 
 @Controller
 public class PlaylistController {
-	
+
 	@RequestMapping(method = RequestMethod.GET, value = "/playlist")
-	public String showClientDetails(Model viewModel,HttpServletRequest request) {
-		if(request.getSession().getAttribute("user") == null) {
+	public String showClientDetails(Model viewModel, HttpServletRequest request) {
+		if (request.getSession().getAttribute("user") == null) {
 			return "error";
-			}
-		User user=(User) request.getSession().getAttribute("user");
+		}
+		User user = (User) request.getSession().getAttribute("user");
 		try {
-			if(new PlaylistDAO().getPlaylistByOwner(user.getUserID())!=null){
-				Playlist playlist=new PlaylistDAO().getPlaylistByOwner(user.getUserID());
+			if (new PlaylistDAO().getPlaylistByOwner(user.getUserID()) != null) {
+				Playlist playlist = new PlaylistDAO().getPlaylistByOwner(user.getUserID());
 				System.out.println(playlist.getPlaylistID());
-				playlist=new PlaylistDAO().getAllClipsForPlaylist(playlist.getPlaylistID());
-				List<Clip> clips=playlist.getClips();
-				Clip clip=clips.get(0);
+				playlist = new PlaylistDAO().getAllClipsForPlaylist(playlist.getPlaylistID());
+				List<Clip> clips = playlist.getClips();
+				Clip clip = clips.get(0);
 				clips.remove(0);
-			viewModel.addAttribute("clips",clips);
-			viewModel.addAttribute("clip",clip);
-			}else{
+				viewModel.addAttribute("clips", clips);
+				viewModel.addAttribute("clip", clip);
+			} else {
 				System.out.println("else");
 				return "redirect:index";
 			}
@@ -51,30 +51,29 @@ public class PlaylistController {
 		}
 		return "playlist";
 	}
-	
-	
-	@RequestMapping(method=RequestMethod.GET, value="/playlist-{id}")
-	public String showClientDetails( @PathVariable("id") Integer id,Model viewModel,HttpServletRequest request) {
-		if(request.getSession().getAttribute("user") == null) {
+
+	@RequestMapping(method = RequestMethod.GET, value = "/playlist-{id}")
+	public String showClientDetails(@PathVariable("id") Integer id, Model viewModel, HttpServletRequest request) {
+		if (request.getSession().getAttribute("user") == null) {
 			return "error";
-			}
-		User user=(User) request.getSession().getAttribute("user");
+		}
+		User user = (User) request.getSession().getAttribute("user");
 		try {
-			if(new PlaylistDAO().getPlaylistByOwner(user.getUserID())!=null){
-				Playlist playlist=new PlaylistDAO().getPlaylistByOwner(user.getUserID());
-				playlist=new PlaylistDAO().getAllClipsForPlaylist(playlist.getPlaylistID());
-				List<Clip> clips=playlist.getClips();
+			if (new PlaylistDAO().getPlaylistByOwner(user.getUserID()) != null) {
+				Playlist playlist = new PlaylistDAO().getPlaylistByOwner(user.getUserID());
+				playlist = new PlaylistDAO().getAllClipsForPlaylist(playlist.getPlaylistID());
+				List<Clip> clips = playlist.getClips();
 				Clip clip = null;
-				for(Clip forChange:clips){
-					if(forChange.getClipID()==id){
-				 clip=forChange;
-				 break;
+				for (Clip forChange : clips) {
+					if (forChange.getClipID() == id) {
+						clip = forChange;
+						break;
 					}
 				}
 				clips.remove(clip);
-			viewModel.addAttribute("clips",clips);
-			viewModel.addAttribute("clip",clip);
-			}else{
+				viewModel.addAttribute("clips", clips);
+				viewModel.addAttribute("clip", clip);
+			} else {
 				System.out.println("else");
 				return "redirect:index";
 			}

@@ -29,8 +29,8 @@
 <!-- //fonts -->
 </head>
   <body>
-  <%@ include file="/static/loggedHeader.html" %>
-     <%@ include file="/static/loggedSidebar.html" %>
+  <jsp:include page="loggedHeader.jsp" />
+      <jsp:include page="loggedSidebar.jsp" />
       <!--// proverki -->
         <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
 			<div class="show-top-grids">
@@ -381,7 +381,7 @@
 				<div class="clearfix"> </div>
 			</div>
 			<!-- footer -->
-			<%@ include file="/static/footer.html" %>
+			<jsp:include page="footer.jsp" />
 			<!-- //footer -->
 		</div>
 		<div class="clearfix"> </div>

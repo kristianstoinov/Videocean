@@ -7,16 +7,16 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.example.DAO.CategoryDAO;
-import com.example.DAO.ClipDAO;
-import com.example.DAO.UserDAO;
-import com.example.classes.Category;
-import com.example.classes.Clip;
-import com.example.classes.TYPE;
-import com.example.classes.User;
-import com.example.exceptions.CategoryException;
-import com.example.exceptions.ClipException;
-import com.example.exceptions.UserProblemException;
+import com.example.model.Category;
+import com.example.model.CategoryDAO;
+import com.example.model.CategoryException;
+import com.example.model.Clip;
+import com.example.model.ClipDAO;
+import com.example.model.ClipException;
+import com.example.model.TYPE;
+import com.example.model.User;
+import com.example.model.UserDAO;
+import com.example.model.UserProblemException;
 
 public class TestClipDAO {
 
@@ -48,7 +48,5 @@ public class TestClipDAO {
 		deleteThis = clipDAO.addClip(new Clip("DA", user.getUserById(1), "URL", TYPE.PUBLIC));
 		clipDAO.removeClip(deleteThis);
 	}
-
-
 
 }

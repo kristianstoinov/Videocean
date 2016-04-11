@@ -47,8 +47,11 @@
 				<!-- container -->
 				<div class="container">
 					<div class="developers-info">
+					<br/>
+					<br/>
+					<br/>
 						<h3>For Creators</h3>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc blandit vulputate eleifend. Cras dignissim et massa eu varius. Etiam iaculis tellus id nunc gravida, id fermentum libero porttitor. Interdum et malesuada fames ac ante ipsum primis in faucibus. Cras commodo commodo luctus.</p>
+						<p>.</p>
 					</div>
 				</div>
 				<!-- //container -->
@@ -58,20 +61,41 @@
 				<div class="container">
 					<div class="col-md-4 creators-top-grid">
 						<div class="creators-grid">
-							<a href="single.html">Getting started</a>
-							<p>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt. Vestibulum lobortis mauris maximus magna consectetur, non commodo velit vestibulum. Phasellus rutrum odio eu metus dignissim, nec feugiat nisi tempus. Nunc non nibh sagittis, rhoncus neque tempus, efficitur dolor. Suspendisse ornare sapien vitae mauris pharetra, sed eleifend ante luctus. Fusce mollis tortor sit amet ipsum suscipit semper.</p>
+							<a href="single">Trayan Muchev</a>
+							<p>Age : 20	 </p>
+							<br/>
+							<p>Born in Sliven in 1995	 </p>
+							<br/>
+							<p>Education:Finished 5th season of IT Talents Java EE </p>
+							<br/>
+							<p>Education: Software Engineering TU Sofia </p>
+							<br/>
 						</div>
 					</div>
 					<div class="col-md-4 creators-top-grid">
 						<div class="creators-grid">
-							<a href="single.html">Education</a>
-							<p>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt. Vestibulum lobortis mauris maximus magna consectetur, non commodo velit vestibulum. Phasellus rutrum odio eu metus dignissim, nec feugiat nisi tempus. Nunc non nibh sagittis, rhoncus neque tempus, efficitur dolor. Suspendisse ornare sapien vitae mauris pharetra, sed eleifend ante luctus. Fusce mollis tortor sit amet ipsum suscipit semper.</p>
+							<a href="single">Christian Stoynov</a>
+							<p>Age : 21	 </p>
+							<br/>
+							<p>Born in Stara Zagora in 1994	 </p>
+							<br/>
+							<p>Education:Finished 5th season of IT Talents Java EE </p>
+							<br/>
+							<p>Education: Software Engineering TU Sofia </p>
+							<br/>
 						</div>
 					</div>
 					<div class="col-md-4 creators-top-grid">
 						<div class="creators-grid">
-							<a href="single.html">Community</a>
-							<p>Nunc vitae rutrum enim. Mauris at volutpat leo. Vivamus dapibus mi ut elit fermentum tincidunt. Vestibulum lobortis mauris maximus magna consectetur, non commodo velit vestibulum. Phasellus rutrum odio eu metus dignissim, nec feugiat nisi tempus. Nunc non nibh sagittis, rhoncus neque tempus, efficitur dolor. Suspendisse ornare sapien vitae mauris pharetra, sed eleifend ante luctus. Fusce mollis tortor sit amet ipsum suscipit semper.</p>
+							<a href="single">Radoslav Yanchev</a>
+							<p>Age : 29	 </p>
+							<br/>
+							<p>Born in Dimitrovgrad in 1986	 </p>
+							<br/>
+							<p>Education:Finished 5th season of IT Talents Java EE </p>
+							<br/>
+							<p>Education: TU Sofia </p>
+							<br/>
 						</div>
 					</div>
 					<div class="clearfix"> </div>

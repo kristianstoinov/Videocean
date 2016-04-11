@@ -69,7 +69,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																<h4>Followers</h4>
 															</div>
 															<div class="stats-right">
-																<label>51</label>
+																<label id="follow-count">${follow}</label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
@@ -79,17 +79,29 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 																<h4>Likes</h4>
 															</div>
 															<div class="stats-right">
-																<label>30</label>
+																<label>${likesOfClip}</label>
 															</div>
 															<div class="clearfix"> </div>	
 														</div>
 														<div class="clearfix"> </div>	
 													</div>
 												</div>	
-												</div>				
+												</div>		
+													<div class="recommended-info">
+								<div class="heading">
+									<h3>${category.name}</h3>
+								</div>
+								<div class="heading-right">
+									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
+								</div>
+								<div class="clearfix"> </div>
+							</div>		
        
      <!-- added -->
       <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+        <!-- added subscribe-->
+ 
+     
 			<div class="show-top-grids">
 				<div class="col-sm-10 show-grid-left main-grids">
 					<div class="recommended">
@@ -98,19 +110,43 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 								<div class="heading">
 									<h3>My Last Clips</h3>
 								</div>
+								 <!-- added subscribe-->
+								     <div class="recommended-info">
+								<div class="heading-right">
+					
+									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim" onclick="return saveFollowers();">Subscribe</a>
+								</div>
+								<div class="clearfix"> </div>
+							</div>	
+								<!-- added subscribe-->
 								
+									<script>
+									function saveFollowers() {
+										jQuery.ajax({
+											  type: "POST",
+											  url: "${currentURL}/follow",
+											  success: function(result) {
+												  console.log(result);
+													var p =  JSON.parse(result);
+													jQuery("#follow-count").html(p.follow);
+						
+											  }
+											});
+										return false;
+									}
+								</script>
 								<div class="clearfix"> </div>
 							</div>
 							<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
 							<a href="single-${clip.clipID}"><video width="292" height="250" ><source src="load-${clip.clipID}" ></source></video></a>
-							<div class="time">
+							<!-- <div class="time">
 								<p>3:04</p>
 							</div>
 							<div class="clck">
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-							</div>
+							</div>-->
 						</div>
 						<div class="resent-grid-info recommended-grid-info">
 							<h3><a href="single.html" class="title title-info">${clip.name}</a></h3>

@@ -17,7 +17,7 @@
         <div id="navbar" class="navbar-collapse collapse">
 			<div class="top-search">
 				<form action="search" method="GET" class="navbar-form navbar-right">
-					<input type="text" class="form-control" placeholder="Search..." name="search">
+					<input type="text" class="form-control" placeholder="Search..." name="search" autocomplete="on">
 					<input type="submit" value=" ">
 				</form>
 			</div>

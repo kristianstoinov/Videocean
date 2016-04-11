@@ -88,12 +88,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
 												<a href="single-${clip.clipID}"><video width="260" height="180" ><source src="load-${clip.clipID}" ></source></video></a>
-												<div class="time small-time slider-time">
-													<p>4:34</p>
+												<!--  <div class="time small-time slider-time">
+													<p></p>
 												</div>
 												<div class="clck small-clck">
 													<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-												</div>
+												</div>-->
 											</div>
 											<div class="resent-grid-info recommended-grid-info">
 												<h5><a href="single.html" class="title">${clip.name}</a></h5>

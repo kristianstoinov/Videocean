@@ -7,9 +7,9 @@ import java.util.List;
 
 import org.junit.Test;
 
-import com.example.DAO.SubscriptionFollowerDAO;
-import com.example.classes.User;
-import com.example.exceptions.UserProblemException;
+import com.example.model.SubscriptionFollowerDAO;
+import com.example.model.User;
+import com.example.model.UserProblemException;
 
 public class TestFollowerDAO {
 
@@ -21,20 +21,19 @@ public class TestFollowerDAO {
 		subDAO.deleteSubscription(1, 2);
 	}
 
-	
 	@Test
 	public void testGetAllSubs() throws SQLException, UserProblemException {
-		List<User> sub=subDAO.getSubscriptions(2);
-		for(User us:sub){
+		List<User> sub = subDAO.getSubscriptions(2);
+		for (User us : sub) {
 			System.out.println(us.getFullName());
 			assertNotNull(us);
 		}
 	}
-	
+
 	@Test
 	public void testGetAllFollower() throws SQLException, UserProblemException {
-		List<User> sub=subDAO.getFollowers(1);
-		for(User us:sub){
+		List<User> sub = subDAO.getFollowers(1);
+		for (User us : sub) {
 			System.out.println(us.getFullName());
 			assertNotNull(us);
 		}

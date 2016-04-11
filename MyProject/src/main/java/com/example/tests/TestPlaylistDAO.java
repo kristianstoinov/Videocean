@@ -5,17 +5,17 @@ import static org.junit.Assert.assertNotNull;
 import java.sql.SQLException;
 import org.junit.Test;
 
-import com.example.DAO.ClipDAO;
-import com.example.DAO.PlaylistDAO;
-import com.example.DAO.UserDAO;
-import com.example.classes.Clip;
-import com.example.classes.Playlist;
-import com.example.classes.TYPE;
-import com.example.classes.User;
-import com.example.exceptions.ClipException;
-import com.example.exceptions.PlaylistException;
-import com.example.exceptions.UserProblemException;
-import com.example.interfaces.IPlaylistDAO;
+import com.example.model.Clip;
+import com.example.model.ClipDAO;
+import com.example.model.ClipException;
+import com.example.model.IPlaylistDAO;
+import com.example.model.Playlist;
+import com.example.model.PlaylistDAO;
+import com.example.model.PlaylistException;
+import com.example.model.TYPE;
+import com.example.model.User;
+import com.example.model.UserDAO;
+import com.example.model.UserProblemException;
 
 public class TestPlaylistDAO {
 

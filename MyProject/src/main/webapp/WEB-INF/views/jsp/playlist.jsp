@@ -63,7 +63,7 @@ Your browser does not support the video tag.
 						<div class="share">
 							<h5>Share</h5>
 							<ul>							
-								<li><a href="#" class="icon fb-icon">Facebook</a></li>
+								<!--  <li><a href="#" class="icon fb-icon">Facebook</a></li> -->
 								<li class="view">${clip.views }</li>								
 							</ul>
 						</div>
@@ -98,17 +98,17 @@ Your browser does not support the video tag.
 					</div>
 					<div class="all-comments">
 						<div class="all-comments-info">
-							<a href="#">All Comments (8,657)</a>
+							<!--<a href="#">All Comments (8,657)</a>-->
 							<div class="box">
-								<form>
+								<!--  <form>
 									<input type="text" placeholder="Comment" required=" ">
 									<input type="submit" value="SEND">
 									<div class="clearfix"> </div>
-								</form>
+								</form>-->
 							</div>
 							<div class="all-comments-buttons">
 								<ul>
-									<li><a href="#" class="top">Top Comments</a></li>
+								<!--	<li><a href="#" class="top">Top Comments</a></li>-->
 
 								</ul>
 							</div>
@@ -116,27 +116,15 @@ Your browser does not support the video tag.
 						<div class="media-grids">
 						
 							<div class="media">
-								<h5>Mark Johnson</h5>
+								<!--<h5>Mark Johnson</h5>-->
 								<div class="media-left">
-									<a href="#">
+									<!--<a href="#">
 										
-									</a>
+									</a>-->
 								</div>
 								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
-								</div>
-							</div>
-							<div class="media">
-								<h5>Steven Smith</h5>
-								<div class="media-left">
-									<a href="#">
-										
-									</a>
-								</div>
-								<div class="media-body">
-									<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
-									<span>View all posts by :<a href="#"> Admin </a></span>
+									<!--<p>Maecenas ultricies rhoncus tincidunt maecenas imperdiet ipsum id ex pretium hendrerit maecenas imperdiet ipsum id ex pretium hendrerit</p>
+									<span>View all posts by :<a href="#"> Admin </a></span>-->
 								</div>
 							</div>
 						</div>

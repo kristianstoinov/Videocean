@@ -11,16 +11,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.example.classes.User;
+import com.example.model.User;
 
 @Controller
 public class LikeController {
-	
+
 	@RequestMapping(method = RequestMethod.POST, value = "like-{id}")
-	public String showNewClientForm( @PathVariable("id") Integer id, Model viewModel,HttpServletRequest request) {
-		
+	public String showNewClientForm(@PathVariable("id") Integer id, Model viewModel, HttpServletRequest request) {
+
 		return null;
-		
+
 	}
 
 }

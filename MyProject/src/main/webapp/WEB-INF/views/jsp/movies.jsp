@@ -50,9 +50,9 @@
 								<div class="heading">
 									<h3>${category.name}</h3>
 								</div>
-								<div class="heading-right">
+								<!--  <div class="heading-right">
 									<a  href="#small-dialog8" class="play-icon popup-with-zoom-anim">Subscribe</a>
-								</div>
+								</div>-->
 								<div class="clearfix"> </div>
 							</div>
 						
@@ -61,12 +61,12 @@
 							<div class="col-md-3 resent-grid recommended-grid movie-video-grid">
 								<div class="resent-grid-img recommended-grid-img">
 									<a href="single-${clip.clipID}"> <video width="210" height="140" ><source src="load-${clip.clipID}" ></a>
-									<div class="time small-time show-time movie-time">
+									<!-- <div class="time small-time show-time movie-time">
 										<p>2:06</p>
 									</div>
 									<div class="clck movie-clock">
 										<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-									</div>
+									</div>-->
 								</div>
 								<div class="resent-grid-info recommended-grid-info recommended-grid-movie-info">
 									<h5><a href="single-${clip.clipID}" class="title">${clip.name}</a></h5>
@@ -83,6 +83,11 @@
 					 <br>
 					 </c:if>
 							</c:forEach>
+							 <c:if test="${not empty errorMessage}">
+       <p style="color:red"> 
+   Error: ${errorMessage}
+   </p>
+</c:if>
 							<div class="clearfix"> </div>
 						</div>
 					</div>

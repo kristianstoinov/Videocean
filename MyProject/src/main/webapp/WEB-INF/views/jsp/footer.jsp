@@ -9,8 +9,7 @@
 							<ul>
 								<li><a href="about"><spring:message code="about.name" /></a></li>
 								<li><a href="creators"><spring:message code="creators.name" /></a></li>
-								<li><a href="#"><spring:message code="advertise.name" /></a></li>
-								<li><a href="developers"><spring:message code="developers.name" /></a></li>
+								<li><a href="http://ittalents.bg/home"><spring:message code="advertise.name" /></a></li>
 							</ul>
 						</div>
 						<div class="footer-bottom-nav">
@@ -25,11 +24,10 @@
 								<select class="form-control bfh-countries" data-country="US" onchange="location = this.value;">
 									<option value=""><spring:message code="language.name" /></option>
 									<option value="?language=en">English</option>
-									<option value="?language=bg">Bulgarian</option>
 									<option value="?language=fr">Francais</option>
 								</select>
 							</li>
-							<li class="languages">
+							<!--  <li class="languages">
 								<select class="form-control bfh-countries">
 									<option value=""><spring:message code="country.name" /></option>
 									<option value="FR">France</option>
@@ -40,6 +38,7 @@
 									<option value="RUS">Russia</option>
 								</select>
 							</li>
+							-->
 						</ul>
 					</div>
 				</div>

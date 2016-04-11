@@ -49,16 +49,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						<h3>Recent Videos</h3>
 					</div>
 					
-	               	<c:forEach var="clip" items="${clips}" step="1" begin="0" end="2">
+	               	<c:forEach var="clip" items="${subClips}" step="1" begin="0" end="2">
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
 							<a href="single-${clip.clipID}">   <video width="360" height="200" ><source src="load-${clip.clipID}" ></source></video></a>
-							<div class="time">
-								<p>3:04</p>
+							<!--  <div class="time">
+								<p>3:</p>
 							</div>
 							<div class="clck">
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-							</div>
+							</div>-->
 						</div>
 						<div class="resent-grid-info recommended-grid-info">
 							<h3><a href="single-${clip.clipID}" class="title title-info">${clip.name}</a></h3>
@@ -75,7 +75,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 				<div class="recommended">
 					<div class="recommended-grids">
 						<div class="recommended-info">
-							<h3>Animated Cartoon</h3>
+							<h3></h3>
 						</div>
 						<script src="js/responsiveslides.min.js"></script>
 						 <!--  <script>
@@ -108,12 +108,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 										<div class="col-md-3 resent-grid recommended-grid slider-first">
 											<div class="resent-grid-img recommended-grid-img">
 												<a href="single-${cl.clipID}"> <video width="260" height="180"><source src="load-${cl.clipID}" ></source></video></a>
-												<div class="time small-time slider-time">
+												<!-- <div class="time small-time slider-time">
 													<p>4:34</p>
 												</div>
 												<div class="clck small-clck">
 													<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
-												</div>
+												</div>-->
 											</div>
 											<div class="resent-grid-info recommended-grid-info">
 												<h5><a href="single-${cl.clipID}" class="title">${cl.name}</a></h5>

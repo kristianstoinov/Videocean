@@ -51,13 +51,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="col-md-4 resent-grid recommended-grid slider-top-grids">
 						<div class="resent-grid-img recommended-grid-img">
 							<a href="single-${clip.clipID}"> <video width="354" height="200" preload="none"><source src="load-${clip.clipID}" ></source></video></a>
-							<div class="time">
+							<!--  --><div class="time">
 								<p>3:04</p>
 							</div>
 							<div class="clck">
 								<span class="glyphicon glyphicon-time" aria-hidden="true"></span>
 							</div>
-						</div>
+						</div>-->
 						<div class="resent-grid-info recommended-grid-info">
 							<h3><a href="single.html" class="title title-info">${clip.name}</a></h3>
 							<ul>
@@ -67,6 +67,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 						</div>
 					</div>
 					</c:forEach>
+					<c:if test="${not empty errorMessage}">
+       <p style="color:red"> 
+   Error: ${errorMessage}
+   </p>
+</c:if>
 					
 					<div class="clearfix"> </div>
 				</div>

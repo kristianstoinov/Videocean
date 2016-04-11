@@ -72,13 +72,13 @@
     <div class="form">
     <h2>Create an account</h2>
     <springForm:form action="signUp" method="post" commandName="user" >
-      <springForm:input type="email" placeholder="Email adress" path="username" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"/>
+      <springForm:input type="email" placeholder="Email  adress" path="username" pattern="([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?"  autocomplete="on"/>
       <springForm:input type="password" placeholder="Password" path="password" pattern=".{6,}"/>
       <springForm:input type="text" placeholder="Full Name" path="fullName" />
       <button>Register</button>
     </springForm:form>
        <c:if test="${not empty error}">
-       <p style="color:red"> 
+       <center><p style="color:red; position:center;"> </center>
    Error: ${error}
    </p>
 </c:if>

@@ -2,13 +2,13 @@ package com.example.tests;
 
 import org.junit.Test;
 
-import com.example.DAO.ClipDAO;
-import com.example.DAO.CommentDAO;
-import com.example.classes.Clip;
-import com.example.classes.Comment;
-import com.example.exceptions.ClipException;
-import com.example.exceptions.CommentException;
-import com.example.exceptions.UserProblemException;
+import com.example.model.Clip;
+import com.example.model.ClipDAO;
+import com.example.model.ClipException;
+import com.example.model.Comment;
+import com.example.model.CommentDAO;
+import com.example.model.CommentException;
+import com.example.model.UserProblemException;
 
 public class TestCommentDAO {
 

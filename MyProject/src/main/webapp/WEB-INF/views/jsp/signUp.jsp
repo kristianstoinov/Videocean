@@ -47,12 +47,12 @@
 <!-- Button Mixin-->
 <!-- Pen Title-->
 <div class="pen-title">
-  <h1> Login Form</h1><span> </span>
+  <h1></h1><span> </span>
 </div>
 <!-- Form Module-->
 <div class="module form-module">
   <div class="toggle"><i class="fa fa-times fa-pencil"></i>
-    <div class="tooltip">Login/Register</div>
+      <div class="tooltip">Login/Register</div>
   </div>
     <div class="form">
     <h2>Create an account</h2>
@@ -76,7 +76,7 @@
       <button>Login</button>
     </springForm:form>
     <c:if test="${not empty error}">
-    <p style="color:red"> 
+   <center><p style="color:red; position:center;"> </center>
    Error: ${error}
    </p>
 </c:if>

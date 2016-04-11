@@ -16,21 +16,21 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.example.DAO.CategoryDAO;
-import com.example.DAO.CategoryException;
-import com.example.DAO.ClipDAO;
-import com.example.DAO.PlaylistDAO;
-import com.example.DAO.UserDAO;
-import com.example.classes.Category;
-import com.example.classes.Clip;
-import com.example.classes.FileBucket;
-import com.example.classes.FileValidator;
-import com.example.classes.Playlist;
-import com.example.classes.TYPE;
-import com.example.classes.User;
-import com.example.exceptions.ClipException;
-import com.example.exceptions.PlaylistException;
-import com.example.exceptions.UserProblemException;
+import com.example.model.Category;
+import com.example.model.CategoryDAO;
+import com.example.model.CategoryException;
+import com.example.model.Clip;
+import com.example.model.ClipDAO;
+import com.example.model.ClipException;
+import com.example.model.FileBucket;
+import com.example.model.FileValidator;
+import com.example.model.Playlist;
+import com.example.model.PlaylistDAO;
+import com.example.model.PlaylistException;
+import com.example.model.TYPE;
+import com.example.model.User;
+import com.example.model.UserDAO;
+import com.example.model.UserProblemException;
 
 @Controller
 public class FileUploadController {
@@ -54,12 +54,11 @@ public class FileUploadController {
 
 		FileBucket fileModel = new FileBucket();
 		model.addAttribute("fileBucket", fileModel);
-		
 
 		CategoryDAO categoryes = new CategoryDAO();
 		try {
 			model.addAttribute("categories", categoryes.getAllCategories());
-		} catch (com.example.exceptions.CategoryException e) {
+		} catch (com.example.model.CategoryException e) {
 			e.printStackTrace();
 		}
 		return "upload";
@@ -104,18 +103,15 @@ public class FileUploadController {
 						clip = new Clip(fileBucket.getName(), user,
 								UPLOAD_LOCATION + fileBucket.getFile().getOriginalFilename(), TYPE.PUBLIC);
 					}
-					
-					
+
 					CategoryDAO category = new CategoryDAO();
 					try {
 						Category thisCategory = category.getCategoryByID(fileBucket.getCategory());
 						clip.setCategory(thisCategory);
-					} catch (com.example.exceptions.CategoryException e) {
+					} catch (com.example.model.CategoryException e) {
 						e.printStackTrace();
 					}
-					
-				
-					
+
 					clip.setDescription(fileBucket.getDescription());
 					clipId = new ClipDAO().addClip(clip);
 					clip.setClipID(clipId);
@@ -137,7 +133,7 @@ public class FileUploadController {
 					String error = "There is already such a video";
 					model.addAttribute("error", error);
 					return "upload";
-					
+
 				}
 				// Now do something with file...
 				System.out.println("do tuk e dobre");

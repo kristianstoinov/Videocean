@@ -5,10 +5,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import com.example.DAO.UserDAO;
-import com.example.classes.User;
-import com.example.exceptions.UserProblemException;
 
+import com.example.model.User;
+import com.example.model.UserDAO;
+import com.example.model.UserProblemException;
 
 @Controller
 // @SessionAttributes("user")
@@ -27,7 +27,8 @@ public class SignUpController {
 			userDao.addUser(user);
 		} catch (UserProblemException e) {
 			e.printStackTrace();
-			viewModel.addAttribute("error", "The user with this email already exist");
+			viewModel.addAttribute("error",
+					"There is already a user with this email or you haven't entered a fullname");
 			return "signUp";
 		}
 		return "redirect:index";

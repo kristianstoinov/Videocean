@@ -46,7 +46,7 @@
 			<div class="show-top-grids">
 				<div class="main-grids about-main-grids">
 					<div class="recommended-info">
-						<h3>About My Play</h3>
+						<h3>About Videocean</h3>
 						<p class="history-text">We started yesterday!
 						</p>
 						<div class="about-grids">
@@ -58,7 +58,7 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">When We Started</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
+											<p>Launched in May 2005, Videocean allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
@@ -70,7 +70,7 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">Community Guidelines</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
+											<p>Launched in May 2005, Videocean allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
@@ -85,7 +85,7 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">About Our Site</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
+										<p>Launched in May 2005, Videocean allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
@@ -97,8 +97,8 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">New Update</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
-										</div>
+											<p>Launched in May 2005, Videocean allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
+											</div>
 										<div class="clearfix"> </div>
 									</div>
 								</div>
@@ -112,8 +112,8 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">Careers</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
-										</div>
+											<p>Launched in May 2005, YouTube allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
+											</div>
 										<div class="clearfix"> </div>
 									</div>
 								</div>
@@ -124,7 +124,7 @@
 										</div>
 										<div class="col-md-10 about-left-info">
 											<a href="#">Contact Us</a>
-											<p>Suspendisse cursus tempus ullamcorper Praesent molestie urna a metus auctor vulputate molestie urna a metus auctor molestie urna a metus auctor.</p>
+											<p>Launched in May 2005, YouTube allows billions of people to discover, watch and share originally-created videos. YouTube provides a forum for people to connect, inform, and inspire others across the globe and acts as a distribution platform for original content creators and advertisers large and small.</p>
 										</div>
 										<div class="clearfix"> </div>
 									</div>
