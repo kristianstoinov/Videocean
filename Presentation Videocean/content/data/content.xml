@@ -1,0 +1,977 @@
+<zuiprezi>
+  <version>10</version>
+  <zui-table>
+    <settings>
+      
+      <autoplay>
+        
+        <delay>4000</delay>
+        
+      </autoplay>
+      
+      <bounds x="-27442.741865105392" y="-18194.901298863835" width="54885.483730210784" height="36389.80259772767"/>
+      <aspectratio>16:9</aspectratio>
+      <languages>
+        <language>en</language>
+      </languages>
+      <mode type="normal"/>
+    </settings>
+    <object id="54_30863873" type="button" x="177.57592087312543" y="-430.6130286493878" r="0" s="13.935072073170836" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="51_30863873" type="button" x="-12931.889222373844" y="-1463.2759208731295" r="0" s="7.68735931447027" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="52_30863873" type="text" x="-12780.520737688748" y="-3190.2067857003085" r="-1.6017276158877847e-31" s="16.94734278510039" class="strong">
+      <height>28.176</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Main Functionality]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="53_30863873" type="text" x="-12827.80330935251" y="-869.385755395683" r="-2.775982022719536e-31" s="11.340380875842012" class="body">
+      <height>225.408</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[ enjoy videos from multiple chosen categories]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[ watch hours of entertainment videos]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[ upload a video       ]]></text>
+        <text><![CDATA[                                      ]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[ follow someone who is of interest to you (subscribe to his channel)]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="0" type="button" x="7.315788384836863e-13" y="8.094379993115684e-13" r="0" s="22.78635103176435" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2414.7577859734774</w>
+        <h>1603.0604344274425</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="47_158621475" type="shape" x="-16415.819059165766" y="1045.934394059143" r="-29.99999999999998" s="20.700224183769368" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-66.44607801678883 0</sp>
+        <ep>66.44607801678882 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="5" type="shape" x="8589.358093697645" y="-5918.942946300729" r="-37.307219563749015" s="20.700224183769347" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-244.16749493420616 0</sp>
+        <ep>244.16749493420616 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="32" type="shape" x="13290.682013954158" y="-12240.689416419966" r="-66.98845484793564" s="20.700224183769347" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-115.28270122002044 0</sp>
+        <ep>115.2827012200204 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="6" type="shape" x="-4719.849665208459" y="-550.7405989093406" r="3.8154489654031947" s="20.70022418376933" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-273.47591710095327 0</sp>
+        <ep>273.47591710095327 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="37_158621475" type="button" x="287.2276886460345" y="-719.1322343274339" r="0" s="6.594026156700598" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2133.7886455841985</w>
+        <h>2093.781346534005</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="7" type="shape" x="-1771.5234380825889" y="5028.204934647099" r="-63.44055945544544" s="20.70022418376936" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-262.3266798427723 0</sp>
+        <ep>262.32667984277236 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="11" type="shape" x="-17004.215811208116" y="-3853.951673434805" r="34.5141327134901" s="20.700224183769347" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-94.36574269676925 0</sp>
+        <ep>94.36574269676925 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="34_158621475" type="button" x="2946.394320105883" y="-5084.146195967178" r="0" s="6.594026156700598" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>803.0098140934642</w>
+        <h>802.6184458999342</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="62_30863873" type="button" x="11618.437501923305" y="-8175.845760786098" r="0" s="7.68732607367517" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="16_158621475" type="text" x="15646.705241582002" y="-15470.370939519265" r="0" s="22.693928261580847" class="body">
+      <style fontFamily="custom-wayrale" font-family="WayRale"/>
+      <style fontFamily="custom-wayrale" font-family="WayRale"/>
+      <height>28.176</height>
+      <width>22</width>
+      <p>
+        <text color="16777215"><![CDATA[✳✱*]]></text>
+      </p>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="28_158621475" type="image" x="9973.550051048653" y="-9633.884051797095" r="-7.965031250936471" s="16.45104291568107">
+      <source w="12" h="12">4183255592<url>4183255592.swf</url></source>
+      <sourceUrl>prezi_template_csillag_feher.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>4183255592</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/3/7/42d15f5d96e05179626d789d9ceac9338ecd1.swf</url></resource></object>
+    <object id="40_158621475" type="button" x="13507.584765409576" y="-10499.006889400045" r="0" s="6.772295768807876" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2203.67156480015</w>
+        <h>1691.4687638446594</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="52_158621475" type="button" x="-15854.06120858409" y="-1575.4506193204006" r="0" s="6.115312389345103" class="invisible">
+      <type>invisible</type>
+      <size>
+        <w>2073.354245896129</w>
+        <h>1814.68269279432</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="45_158621475" type="image" x="-4150.714040842418" y="-2925.2030224432556" r="0" s="16.317994793157837">
+      <source w="30" h="30">4213380059<url>4213380059.swf</url></source>
+      <sourceUrl>prezi_template_cornerframe_black.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>4213380059</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/5/d/f/83f5858d4312e35b3ca8144e1573c6c572ed8.swf</url></resource></object>
+    <object id="50_158621475" type="image" x="-1397.293808860536" y="-1602.125081692429" r="-180" s="16.317994793157837">
+      <source w="30" h="30">4213380059<url>4213380059.swf</url></source>
+      <sourceUrl>prezi_template_cornerframe_black.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>4213380059</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/5/d/f/83f5858d4312e35b3ca8144e1573c6c572ed8.swf</url></resource></object>
+    <object id="81_30863873" type="persistentgroup" x="-2774.0039248514768" y="-2263.664052067842" r="0" s="20.790032796363203">
+      <m o="45_158621475"/>
+      <m o="50_158621475"/>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="60_158621475" type="image" x="2872.9491302975466" y="-5024.206782254707" r="37.122192187604874" s="52.50449943757006">
+      <source w="69" h="78">4219694495<url>4219694495.swf</url></source>
+      <sourceUrl>prezi_template_bubble_black.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>4219694495</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/7/3/e/e5d5808177d91babf8135f850ecaf67231013.swf</url></resource></object>
+    <object id="26_158621475" type="image" x="1743.3963309352505" y="-5420.208776978413" r="-0.6049238952027708" s="29.95467062064696">
+      <source w="12" h="12">4183255592<url>4183255592.swf</url></source>
+      <sourceUrl>prezi_template_csillag_feher.swf</sourceUrl>
+      <extra>
+        <fixed_avm1_pos>1</fixed_avm1_pos>
+      </extra>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    <resource><id>4183255592</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/3/7/42d15f5d96e05179626d789d9ceac9338ecd1.swf</url></resource></object>
+    <object id="25_158621475" type="text" x="3325.808705035968" y="-5406.535395683449" r="0" s="10.969410966886514" class="body">
+      <style fontFamily="custom-wayrale" font-family="WayRale"/>
+      <style fontFamily="custom-wayrale" font-family="WayRale"/>
+      <height>28.176</height>
+      <width>230.11555238907417</width>
+      <p align="center">
+        <text color="16777215" weight="bold"><![CDATA[What is Videocean?]]></text>
+      </p>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+      </meta>
+    </object>
+    <object id="44_30863873" type="button" x="-19029.603069577137" y="-5308.326534788555" r="0" s="3.9642079304849136" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="45_30863873" type="text" x="-19047.722497319715" y="-6023.406152467489" r="-1.6017276158877847e-31" s="8.739384738121966" class="strong">
+      <height>28.176</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[You also can:]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="46_30863873" type="text" x="-18988.06374100718" y="-5264.975683453233" r="-2.775982022719536e-31" s="6.088635225385211" class="body">
+      <height>140.88</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[show your appreciation and like a video]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[play your own playlist]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[register a personal profile]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[view the website in French]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="48_30863873" type="button" x="-18397.388204333227" y="2062.046521145979" r="0" s="3.9642079304849136" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="49_30863873" type="text" x="-18411.284970205306" y="1264.7657523879116" r="-1.6017276158877847e-31" s="8.739384738121966" class="strong">
+      <height>28.176</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Demo]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="50_30863873" type="text" x="-18366.558148590968" y="2100.8115932966216" r="-2.7759820227195356e-31" s="6.897814233686833" class="body">
+      <height>84.52799999999999</height>
+      <width>390.9237784827681</width>
+      <p>
+        <text><![CDATA[   Enough with these explanations , ]]></text>
+      </p>
+      <p align="center">
+        <text weight="bold"><![CDATA[LETS SHOW YOU THE REAL THING]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="151_30863873" type="text" x="193.9478974121333" y="-108.51870285284706" r="0" s="52.3674911224473" class="head head-background">
+      <height>28.176</height>
+      <width>211.6150585893417</width>
+      <p align="center">
+        <text><![CDATA[Videocean]]></text>
+      </p>
+    </object>
+    <object id="61_30863873" type="text" x="11577.998158596462" y="-9909.826824565189" r="-2.7759820227195377e-31" s="22.993844659685475" class="strong">
+      <height>56.352</height>
+      <width>156.41479104987877</width>
+      <p align="center">
+        <text><![CDATA[Technologies Used]]></text>
+      </p>
+    </object>
+    <object id="63_30863873" type="text" x="11924.033021582723" y="-7585.214953414938" r="-2.7759820227195373e-31" s="11.620721197674799" class="body">
+      <height>281.75999999999993</height>
+      <width>382.45033416357063</width>
+      <p>
+        <text><![CDATA[Back-end:]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Java EE (Eclipse)]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Spring MVC - is our religion]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Maven]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[MySQL Database]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[JUnit]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Web Video Player]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[REST Service( our own API )]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[Sessions]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Tomcat Server]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="66_30863873" type="textwithplaceholder" x="9334.465166972968" y="-11844.058586390303" r="0" s="7.5013540834570085" class="head">
+      <placeholder text="Click to add text" x="-65.25" y="-14.05" align="center" width="130.56749105981368"/>
+    </object>
+    <object id="73_30863873" type="button" x="14228.278390995163" y="-14604.48518994355" r="0" s="3.3261313723596384" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="74_30863873" type="text" x="14234.213854786973" y="-15470.989687229907" r="-1.6017276158877847e-31" s="6.666089592932486" class="strong">
+      <height>56.352</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Front-end Technologies]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="75_30863873" type="text" x="14178.371438848906" y="-14499.33395683452" r="-2.775982022719536e-31" s="6.060081448120442" class="body">
+      <height>225.40799999999996</height>
+      <width>180.47377848276813</width>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[HTML]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[CSS]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Javascript]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[AJAX]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[JQuery]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[JSTL]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[JSP]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text><![CDATA[JSON,XML]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="77_30863873" type="button" x="-5683.700894420092" y="12084.385239029687" r="0" s="7.68735931447027" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="78_30863873" type="text" x="-5700.754388489204" y="10353.765827338122" r="-1.6017276158877847e-31" s="16.947342785100396" class="strong">
+      <height>28.176</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Future plans]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="79_30863873" type="text" x="-5540.373669064744" y="12463.385884073426" r="-2.775982022719535e-31" s="13.588317437726399" class="body">
+      <height>140.88</height>
+      <width>390.9237784827681</width>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Live streaming ]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Cloud Server]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Optimized faster connection]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Even more languages]]></text>
+      </p>
+      <p listType="bullet" indent="1">
+        <text weight="bold"><![CDATA[Adding answer comments]]></text>
+      </p>
+      <layout>
+        <layout-element role="body"/>
+      </layout>
+    </object>
+    <object id="0_84018792" type="image" x="-2738.778273381293" y="-2311.284028776976" r="0" s="13.206083115094719">
+      <source w="179" h="49">4382596067<url>4382596067.png</url></source>
+      <sourceUrl>logoVOT.png</sourceUrl>
+    <resource><id>4382596067</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/a/b/8/86e315fcdf1bd0215258d48bc1046200f2ac7.png</url></resource></object>
+    <object id="1_84018792" type="text" x="-13936.546069189164" y="-2505.332597433431" r="0" s="16.94734278510039" class="body">
+      <height>28.176</height>
+      <width>-93.98400000000001</width>
+      <p>
+        <text><![CDATA[You can:]]></text>
+      </p>
+    </object>
+    <object id="2_84018792" type="button" x="19287.602260876614" y="-8954.976108561315" r="0" s="3.3261313723596375" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="8_84018792" type="image" x="19253.505203252138" y="-8922.185365853707" r="0" s="4.84988386518944">
+      <source w="884" h="578">4383761297<url>4383761297.png</url></source>
+      <sourceUrl>12992217_1283560304992577_191058169_n.png</sourceUrl>
+    <resource><id>4383761297</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/b/2/2/0061e285024136844dca7e88f280418f2bdf7.png</url></resource></object>
+    <object id="3_84018792" type="text" x="19054.49211382124" y="-9419.513577235824" r="-1.6017276158877845e-31" s="7.332698552225733" class="strong">
+      <height>56.352</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Database ER Model]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="5_84018792" type="shape" x="15737.838723426215" y="-8158.413117624716" r="-14.999999999999998" s="20.700224183769294" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-68.09752846182845 0</sp>
+        <ep>68.09752846182845 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="6_84018792" type="button" x="22604.311151079117" y="6710.614028776974" r="0" s="7.687359314470268" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="7_84018792" type="text" x="22649.89012320039" y="6591.657754632287" r="-1.6017276158877852e-31" s="22.55691324696862" class="strong">
+      <height>56.352</height>
+      <width>220.4993900181616</width>
+      <p align="center">
+        <text><![CDATA[Thank you for your attention!]]></text>
+      </p>
+      <layout>
+        <layout-element role="title"/>
+      </layout>
+    </object>
+    <object id="4_84018792" type="button" x="8148.811138211427" y="12067.719268292749" r="0" s="7.68735931447027" class="circle">
+      <type>circle</type>
+      <size>
+        <w>800</w>
+        <h>800</h>
+      </size>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+    <object id="10_84018792" type="image" x="8099.864552845573" y="12037.587804878114" r="0" s="7.820007823794023">
+      <source w="527" h="503">4382774102<url>4382774102.jpg</url></source>
+      <sourceUrl>dd82306baacaa45ba3ce96328fa93494251aa9be03db2de4bd1d325715419390.jpg</sourceUrl>
+    <resource><id>4382774102</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/e/4/4/31d87ac844bdef6b12340b98851bd2a647f98.jpg</url></resource></object>
+    <object id="11_84018792" type="shape" x="5518.367486500946" y="6258.661891722858" r="-119.99999999999999" s="20.700224183769357" class="line3">
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <style color="16777215" gradStartAlpha="1" gradEndColor="16777215" borderColor="16777215" gradStartColor="16777215" gradEndAlpha="1"/>
+      <geom type="line">
+        <sp>-176.3148890391166 0</sp>
+        <ep>176.31488903911657 0</ep>
+        <t>8</t>
+      </geom>
+      <meta>
+        <parentTemplate>nodes2016</parentTemplate>
+        <notModifiedByUser>from-template</notModifiedByUser>
+      </meta>
+    </object>
+  </zui-table>
+  <background>
+    <layer depth="21.733522542783305" fadescale="0.1012261125949193">
+      <object id="background4221407852" type="image" x="7.315788384836863e-13" y="-73.0482048714313" r="0" s="31.04543051835402">
+        <source w="2465" h="1584">4221407852<url>4221407852.swf</url></source>
+        <sourceUrl>prezi_template_bond_background_final_x.swf</sourceUrl>
+        <extra>
+          <fixed_avm1_pos>1</fixed_avm1_pos>
+        </extra>
+      <resource><id>4221407852</id><url>http://0103.static.prezi.com.s3.amazonaws.com/media/d/5/4/5de26d4825f4fb0bb7d769e67b82981f70c0f.swf</url></resource></object>
+    </layer>
+  </background>
+  <path>
+    <s>
+      <eagle o="0"/>
+    </s>
+    <s>
+      <eagle o="37_158621475"/>
+    </s>
+    <s>
+      <eagle o="34_158621475"/>
+    </s>
+    <s>
+      <eagle o="52_158621475"/>
+    </s>
+    <s>
+      <eagle o="51_30863873"/>
+    </s>
+    <s>
+      <eagle o="44_30863873"/>
+    </s>
+    <s>
+      <eagle o="48_30863873"/>
+    </s>
+    <s>
+      <eagle o="40_158621475"/>
+    </s>
+    <s>
+      <eagle o="62_30863873"/>
+    </s>
+    <s>
+      <eagle o="73_30863873"/>
+    </s>
+    <s>
+      <eagle o="2_84018792"/>
+    </s>
+    <s>
+      <eagle o="77_30863873"/>
+    </s>
+    <s>
+      <eagle o="4_84018792"/>
+    </s>
+    <s>
+      <eagle o="6_84018792"/>
+    </s>
+    <s>
+      <eagle o="0"/>
+    </s>
+  </path>
+  <style type="text/css"><![CDATA[
+@font-face
+{
+	src: url('WayRale-Regular.keg');
+	fontFamily: body;
+	font-class: body;
+	font-style: normal;
+	font-weight: normal;
+	font-family: WayRale;
+}
+
+@font-face
+{
+	src: url('WayRale-Regular.keg');
+	fontFamily: custom-wayrale;
+	font-class: custom-wayrale;
+	font-style: normal;
+	font-weight: normal;
+	font-family: WayRale;
+}
+
+@font-face
+{
+	src: url('WayRale-Bold.keg');
+	fontFamily: head;
+	font-class: head;
+	font-style: normal;
+	font-weight: bold;
+	font-family: WayRale;
+}
+
+@font-face
+{
+	src: url('WayRale-Bold.keg');
+	fontFamily: strong;
+	font-class: strong;
+	font-style: normal;
+	font-weight: bold;
+	font-family: WayRale;
+}
+
+@font-face
+{
+	src: url('WayRale-BoldItalic.keg');
+	font-style: italic;
+	font-weight: bold;
+	font-family: WayRale;
+}
+
+@font-face
+{
+	src: url('WayRale-Italic.keg');
+	font-style: italic;
+	font-weight: normal;
+	font-family: WayRale;
+}
+
+.line1
+{
+	color: #000;
+	gradEndColor: #000;
+	gradStartColor: #000;
+}
+
+.line2
+{
+	color: #666;
+	gradEndColor: #666;
+	gradStartColor: #666;
+}
+
+.line3
+{
+	color: #fff;
+	gradEndColor: #fff;
+	gradStartColor: #fff;
+}
+
+.line4
+{
+	color: #318bff;
+	gradEndColor: #318bff;
+	gradStartColor: #318bff;
+}
+
+.line5
+{
+	color: #ef4c33;
+	gradEndColor: #f16a21;
+	gradStartColor: #ef4c33;
+}
+
+.poly1
+{
+	color: #27aae1;
+	gradEndColor: #000;
+	gradStartColor: #000;
+}
+
+.poly2
+{
+	color: #27aae1;
+	gradEndColor: #666;
+	gradStartColor: #666;
+}
+
+.poly3
+{
+	color: #27aae1;
+	gradEndColor: #fff;
+	gradStartColor: #fff;
+}
+
+.poly4
+{
+	color: #27aae1;
+	gradEndColor: #318bff;
+	gradStartColor: #318bff;
+}
+
+.poly5
+{
+	color: #27aae1;
+	gradEndColor: #f16a21;
+	gradStartColor: #ef4c33;
+}
+
+Background
+{
+	gradEnd: #27aae1;
+	gradStart: #27aae1;
+}
+
+Grid
+{
+	color: #1d7fa8;
+}
+
+ZArrow
+{
+	borderAlpha: 0;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #fff;
+	gradStartAlpha: 1;
+	gradStartColor: #fff;
+	thickness: 10;
+}
+
+ZCircle
+{
+	borderAlpha: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+ZCurveLine
+{
+	color: #fff;
+}
+
+ZFrame.bracket
+{
+	borderAlpha: 0;
+	borderColor: #333;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #000;
+	gradStartAlpha: 1;
+	gradStartColor: #000;
+	padding: 1.03;
+	thickness: 5;
+}
+
+ZFrame.circle
+{
+	borderAlpha: 0;
+	borderColor: #333;
+	borderThickness: 0;
+	gradEndAlpha: 1;
+	gradEndColor: #fff;
+	gradStartAlpha: 1;
+	gradStartColor: #fff;
+	padding: 1.03;
+	thickness: 100;
+}
+
+ZFrame.roundrect
+{
+	borderAlpha: 0;
+	borderColor: #000;
+	borderThickness: 0;
+	gradEndAlpha: .7;
+	gradEndColor: #fff;
+	gradStartAlpha: .7;
+	gradStartColor: #fff;
+	padding: 1.03;
+	radius: 1;
+	thickness: 3;
+}
+
+ZLabel
+{
+	lockTintAlpha: 0.15;
+	padding: 1.2;
+}
+
+ZLabel.body
+{
+	color: #000;
+	fontFamily: body;
+}
+
+ZLabel.body-background
+{
+	background-alpha: 0.9;
+	background-color: #ccc;
+	background-padding: 6;
+}
+
+ZLabel.head
+{
+	color: #fff;
+	fontFamily: head;
+}
+
+ZLabel.head-background
+{
+	background-alpha: 1;
+	background-color: #000;
+	background-padding: 6;
+}
+
+ZLabel.strong
+{
+	color: #000;
+	fontFamily: strong;
+}
+
+ZLabel.strong-background
+{
+	background-alpha: 1;
+	background-color: #318bff;
+	background-padding: 6;
+}
+
+ZLine
+{
+	color: #fff;
+}
+
+ZMarker
+{
+	alpha: .65;
+	color: #e80b76;
+}
+
+ZPath
+{
+	alpha: 1;
+	color: #333;
+	textColor: #fff;
+	thickness: 3;
+}
+
+ZPath Ball.base
+{
+	alpha: 1;
+	fillColor: #333;
+	radius: 12;
+}
+
+ZPath Ball.mid
+{
+	alpha: .5;
+	fillColor: #333;
+	radius: 8;
+}
+
+ZPoly
+{
+	borderAlpha: 0;
+	gradEndAlpha: 1;
+	gradStartAlpha: 1;
+	lockTintAlpha: 0;
+	radius: 0;
+	thickness: 100;
+}
+
+]]></style>
+  <hash>4d41820f</hash>
+<sync><oid>7cshfzc8mjlj</oid><title>videocean</title><hash>4d41820f</hash></sync><config>B7b5KWOhN6xVw/TDMKjhmeXrt9n6Slxpl8UxlPDUTrt7MgV0E20pt4DrxalcZQmHt+oJIiSx7inyFbzicSGvqOWWiNzcLiRpltosxwsOgN/CjjSy0yVlm3N+9gyAtpP6ArdPOAGgO71aVtVPNCUbIHKr3zGwA0/Yoj0kLmT/lhX9fDhdzEVQdV6toaDYnUgBsMyN96BgW6RFqRYCut7flKqsbZyAZiZrzdBtTKderW2u4Q/ECfvbbJqONZ9vyK61CHEOlsosA7VQtoawQUsOjvhdRUc6fjToER54UBJnw7WkVonZhXUJ2a9SbEZdBCKZkB662w8pHid8ITYcOUTZpg==</config></zuiprezi>
